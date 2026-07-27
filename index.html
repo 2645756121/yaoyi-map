@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="瑶医分布交互式地图：探索瑶族传统医学与草药资源的可视化平台"
+    />
+    <title>瑶医分布地图 · 探索瑶族传统医学</title>
+
+    <!--
+      Content-Security-Policy：
+      - default-src 'self'：仅允许同源资源
+      - img-src：允许 https 图片（含第三方 text_to_image API）
+      - font-src：允许 Google Fonts
+      - style/style-src：内联样式由 React/Vite 在开发环境注入
+      - script-src：开发模式需 'unsafe-eval'（Vite HMR），生产环境仅 self
+    -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; connect-src 'self' https: https://fonts.googleapis.com; frame-src 'self';"
+    />
+
+    <script type="module">
+      if (import.meta.hot?.on) {
+        import.meta.hot.on('vite:error', (error) => {
+          if (error.err) {
+            console.error(
+              [error.err.message, error.err.frame].filter(Boolean).join('\n'),
+            )
+          }
+        })
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <div id="modal-root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

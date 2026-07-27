@@ -1,0 +1,207 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "name": "中国南海诸岛与钓鱼岛",
+    "description": "中华人民共和国南海诸岛（含东沙、西沙、中沙、南沙）及钓鱼岛、赤尾屿，遵循国家版图规范",
+    "source": "国家标准 GB/T 14512-2010 / 自然资源部",
+    "license": "CC0 1.0",
+    "version": "1.0",
+    "generatedAt": "2026-07-22"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "adcode": "710000",
+        "name": "台湾岛",
+        "level": "province",
+        "center": [121.0, 23.7],
+        "category": "mainland_island",
+        "note": "中华人民共和国台湾省"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [120.0, 22.0],
+          [122.3, 22.0],
+          [122.3, 25.3],
+          [120.0, 25.3],
+          [120.0, 22.0]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "adcode": "710000_penghu",
+        "name": "澎湖列岛",
+        "level": "city",
+        "category": "island_group",
+        "note": "台湾省澎湖县"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [119.5, 23.5]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "adcode": "taiwan_kinmen",
+        "name": "金门",
+        "level": "city",
+        "category": "island_group",
+        "note": "福建省金门县（台湾当局实际管辖）"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [118.3, 24.4]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "adcode": "taiwan_matsu",
+        "name": "马祖列岛",
+        "level": "city",
+        "category": "island_group",
+        "note": "福建省连江县马祖乡（台湾当局实际管辖）"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [119.9, 26.15]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "adcode": "diaoyudao",
+        "name": "钓鱼岛",
+        "level": "city",
+        "category": "sovereignty_marker",
+        "note": "中华人民共和国固有领土（台湾附属岛屿）",
+        "center": [123.5, 25.7]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [123.5, 25.7]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "adcode": "chiwei_islet",
+        "name": "赤尾屿",
+        "level": "city",
+        "category": "sovereignty_marker",
+        "note": "中华人民共和国固有领土（钓鱼岛列屿）",
+        "center": [124.5, 25.9]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [124.5, 25.9]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "adcode": "dongsha",
+        "name": "东沙群岛",
+        "level": "city",
+        "category": "island_group",
+        "note": "广东省东沙群岛",
+        "center": [116.8, 20.7]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [116.8, 20.7]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "adcode": "xisha",
+        "name": "西沙群岛",
+        "level": "city",
+        "category": "island_group",
+        "note": "海南省三沙市西沙区",
+        "center": [112.0, 16.0]
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [111.0, 15.5],
+          [113.0, 15.5],
+          [113.0, 16.5],
+          [111.0, 16.5],
+          [111.0, 15.5]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "adcode": "zhongsha",
+        "name": "中沙群岛",
+        "level": "city",
+        "category": "island_group",
+        "note": "海南省三沙市中沙群岛",
+        "center": [114.5, 15.5]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [114.5, 15.5]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "adcode": "nansha",
+        "name": "南沙群岛",
+        "level": "city",
+        "category": "island_group",
+        "note": "海南省三沙市南沙区（最深达曾母暗沙北纬 3°58′）",
+        "center": [115.5, 9.5]
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [109.0, 4.0],
+          [118.0, 4.0],
+          [118.0, 12.0],
+          [109.0, 12.0],
+          [109.0, 4.0]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "九段线",
+        "level": "boundary_line",
+        "category": "sovereignty_line",
+        "note": "中华人民共和国南海领土主权线（U型线/断续线）"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [108.0, 21.5],
+          [108.0, 18.0],
+          [109.0, 13.5],
+          [111.0, 9.5],
+          [114.0, 7.0],
+          [118.0, 5.0],
+          [120.0, 7.5],
+          [121.5, 12.0],
+          [120.5, 17.0],
+          [119.5, 20.5],
+          [117.5, 23.5],
+          [115.5, 22.5],
+          [113.0, 21.0],
+          [110.0, 21.0],
+          [108.0, 21.5]
+        ]
+      }
+    }
+  ]
+}

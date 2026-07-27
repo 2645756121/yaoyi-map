@@ -1,0 +1,137 @@
+# =============================================================================
+# 瑶医分布地图 - Git 忽略规则
+# =============================================================================
+# 此文件应与部署文档（DOCKER_DEPLOY.md / DEPLOY.md）保持一致
+# 任何敏感凭据、生产环境变量、构建产物都不应进入版本控制
+# =============================================================================
+
+# ---- Logs ----
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+npm-lifecycle.log*
+
+# ---- Node / 构建产物 ----
+node_modules/
+dist/
+dist-ssr/
+*.local
+.cache/
+.vite/
+.eslintcache
+.npm/
+.yarn/
+.pnp.*
+.pnpm-store/
+
+# ---- 运行时临时文件 ----
+.tmp/
+temp/
+*.log.*
+
+# ---- 项目级快照目录（保留为参考，不纳入版本控制） ----
+deploy-package/
+yao-medical-map-*/
+releases/
+
+# ---- 数据资料目录（PDF / DOCX 资料库，不属于源码） ----
+yaoyi data/
+
+# ---- Node 安装包（仅 Windows 工作机器，不应被提交） ----
+node_installer.msi
+
+# ---- 运行时审计产物 ----
+audit-reports/
+logs/inspection/*
+logs/ui-design-Desktop-*.png
+logs/ui-design-Mobile-*.png
+logs/ui-design-Tablet-*.png
+scripts/*.png
+scripts/*.json
+scripts/*.map
+
+# ---- IDE / 编辑器 ----
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.history/
+
+# ---- 系统文件 ----
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+ehthumbs_vista.db
+Thumbs.db
+desktop.ini
+
+# ---- 部署平台生成的临时文件 ----
+.vercel/
+.netlify/
+.cloudflare/
+.firebase/
+*.tgz
+
+# ---- 敏感凭据（绝不可提交真实密钥！） ----
+.env
+.env.local
+.env.development
+.env.production
+.env.*.local
+*.pem
+*.key
+*.crt
+secrets.json
+service-account*.json
+credentials.json
+.npmrc
+
+# ---- 测试产物 ----
+coverage/
+.nyc_output/
+__snapshots__/
+test-output.txt
+test-results/
+playwright-report/
+cypress/videos/
+cypress/screenshots/
+
+# ---- 浏览器驱动 / headless 工具缓存 ----
+.puppeteer*/
+@*.cache
+
+# ---- Python / 其他语言工件（避免误纳） ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+
+# ---- 各种系统级临时文件 ----
+*.swp
+*.swo
+*~
+.eslintcache
+.stylelintcache
+
+# =============================================================================
+# 重要：以下文件 MUST 被跟踪（不要写错忽略规则）
+# =============================================================================
+# !.env.example          → 模板（不含真实值），必须提交
+# !Dockerfile           → 构建配置，必须提交
+# !docker-compose.yml   → 编排文件，必须提交
+# !docker/              → 容器内 nginx 配置，必须提交
+# !.github/             → CI/CD 工作流，必须提交
+# !DEPLOY.md            → 部署文档，必须提交
+# !README.md            → 项目说明，必须提交

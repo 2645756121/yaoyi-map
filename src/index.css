@@ -1,0 +1,970 @@
+@charset "UTF-8";
+/*
+  Noto Sans/Serif SC 字体（可选）：
+  - 内网 / 离线环境：自动降级到系统字体（PingFang SC / Microsoft YaHei）
+  - 联网环境：异步加载，不阻塞首屏渲染
+  - 若浏览器无法访问 fonts.googleapis.com，CSS 中已配置系统字体回退
+*/
+/* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap'); */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* 主题色彩 CSS 变量 — 用于 SVG / 内联 style 引用 */
+  --yao-primary-50: #eef5ee;
+  --yao-primary-100: #d6e6d6;
+  --yao-primary-300: #7bb279;
+  --yao-primary-500: #2c7e36;
+  --yao-primary-600: #22652c;
+  --yao-primary-700: #1a4f23;
+  --yao-amber-300: #e3b052;
+  --yao-amber-500: #a97621;
+  --yao-ink-700: #253020;
+  --yao-ink-800: #181e15;
+  --ring-color: rgba(44, 126, 54, 0.45);
+
+  /* WCAG AA 焦点环 */
+  --focus-ring: 0 0 0 3px rgba(34, 101, 44, 0.45);
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #f6f3eb;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background:
+    radial-gradient(1200px 800px at 90% -10%, rgba(168, 204, 167, 0.18), transparent 60%),
+    radial-gradient(900px 700px at -10% 110%, rgba(232, 200, 128, 0.14), transparent 60%),
+    linear-gradient(180deg, #faf7ef 0%, #f3eee2 100%);
+  color: #181e15;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#root {
+  overflow-x: hidden;
+}
+
+/* ===== 可访问性：键盘焦点统一规范 ===== */
+:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: 6px;
+}
+
+button,
+a,
+input,
+select,
+textarea,
+[role='button'] {
+  font-family: inherit;
+}
+
+/* ===== 滚动条：低饱和度柔和样式 ===== */
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background: rgba(26, 79, 35, 0.25);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(26, 79, 35, 0.4);
+  background-clip: padding-box;
+}
+
+/* ===== 瑶医主题装饰：在 body 叠加一层织锦纹理 ===== */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'><path d='M0 20 L20 0 L40 20 L20 40 Z' fill='none' stroke='%237bb279' stroke-opacity='0.16' stroke-width='0.8'/><path d='M10 20 L20 10 L30 20 L20 30 Z' fill='none' stroke='%23b89463' stroke-opacity='0.14' stroke-width='0.6'/></svg>") 0 0/40px 40px;
+  opacity: 0.45;
+  z-index: 0;
+}
+
+.bg-yao-weave {
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'><path d='M0 20 L20 0 L40 20 L20 40 Z' fill='none' stroke='%237bb279' stroke-opacity='0.16' stroke-width='0.8'/><path d='M10 20 L20 10 L30 20 L20 30 Z' fill='none' stroke='%23b89463' stroke-opacity='0.14' stroke-width='0.6'/></svg>") 0 0/40px 40px;
+}
+.bg-yao-grass {
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='60'><path d='M0 60 Q30 0 60 60 T120 60' fill='none' stroke='%2322652c' stroke-opacity='0.06' stroke-width='1'/></svg>") 0 0/120px 60px;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.map-container {
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 24px;
+  box-shadow: 0 18px 50px -18px rgba(22, 88, 36, 0.28), 0 6px 18px rgba(0, 0, 0, 0.06);
+  min-height: 500px;
+  border: 1px solid rgba(168, 204, 167, 0.45);
+  position: relative;
+  overflow: hidden;
+}
+
+.map-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'><path d='M0 28 L28 0 L56 28 L28 56 Z' fill='none' stroke='%237bb279' stroke-opacity='0.16' stroke-width='0.8'/><path d='M14 28 L28 14 L42 28 L28 42 Z' fill='none' stroke='%23b89463' stroke-opacity='0.14' stroke-width='0.6'/></svg>") 0 0/56px 56px;
+  opacity: 0.35;
+  z-index: 0;
+}
+
+.region-panel {
+  background: linear-gradient(180deg, rgba(255, 253, 247, 0.96), rgba(247, 243, 232, 0.95));
+  backdrop-filter: blur(20px);
+  box-shadow: -14px 0 40px -10px rgba(22, 88, 36, 0.18), inset 1px 0 0 rgba(168, 204, 167, 0.5);
+  border-left: 1px solid rgba(168, 204, 167, 0.5);
+}
+
+.herb-modal,
+.therapy-modal,
+.history-modal,
+.region-modal {
+  background: radial-gradient(circle at top, rgba(22, 88, 36, 0.55), rgba(0, 0, 0, 0.75) 70%);
+  backdrop-filter: blur(14px);
+}
+
+.province-path {
+  transition: all 0.3s ease;
+  cursor: pointer;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.06));
+}
+
+.province-path:hover {
+  transform: scale(1.02);
+  filter: brightness(1.06) drop-shadow(0 0 6px rgba(34, 197, 94, 0.45));
+}
+
+.province-path.selected {
+  filter: drop-shadow(0 0 10px rgba(28, 100, 38, 0.7));
+}
+
+/* ===== 悬浮卡片基础样式 ===== */
+.floating-card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 244, 232, 0.96));
+  box-shadow: 0 6px 24px -8px rgba(28, 64, 36, 0.12), 0 2px 6px rgba(0, 0, 0, 0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 18px;
+  border: 1px solid rgba(168, 204, 167, 0.35);
+}
+
+/* ===== 通用按钮样式：瑶医主题 ===== */
+.btn-yao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.125rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  letter-spacing: 0.01em;
+  transition: background-color 0.18s ease, color 0.18s ease, box-shadow 0.2s ease, transform 0.18s ease;
+  border: 1px solid transparent;
+  cursor: pointer;
+  user-select: none;
+}
+.btn-yao-primary {
+  background: linear-gradient(180deg, #2c7e36, #22652c);
+  color: #faf7ef;
+  box-shadow: 0 4px 10px rgba(26, 79, 35, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+.btn-yao-primary:hover {
+  background: linear-gradient(180deg, #22652c, #1a4f23);
+  box-shadow: 0 6px 14px rgba(26, 79, 35, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+.btn-yao-primary:active {
+  transform: translateY(1px);
+}
+.btn-yao-secondary {
+  background: #ffffff;
+  border-color: rgba(168, 204, 167, 0.7);
+  color: #1a4f23;
+}
+.btn-yao-secondary:hover {
+  background: #eef5ee;
+  border-color: #2c7e36;
+}
+.btn-yao-ghost {
+  background: transparent;
+  color: #34432f;
+}
+.btn-yao-ghost:hover {
+  background: rgba(168, 204, 167, 0.18);
+  color: #1a4f23;
+}
+.btn-yao-amber {
+  background: linear-gradient(180deg, #cf9230, #a97621);
+  color: #fdf6e1;
+  box-shadow: 0 4px 10px rgba(169, 118, 33, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+.btn-yao-amber:hover {
+  background: linear-gradient(180deg, #a97621, #84591a);
+}
+.btn-yao-danger {
+  background: #b33030;
+  color: #ffffff;
+}
+.btn-yao-danger:hover {
+  background: #8c2626;
+}
+.btn-yao-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 0.625rem;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(168, 204, 167, 0.45);
+  color: #1a4f23;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.btn-yao-icon:hover {
+  background: #eef5ee;
+  transform: translateY(-1px);
+}
+
+/* ===== 通用输入控件 ===== */
+.input-yao {
+  width: 100%;
+  padding: 0.625rem 0.875rem;
+  border: 1px solid rgba(168, 204, 167, 0.65);
+  border-radius: 0.625rem;
+  background: rgba(255, 255, 255, 0.95);
+  color: #253020;
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+.input-yao::placeholder {
+  color: #9aa594;
+}
+.input-yao:hover {
+  border-color: #7bb279;
+}
+.input-yao:focus,
+.input-yao:focus-visible {
+  outline: none;
+  border-color: #2c7e36;
+  box-shadow: 0 0 0 3px rgba(44, 126, 54, 0.22);
+}
+
+/* ===== 通用卡片 ===== */
+.card-yao {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.97), rgba(250, 247, 239, 0.96));
+  border: 1px solid rgba(168, 204, 167, 0.5);
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: 0 6px 20px -10px rgba(28, 64, 36, 0.18);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card-yao:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px -12px rgba(28, 64, 36, 0.22);
+}
+
+/* ===== 通用 chip / pill ===== */
+.chip-yao {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.625rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.chip-yao-primary {
+  background: rgba(168, 204, 167, 0.55);
+  color: #16391c;
+}
+.chip-yao-amber {
+  background: rgba(231, 176, 82, 0.55);
+  color: #5e3f12;
+}
+.chip-yao-ochre {
+  background: rgba(216, 193, 156, 0.5);
+  color: #50391b;
+}
+.chip-yao-outline {
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(168, 204, 167, 0.65);
+  color: #1a4f23;
+}
+
+/* ===== 通用标题层级 ===== */
+.title-yao {
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 700;
+  color: #102514;
+  letter-spacing: 0.01em;
+}
+.subtitle-yao {
+  color: #6e7d68;
+  font-size: 0.875rem;
+}
+
+.floating-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== 关键词高亮 ===== */
+.keyword {
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  color: #15803d;
+}
+
+/* ===== 首行缩进 ===== */
+/* 仅对正文段落生效；带图标/标签的标题应避免使用，否则会出现首行图标被推到右侧的视觉重叠。 */
+.text-indent {
+  text-indent: 2em;
+}
+.text-indent-no-icon {
+  text-indent: 2em;
+}
+
+/* ===== 图片优化样式 ===== */
+.herb-image {
+  border-radius: 12px;
+  object-fit: cover;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.herb-image:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.herb-image-thumbnail {
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.herb-image-large {
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+/* ===== 文本居中 ===== */
+.text-center-align {
+  text-align: center;
+}
+
+/* ===== 淡入动画 ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.3s ease forwards;
+}
+.star-rating {
+  display: inline-flex;
+  gap: 2px;
+  position: relative;
+}
+
+.star-rating .star {
+  font-size: 16px;
+  color: #fbbf24;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.star-rating .star.empty {
+  color: #e5e7eb;
+}
+
+.star-rating .star:hover {
+  transform: scale(1.2);
+}
+
+.star-tooltip {
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(17, 24, 39, 0.95);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 10;
+}
+
+.star-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: rgba(17, 24, 39, 0.95);
+}
+
+.star-rating:hover .star-tooltip {
+  opacity: 1;
+}
+
+/* ===== 折叠面板 ===== */
+.collapse-header {
+  background: linear-gradient(to right, #dcfce7, #bbf7d0);
+  transition: background 0.3s ease;
+}
+
+.collapse-arrow {
+  transition: transform 0.3s ease;
+}
+
+.collapse-arrow.expanded {
+  transform: rotate(90deg);
+}
+
+.collapse-content {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
+}
+
+.collapse-content.expanded {
+  max-height: 2000px;
+  opacity: 1;
+}
+
+/* ===== 药材卡片图片悬停 ===== */
+.herb-image-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.herb-image-wrapper img {
+  transition: transform 0.3s ease;
+}
+
+.herb-image-wrapper:hover img {
+  transform: scale(1.1);
+}
+
+.herb-tooltip {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.75);
+  color: white;
+  padding: 8px 12px;
+  font-size: 12px;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.herb-image-wrapper:hover .herb-tooltip {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 地图渐显动画 */
+@keyframes mapFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-map-fade-in {
+  animation: mapFadeIn 0.8s ease forwards;
+}
+
+/* 卡片staggered浮现 */
+@keyframes cardSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-card-slide-up {
+  opacity: 0;
+  animation: cardSlideUp 0.5s ease forwards;
+}
+
+/* 按钮旋转动画 */
+@keyframes rotateDrum {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.drum-icon {
+  transition: transform 0.5s ease;
+}
+
+.drum-button:hover .drum-icon {
+  transform: rotate(360deg);
+}
+
+/* ===== 回到顶部按钮 ===== */
+.back-to-top {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #16a34a, #15803d);
+  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 50;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.back-to-top:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(22, 163, 74, 0.5);
+}
+
+.back-to-top:hover .drum-icon {
+  animation: rotateDrum 0.8s ease;
+}
+
+/* ===== 地图viewBox平滑过渡 ===== */
+.transition-viewBox {
+  transition: viewBox 0.3s ease;
+}
+
+/* ===== 瑶医文化装饰边框 ===== */
+.yao-border {
+  position: relative;
+}
+
+.yao-border::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #166534 0%, #22c55e 50%, #166534 100%);
+  border-radius: 3px 3px 0 0;
+}
+
+/* ===== 瑶医图腾装饰 ===== */
+.yao-pattern-bg {
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(34, 197, 94, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(22, 163, 74, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(134, 239, 172, 0.03) 0%, transparent 70%);
+}
+
+/* ===== 草药标记点脉冲动画 ===== */
+@keyframes herbPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+.herb-marker-pulse {
+  animation: herbPulse 2s ease-in-out infinite;
+}
+
+/* ===== 层级切换过渡 ===== */
+.layer-transition-enter {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.layer-transition-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* ===== 统一滑动条样式 ===== */
+.custom-scroll,
+.modal-scroll,
+.region-panel-scroll,
+.modal-body-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(34, 197, 94, 0.5) rgba(241, 245, 249, 0.6);
+  scroll-behavior: smooth;
+}
+
+.custom-scroll::-webkit-scrollbar,
+.modal-scroll::-webkit-scrollbar,
+.region-panel-scroll::-webkit-scrollbar,
+.modal-body-scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.custom-scroll::-webkit-scrollbar-track,
+.modal-scroll::-webkit-scrollbar-track,
+.region-panel-scroll::-webkit-scrollbar-track,
+.modal-body-scroll::-webkit-scrollbar-track {
+  background: rgba(241, 245, 249, 0.6);
+  border-radius: 8px;
+  margin: 4px 0;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb,
+.modal-scroll::-webkit-scrollbar-thumb,
+.region-panel-scroll::-webkit-scrollbar-thumb,
+.modal-body-scroll::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #22c55e 0%, #16a34a 100%);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  transition: all 0.2s ease;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb:hover,
+.modal-scroll::-webkit-scrollbar-thumb:hover,
+.region-panel-scroll::-webkit-scrollbar-thumb:hover,
+.modal-body-scroll::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #16a34a 0%, #15803d 100%);
+  background-clip: padding-box;
+  border: 2px solid transparent;
+}
+
+/* ===== 通用模态框与面板层级 ===== */
+.modal-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.modal-layer-high {
+  z-index: 2000;
+}
+
+/* ===== 磨砂玻璃质感面板 ===== */
+.frosted-panel {
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow:
+    0 8px 32px rgba(15, 76, 58, 0.15),
+    0 2px 8px rgba(15, 76, 58, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  border-radius: 18px;
+}
+
+/* ===== 统一信息界面尺寸 ===== */
+.info-panel-wrapper {
+  position: relative;
+  width: 50vw;
+  max-width: 50vw;
+  min-width: 320px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+/* 整面板滚动模式：用于"瑶医基础知识"等长内容场景
+   - 让面板作为唯一的滚动容器，所有子元素跟随滚动条一同向上滑动
+   - 头部标题、功能图标、底部按钮均不再固定，而是随内容自然滚出可视区
+   - 还原正常的页面滚动流，避免固定吸顶问题 */
+.info-panel-wrapper-scrollable {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+@media (max-width: 1024px) {
+  .info-panel-wrapper {
+    width: 70vw;
+    max-width: 70vw;
+  }
+}
+
+@media (max-width: 640px) {
+  .info-panel-wrapper {
+    width: 92vw;
+    max-width: 92vw;
+    max-height: 90vh;
+  }
+}
+
+/* ===== 模态弹出动效 ===== */
+@keyframes modalSlideInRight {
+  from {
+    transform: translateX(40px) scale(0.96);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes modalSlideOutRight {
+  from {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(40px) scale(0.96);
+    opacity: 0;
+  }
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalFadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* 模态框容器：右侧滑入/滑出动效 */
+.modal-layer.modal-slide {
+  transition: opacity 240ms ease-out;
+}
+.modal-layer.modal-slide > .info-panel-wrapper {
+  animation: modalSlideInRight 280ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.modal-layer.modal-slide.is-closing > .info-panel-wrapper {
+  animation: modalSlideOutRight 200ms ease-in forwards;
+}
+
+/* 蒙层淡入/淡出 */
+.modal-layer.modal-fade {
+  transition: opacity 200ms ease-out;
+}
+
+/* 移动端：从底部滑入（更符合移动端交互习惯） */
+@media (max-width: 640px) {
+  @keyframes modalSlideInBottom {
+    from {
+      transform: translateY(40px) scale(0.96);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+  }
+  @keyframes modalSlideOutBottom {
+    from {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+    to {
+      transform: translateY(40px) scale(0.96);
+      opacity: 0;
+    }
+  }
+  .modal-layer.modal-slide > .info-panel-wrapper {
+    animation: modalSlideInBottom 280ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .modal-layer.modal-slide.is-closing > .info-panel-wrapper {
+    animation: modalSlideOutBottom 200ms ease-in forwards;
+  }
+}
+
+/* ===== 折叠面板标题栏统一 ===== */
+.section-header-uniform {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 12px;
+  border: 1px solid rgba(34, 197, 94, 0.15);
+  transition: all 0.25s ease;
+  margin-bottom: 12px;
+}
+
+.section-header-uniform:hover {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(34, 197, 94, 0.3);
+  box-shadow: 0 2px 8px rgba(15, 76, 58, 0.08);
+}
+
+/* ===== 响应式适配 ===== */
+@media (max-width: 768px) {
+  .map-container {
+    border-radius: 12px;
+  }
+  
+  .floating-card {
+    border-radius: 12px;
+  }
+
+  .back-to-top {
+    bottom: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+  }
+}
+
+/* ===== 草药卡片锚点定位高亮（目录跳转反馈） ===== */
+@keyframes herb-card-flash {
+  0% {
+    box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.6);
+    background-color: rgba(220, 252, 231, 0.95);
+  }
+  60% {
+    box-shadow: 0 0 0 8px rgba(22, 163, 74, 0);
+    background-color: rgba(220, 252, 231, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(22, 163, 74, 0);
+    background-color: transparent;
+  }
+}
+
+.herb-card-flash {
+  animation: herb-card-flash 1.2s ease-out;
+  border-radius: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== v2 美化标签 ===== */
+/* 县区标签脉冲动画（柔和呼吸效果） */
+@keyframes countyTagPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 6px 18px var(--ring-color, rgba(34, 197, 94, 0.6)),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  }
+  50% {
+    transform: scale(1.04);
+    box-shadow: 0 8px 22px var(--ring-color, rgba(34, 197, 94, 0.7)),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+}
+
+@keyframes countyTagDot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(0.85);
+  }
+}
+
+/* 确保 divIcon 的容器没有默认的 white background */
+.county-beauty-tag-wrapper,
+.county-focused-tag-wrapper {
+  background: transparent !important;
+  border: 0 !important;
+}
+
+.county-beauty-tag-wrapper:hover .county-beauty-tag,
+.county-focused-tag-wrapper:hover .county-focused-tag {
+  transform: scale(1.08) !important;
+  box-shadow: 0 8px 20px var(--ring-color, rgba(34, 197, 94, 0.6)) !important;
+}

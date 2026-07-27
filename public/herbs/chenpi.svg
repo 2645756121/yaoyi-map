@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <linearGradient id="bg-陈皮" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#F5EBD8" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#F5EBD8" stop-opacity="0.6"/>
+    </linearGradient>
+    <pattern id="weave-陈皮" patternUnits="userSpaceOnUse" width="20" height="20">
+      <path d="M 0,10 L 20,10 M 10,0 L 10,20" stroke="#B27E3D" stroke-width="0.3" opacity="0.15"/>
+    </pattern>
+  </defs>
+
+  <!-- 背景渐变 -->
+  <rect width="100%" height="100%" fill="url(#bg-陈皮)"/>
+
+  <!-- 本草图鉴纹饰底纹 -->
+  <rect width="100%" height="100%" fill="url(#weave-陈皮)"/>
+
+  <!-- 边框（仿古医书风格） -->
+  <rect x="6" y="6" width="388" height="288" fill="none" stroke="#B27E3D" stroke-width="2" opacity="0.4"/>
+  <rect x="10" y="10" width="380" height="280" fill="none" stroke="#B27E3D" stroke-width="0.5" opacity="0.3"/>
+
+  <!-- 顶部装饰横线 -->
+  <line x1="20" y1="22" x2="380" y2="22" stroke="#B27E3D" stroke-width="1" opacity="0.5"/>
+  <text x="20" y="18" font-family="Noto Sans SC, serif" font-size="9" fill="#B27E3D" opacity="0.7">本草图鉴</text>
+  <text x="380" y="18" text-anchor="end" font-family="serif" font-size="9" fill="#B27E3D" opacity="0.7">HERBARIUM</text>
+
+  
+        <!-- 果实 -->
+        <g transform="translate(200, 150)">
+          <circle cx="0" cy="0" r="45" fill="#B27E3D" opacity="0.85" stroke="#B27E3D" stroke-width="2"/>
+          <circle cx="-12" cy="-15" r="6" fill="#fff" opacity="0.4"/>
+          <circle cx="10" cy="-8" r="4" fill="#fff" opacity="0.4"/>
+          <path d="M 0,-45 Q -8,-55 0,-65 Q 8,-55 0,-45" stroke="#B27E3D" stroke-width="2.5" fill="#B27E3D" opacity="0.9"/>
+          <ellipse cx="0" cy="0" rx="40" ry="40" fill="none" stroke="#fff" stroke-width="1" opacity="0.2"/>
+        </g>
+
+  <!-- 名称 -->
+  <g transform="translate(200, 250)">
+    <text text-anchor="middle" font-family="Noto Sans SC, serif" font-size="22" font-weight="700" fill="#B27E3D">陈皮</text>
+    <text text-anchor="middle" y="22" font-family="serif" font-size="10" font-style="italic" fill="#B27E3D" opacity="0.8">Citrus reticulata</text>
+    <line x1="-40" y1="32" x2="40" y2="32" stroke="#B27E3D" stroke-width="0.5" opacity="0.5"/>
+  </g>
+
+  <!-- 角标 -->
+  <text x="14" y="290" font-family="serif" font-size="8" fill="#B27E3D" opacity="0.5">Real · Plant · 2026</text>
+  <text x="386" y="290" text-anchor="end" font-family="serif" font-size="8" fill="#B27E3D" opacity="0.5">YaoYi · 瑶药</text>
+</svg>
