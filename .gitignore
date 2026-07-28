@@ -84,6 +84,11 @@ desktop.ini
 .firebase/
 *.tgz
 
+# ---- 本地工具二进制（cloudflared 等）----
+.tools/
+*.exe
+!node_modules/.bin/*.exe
+
 # ---- 敏感凭据（绝不可提交真实密钥！） ----
 .env
 .env.local
