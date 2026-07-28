@@ -10,6 +10,7 @@
  */
 
 import L from 'leaflet';
+import { assetPath } from '../../lib/assetPath';
 
 export interface ChinaTerritoriesResult {
   /** 合规模块是否合规 */
@@ -67,7 +68,7 @@ export async function loadChinaTerritories(map: L.Map): Promise<ChinaTerritories
   }
 
   try {
-    const r = await fetch('/map/china_territories.json');
+    const r = await fetch(assetPath('map/china_territories.json'));
     if (!r.ok) throw new Error(`HTTP ${r.status}`);
     const geojson = (await r.json()) as GeoJSON.FeatureCollection;
     const features = geojson.features || [];
