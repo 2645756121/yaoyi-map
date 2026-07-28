@@ -1,9 +1,17 @@
 # =============================================================================
-# 瑶医分布地图 - CI/CD 工作流
+# 瑶医分布地图 - CI/CD 工作流 v3
 # =============================================================================
 # 触发：
 #   - push / pull_request 到 main 分支 → 跑 CI（lint + type-check + build）
 #   - push 到 main 分支 + tag (v*) →  跑 CD（构建并推送 Docker 镜像）
+#   - 部署到生产（仅当 secrets 完整时）
+#
+# 修复记录：
+#   - v3 (2026-07-28): 升级 Node 20 → 24 (弃用修复)
+#                            升级 actions 到 v5+ (Node 24 兼容)
+#                            条件化 deploy-prod job (secrets 缺失时跳过)
+#                            添加 SSH 凭据配置检查
+#                            添加 Pages 部署分工
 # =============================================================================
 
 name: build-deploy
@@ -34,15 +42,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Setup Node.js 24
+        uses: actions/setup-node@v5
         with:
-          node-version: 20
+          node-version: 24
           cache: 'npm'
 
-      - name: Setup pnpm cache (optional)
+      - name: Setup npm cache
         uses: actions/cache@v4
         with:
           path: ~/.npm
@@ -97,7 +105,7 @@ jobs:
         platform: [linux/amd64, linux/arm64]
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -138,18 +146,36 @@ jobs:
             VITE_BUILD_TIME=${{ github.event.head_commit.timestamp }}
 
   # -------------------------------------------------------------------
-  # 部署到生产环境（需额外配置 secret: PROD_HOST 等）
+  # 部署到生产环境（条件化：仅当 secrets 完整时运行）
+  # 需在仓库 Settings > Secrets 添加 3 个 secrets:
+  #   - PROD_HOST  (服务器域名/IP)
+  #   - PROD_USER  (SSH 用户名)
+  #   - PROD_SSH_KEY (SSH 私钥，Ed25519 推荐)
   # -------------------------------------------------------------------
   deploy-prod:
     name: Deploy to Production
     runs-on: ubuntu-latest
     needs: docker
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    # 条件化：仅当所有必需的 secrets 都存在时运行
+    if: |
+      github.event_name == 'push' &&
+      github.ref == 'refs/heads/main' &&
+      secrets.PROD_HOST != '' &&
+      secrets.PROD_USER != '' &&
+      secrets.PROD_SSH_KEY != ''
     environment:
       name: production
       url: ${{ steps.deploy.outputs.url }}
     steps:
+      - name: Validate SSH secrets
+        run: |
+          echo "✓ All required secrets are configured"
+          echo "  PROD_HOST: ${{ secrets.PROD_HOST }}"
+          echo "  PROD_USER: ${{ secrets.PROD_USER }}"
+          echo "  PROD_SSH_KEY: *** (length: ${{ secrets.PROD_SSH_KEY }})"
+
       - name: Deploy via SSH
+        id: deploy
         uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.PROD_HOST }}
@@ -161,8 +187,45 @@ jobs:
             docker compose up -d
             sleep 15
             curl -fsS http://localhost/healthz && echo "✓ Deployment successful"
+
       - name: Run smoke tests
         run: |
           sleep 30
-          curl -fsS -o /dev/null -w "Status: %{http_code}\n" ${{ secrets.PROD_HOST }}
+          curl -fsS -o /dev/null -w "Status: %{http_code}\n" ${{ secrets.PROD_HOST }}/
           curl -fsS ${{ secrets.PROD_HOST }}/healthz
+
+  # -------------------------------------------------------------------
+  # 部署提示：当 secrets 缺失时给出明确提示
+  # -------------------------------------------------------------------
+  deploy-warning:
+    name: Deploy Configuration Check
+    runs-on: ubuntu-latest
+    needs: docker
+    if: |
+      github.event_name == 'push' &&
+      github.ref == 'refs/heads/main' &&
+      (secrets.PROD_HOST == '' || secrets.PROD_USER == '' || secrets.PROD_SSH_KEY == '')
+    steps:
+      - name: Show missing secrets
+        run: |
+          echo "::warning::⚠️  生产部署 secrets 未完整配置"
+          echo ""
+          echo "必须配置以下 3 个 secrets（仓库 Settings > Secrets and variables > Actions）："
+          echo ""
+          [ -z "$PROD_HOST" ] && echo "  ❌ PROD_HOST  (服务器域名或 IP，例：yaoyi.example.com)"
+          [ -z "$PROD_USER" ] && echo "  ❌ PROD_USER  (SSH 用户名，例：deployer)"
+          [ -z "$PROD_SSH_KEY" ] && echo "  ❌ PROD_SSH_KEY  (SSH 私钥，Ed25519 推荐)"
+          echo ""
+          echo "配置后下次 push 将自动部署到生产环境。"
+          echo ""
+          echo "快速配置："
+          echo "  1. 在生产服务器生成密钥："
+          echo "     ssh-keygen -t ed25519 -C github-deploy -f ~/.ssh/github_deploy"
+          echo "  2. 将公钥添加到服务器："
+          echo "     ssh-copy-id -i ~/.ssh/github_deploy.pub user@server"
+          echo "  3. 在 GitHub 添加 secrets："
+          echo "     https://github.com/${{ github.repository }}/settings/secrets/actions"
+          env:
+            PROD_HOST: ${{ secrets.PROD_HOST }}
+            PROD_USER: ${{ secrets.PROD_USER }}
+            PROD_SSH_KEY: ${{ secrets.PROD_SSH_KEY }}
