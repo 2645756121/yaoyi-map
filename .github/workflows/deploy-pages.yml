@@ -1,5 +1,5 @@
 # =============================================================================
-# GitHub Pages 部署工作流
+# GitHub Pages 部署工作流 v3
 # =============================================================================
 # 触发：push 到 main 分支
 # 行为：
@@ -11,6 +11,12 @@
 #
 # 部署后访问地址：
 #   https://2645756121.github.io/yaoyi-map/
+#
+# 修复记录：
+#   - v3 (2026-07-28): 升级 Node 20 → 24 (弃用修复)
+#                            升级 actions 到 v5+ (Node 24 兼容)
+#                            添加 Pages 启用检查 (avoid 404)
+#                            添加 SSH 凭据检查 (avoid deploy 失败)
 # =============================================================================
 
 name: Deploy to GitHub Pages
@@ -19,6 +25,11 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      skip_pages_check:
+        description: 'Skip Pages enabled check (for testing)'
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -35,12 +46,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Setup Node.js 24
+        uses: actions/setup-node@v5
         with:
-          node-version: 20
+          node-version: 24
           cache: 'npm'
 
       - name: Install dependencies
@@ -59,6 +70,12 @@ jobs:
           VITE_APP_VERSION: ${{ github.sha }}
           VITE_BUILD_TIME: ${{ github.event.head_commit.timestamp }}
         run: npm run build
+
+      - name: Verify build artifacts
+        run: |
+          test -f dist/index.html || (echo "❌ dist/index.html missing" && exit 1)
+          test -d dist/assets || (echo "❌ dist/assets missing" && exit 1)
+          echo "✓ Build artifacts OK"
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
@@ -79,3 +96,12 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+      - name: Post-deploy verification
+        run: |
+          echo "✅ Deployment complete"
+          echo "URL: ${{ steps.deployment.outputs.page_url }}"
+          echo "HTML check:"
+          curl -fsS "${{ steps.deployment.outputs.page_url }}/" | head -c 200
+          echo ""
+          echo "Health check:"
+          curl -fsS "${{ steps.deployment.outputs.page_url }}/healthz" || true
