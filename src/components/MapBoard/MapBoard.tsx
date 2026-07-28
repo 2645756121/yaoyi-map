@@ -41,9 +41,12 @@ import {
   aggregateToHierarchy,
   type AdminHierarchy,
 } from '../../lib/adminAggregator';
-import { registerDrillDownController } from '../../lib/mapEvents';
+import {
+  registerDrillDownController
+} from '../../lib/mapEvents';
 import { useMapStore } from '../../store/mapStore';
 import type { Herb } from '../../types';
+import { assetPath } from '../../lib/assetPath';
 
 interface MapBoardProps {
   className?: string;
@@ -216,7 +219,7 @@ const MapBoard: React.FC<MapBoardProps> = ({ className }) => {
         // 创建离线兜底图层（默认隐藏，由 drillDown 失败时显示）
         if (destroyed) return;
         fallbackRef.current = createOfflineFallbackLayers(map, async () => {
-          const r = await fetch('/map/100000.json');
+          const r = await fetch(assetPath('map/100000.json'));
           if (!r.ok) throw new Error(`HTTP ${r.status}`);
           return (await r.json()) as GeoJSON.FeatureCollection;
         });
