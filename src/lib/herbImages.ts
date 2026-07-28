@@ -31,6 +31,7 @@
  *     - 'local-svg': 来自本地 public/herbs/*.svg（自绘本草图鉴）
  *     - 'ai-original': 原 AI 图（最终兜底，标记为过渡）
  */
+import { assetPath } from './assetPath';
 
 export type ImageProvider = 'wikimedia' | 'local-svg' | 'ai-original';
 
@@ -66,7 +67,7 @@ export const HERB_IMAGE_OVERRIDES: Record<string, HerbImageOverride> = {
   jiegeng: {
     // 桔梗（Platycodon grandiflorus）— Wikimedia 首尔实拍
     url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Platycodon_grandiflorus%2C_Seoul.jpg/1920px-Platycodon_grandiflorus%2C_Seoul.jpg',
-    fallback: '/herbs/jiegeng.svg',
+    fallback: assetPath('herbs/jiegeng.svg'),
     provider: 'wikimedia',
     sourceFile: 'Platycodon grandiflorus, Seoul.jpg',
     photographer: 'Gaeho77',
@@ -76,7 +77,7 @@ export const HERB_IMAGE_OVERRIDES: Record<string, HerbImageOverride> = {
   lingzhi: {
     // 灵芝（Ganoderma lucidum）— Wikimedia Eric Steinert 实拍
     url: 'https://upload.wikimedia.org/wikipedia/commons/8/81/Ganoderma_lucidum_01.jpg',
-    fallback: '/herbs/lingzhi.svg',
+    fallback: assetPath('herbs/lingzhi.svg'),
     provider: 'wikimedia',
     sourceFile: 'Ganoderma lucidum 01.jpg',
     photographer: 'Eric Steinert',
@@ -97,77 +98,77 @@ export const HERB_IMAGE_OVERRIDES: Record<string, HerbImageOverride> = {
   // ===== 主要瑶药 / 中药材 =====
   dangshen: {
     url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Codonopsis_pilosula_2.jpg/1200px-Codonopsis_pilosula_2.jpg',
-    fallback: '/herbs/dangshen.svg',
+    fallback: assetPath('herbs/dangshen.svg'),
     provider: 'wikimedia',
     sourceFile: 'Codonopsis pilosula 2.jpg',
     license: 'CC-BY-SA-3.0',
   },
   huangqi: {
     url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Astragalus_membranaceus_P5213295.jpg/1200px-Astragalus_membranaceus_P5213295.jpg',
-    fallback: '/herbs/huangqi.svg',
+    fallback: assetPath('herbs/huangqi.svg'),
     provider: 'wikimedia',
     sourceFile: 'Astragalus membranaceus P5213295.jpg',
     license: 'CC-BY-SA-4.0',
   },
   baizhu: {
     url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Atractylodes_macrocephala.jpg/1200px-Atractylodes_macrocephala.jpg',
-    fallback: '/herbs/baizhu.svg',
+    fallback: assetPath('herbs/baizhu.svg'),
     provider: 'wikimedia',
     sourceFile: 'Atractylodes_macrocephala.jpg',
     license: 'CC-BY-SA-3.0',
   },
   shanyao: {
     url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Dioscorea_polystachya_tuber.jpg/1200px-Dioscorea_polystachya_tuber.jpg',
-    fallback: '/herbs/shanyao.svg',
+    fallback: assetPath('herbs/shanyao.svg'),
     provider: 'wikimedia',
     sourceFile: 'Dioscorea polystachya tuber.jpg',
     license: 'CC-BY-SA-4.0',
   },
   danggui: {
     url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Angelica_sinensis_yingcaiyu.jpg/1200px-Angelica_sinensis_yingcaiyu.jpg',
-    fallback: '/herbs/danggui.svg',
+    fallback: assetPath('herbs/danggui.svg'),
     provider: 'wikimedia',
     sourceFile: 'Angelica sinensis yingcaiyu.jpg',
     license: 'CC-BY-SA-4.0',
   },
   danshen: {
     url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Salvia_miltiorrhiza_2016.jpg/1200px-Salvia_miltiorrhiza_2016.jpg',
-    fallback: '/herbs/danshen.svg',
+    fallback: assetPath('herbs/danshen.svg'),
     provider: 'wikimedia',
     sourceFile: 'Salvia miltiorrhiza 2016.jpg',
     license: 'CC-BY-SA-4.0',
   },
   fuling: {
     url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Wolfiporia_extensa_2009_G2.jpg/1200px-Wolfiporia_extensa_2009_G2.jpg',
-    fallback: '/herbs/fuling.svg',
+    fallback: assetPath('herbs/fuling.svg'),
     provider: 'wikimedia',
     sourceFile: 'Wolfiporia extensa 2009 G2.jpg',
     license: 'CC-BY-SA-3.0',
   },
   huangqin: {
     url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Scutellaria_baicalensis_flower.jpg/1200px-Scutellaria_baicalensis_flower.jpg',
-    fallback: '/herbs/huangqin.svg',
+    fallback: assetPath('herbs/huangqin.svg'),
     provider: 'wikimedia',
     sourceFile: 'Scutellaria baicalensis flower.jpg',
     license: 'CC-BY-SA-4.0',
   },
   duzhong: {
     url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Eucommia_ulmoides_Duzhong_Leaf_2004.jpg/1200px-Eucommia_ulmoides_Duzhong_Leaf_2004.jpg',
-    fallback: '/herbs/duzhong.svg',
+    fallback: assetPath('herbs/duzhong.svg'),
     provider: 'wikimedia',
     sourceFile: 'Eucommia ulmoides Duzhong Leaf 2004.jpg',
     license: 'CC-BY-SA-3.0',
   },
   baishao: {
     url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Paeonia_lactiflora_1.jpg/1200px-Paeonia_lactiflora_1.jpg',
-    fallback: '/herbs/baishao.svg',
+    fallback: assetPath('herbs/baishao.svg'),
     provider: 'wikimedia',
     sourceFile: 'Paeonia lactiflora 1.jpg',
     license: 'CC-BY-SA-3.0',
   },
   chuanxiong: {
     url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Ligusticum_striatum_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-098.jpg/1200px-Ligusticum_striatum_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-098.jpg',
-    fallback: '/herbs/chuanxiong.svg',
+    fallback: assetPath('herbs/chuanxiong.svg'),
     provider: 'wikimedia',
     sourceFile: 'Ligusticum striatum - Köhler–s Medizinal-Pflanzen-098.jpg',
     photographer: 'Franz Eugen Köhler (公版)',
@@ -175,7 +176,7 @@ export const HERB_IMAGE_OVERRIDES: Record<string, HerbImageOverride> = {
   },
   honghua: {
     url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Carthamus_tinctorius_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-198.jpg/1200px-Carthamus_tinctorius_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-198.jpg',
-    fallback: '/herbs/honghua.svg',
+    fallback: assetPath('herbs/honghua.svg'),
     provider: 'wikimedia',
     sourceFile: 'Carthamus tinctorius - Köhler–s Medizinal-Pflanzen-198.jpg',
     photographer: 'Franz Eugen Köhler (公版)',
@@ -183,14 +184,14 @@ export const HERB_IMAGE_OVERRIDES: Record<string, HerbImageOverride> = {
   },
   sanqi: {
     url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Panax_notoginseng.jpg/1200px-Panax_notoginseng.jpg',
-    fallback: '/herbs/sanqi.svg',
+    fallback: assetPath('herbs/sanqi.svg'),
     provider: 'wikimedia',
     sourceFile: 'Panax notoginseng.jpg',
     license: 'CC-BY-SA-3.0',
   },
   mudanpi: {
     url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Paeonia_suffruticosa_a3.jpg/1200px-Paeonia_suffruticosa_a3.jpg',
-    fallback: '/herbs/mudanpi.svg',
+    fallback: assetPath('herbs/mudanpi.svg'),
     provider: 'wikimedia',
     sourceFile: 'Paeonia suffruticosa a3.jpg',
     license: 'CC-BY-SA-3.0',
@@ -199,14 +200,14 @@ export const HERB_IMAGE_OVERRIDES: Record<string, HerbImageOverride> = {
   // ===== 海南瑶药 =====
   yuzhu: {
     url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Polygonatum_odoratum_flower.jpg/1200px-Polygonatum_odoratum_flower.jpg',
-    fallback: '/herbs/yuzhu.svg',
+    fallback: assetPath('herbs/yuzhu.svg'),
     provider: 'wikimedia',
     sourceFile: 'Polygonatum odoratum flower.jpg',
     license: 'CC-BY-SA-3.0',
   },
   shihu: {
     url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Dendrobium_nobile_or_Chin_Chin.jpg/1200px-Dendrobium_nobile_or_Chin_Chin.jpg',
-    fallback: '/herbs/shihu.svg',
+    fallback: assetPath('herbs/shihu.svg'),
     provider: 'wikimedia',
     sourceFile: 'Dendrobium_nobile_or_Chin_Chin.jpg',
     license: 'CC-BY-SA-3.0',
@@ -215,14 +216,14 @@ export const HERB_IMAGE_OVERRIDES: Record<string, HerbImageOverride> = {
   // ===== 其他常用瑶药 =====
   chenpi: {
     url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Citrus_reticulata.jpg/1200px-Citrus_reticulata.jpg',
-    fallback: '/herbs/chenpi.svg',
+    fallback: assetPath('herbs/chenpi.svg'),
     provider: 'wikimedia',
     sourceFile: 'Citrus reticulata.jpg',
     license: 'CC-BY-SA-3.0',
   },
   houpo: {
     url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Magnolia_officinalis_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-130.jpg/1200px-Magnolia_officinalis_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-130.jpg',
-    fallback: '/herbs/houpo.svg',
+    fallback: assetPath('herbs/houpo.svg'),
     provider: 'wikimedia',
     sourceFile: 'Magnolia officinalis - Köhler–s Medizinal-Pflanzen-130.jpg',
     photographer: 'Franz Eugen Köhler (公版)',
@@ -230,7 +231,7 @@ export const HERB_IMAGE_OVERRIDES: Record<string, HerbImageOverride> = {
   },
   chaihu: {
     url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Bupleurum_chinense_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-089.jpg/1200px-Bupleurum_chinense_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-089.jpg',
-    fallback: '/herbs/chaihu.svg',
+    fallback: assetPath('herbs/chaihu.svg'),
     provider: 'wikimedia',
     sourceFile: 'Bupleurum chinense - Köhler–s Medizinal-Pflanzen-089.jpg',
     photographer: 'Franz Eugen Köhler (公版)',
@@ -238,14 +239,14 @@ export const HERB_IMAGE_OVERRIDES: Record<string, HerbImageOverride> = {
   },
   yujin: {
     url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Curcuma_aromatica_PCA12.png/1200px-Curcuma_aromatica_PCA12.png',
-    fallback: '/herbs/yujin.svg',
+    fallback: assetPath('herbs/yujin.svg'),
     provider: 'wikimedia',
     sourceFile: 'Curcuma aromica PCA12.png',
     license: 'CC-BY-SA-4.0',
   },
   xiangfu: {
     url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Cyperus_rotundus_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-027.jpg/1200px-Cyperus_rotundus_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-027.jpg',
-    fallback: '/herbs/xiangfu.svg',
+    fallback: assetPath('herbs/xiangfu.svg'),
     provider: 'wikimedia',
     sourceFile: 'Cyperus rotundus - Köhler–s Medizinal-Pflanzen-027.jpg',
     photographer: 'Franz Eugen Köhler (公版)',
@@ -277,7 +278,7 @@ export function applyHerbImageOverride(
  */
 export function getHerbImageFallback(herbId: string): string | null {
   if (HERB_IMAGE_OVERRIDES[herbId]) {
-    return `/herbs/${herbId}.svg`;
+    return assetPath(`herbs/${herbId}.svg`);
   }
   return null;
 }
