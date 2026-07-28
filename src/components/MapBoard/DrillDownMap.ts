@@ -16,6 +16,7 @@ import L, { type LatLngBoundsExpression, type Map as LMap } from 'leaflet';
 import type { FeatureCollection } from 'geojson';
 import type { AdminHierarchy } from '../../lib/adminAggregator';
 import type { YaoCounty } from '../../types';
+import { assetPath } from '../../lib/assetPath';
 
 /** 钻取层级 */
 export type DrillLevel = 'province' | 'city' | 'county';
@@ -58,7 +59,7 @@ async function loadProvinceGeoJSON(adcode: string): Promise<FeatureCollection> {
   if (provinceGeoJSONCache.has(adcode)) return provinceGeoJSONCache.get(adcode)!;
   // adcode 是 2 位（如 45），文件名是 6 位（如 450000_full.json）
   const fullAdcode = adcode.padEnd(6, '0');
-  const url = `/map/province/${fullAdcode}_full.json`;
+  const url = assetPath(`map/province/${fullAdcode}_full.json`);
   const r = await fetch(url, { signal: AbortSignal.timeout(10000) });
   if (!r.ok) throw new Error(`省级 GeoJSON 加载失败: ${url} HTTP ${r.status}`);
   const json = (await r.json()) as FeatureCollection;
@@ -69,8 +70,8 @@ async function loadProvinceGeoJSON(adcode: string): Promise<FeatureCollection> {
 /** 加载县级 GeoJSON（带兜底） */
 async function loadCountyGeoJSON(code: string): Promise<FeatureCollection> {
   if (countyGeoJSONCache.has(code)) return countyGeoJSONCache.get(code)!;
-  // 主路径：/map/county/{code}.json
-  const primary = await fetch(`/map/county/${code}.json`, { signal: AbortSignal.timeout(5000) });
+  // 主路径：map/county/{code}.json
+  const primary = await fetch(assetPath(`map/county/${code}.json`), { signal: AbortSignal.timeout(5000) });
   if (primary.ok) {
     const json = (await primary.json()) as FeatureCollection;
     countyGeoJSONCache.set(code, json);
@@ -78,9 +79,9 @@ async function loadCountyGeoJSON(code: string): Promise<FeatureCollection> {
   }
   // ✅ 兜底路径：尝试从聚合文件 yao_counties_real.json 中抽取对应 feature
   //   用于：海南 469xxx 直辖县级等 download 脚本遗漏的边界 case
-  console.warn(`[DrillDown] /map/county/${code}.json 不可用 (HTTP ${primary.status})，尝试从聚合文件兜底`);
+  console.warn(`[DrillDown] map/county/${code}.json 不可用 (HTTP ${primary.status})，尝试从聚合文件兜底`);
   try {
-    const fallback = await fetch('/map/yao_counties_real.json', { signal: AbortSignal.timeout(8000) });
+    const fallback = await fetch(assetPath('map/yao_counties_real.json'), { signal: AbortSignal.timeout(8000) });
     if (fallback.ok) {
       const fc = (await fallback.json()) as FeatureCollection;
       const matched = fc.features?.filter(
@@ -101,7 +102,7 @@ async function loadCountyGeoJSON(code: string): Promise<FeatureCollection> {
 
 /** 加载全国基础 GeoJSON（含所有省级 + 几何） */
 async function loadNationalGeoJSON(): Promise<FeatureCollection> {
-  const r = await fetch(`/map/100000_full.json`, { signal: AbortSignal.timeout(10000) });
+  const r = await fetch(assetPath('map/100000_full.json'), { signal: AbortSignal.timeout(10000) });
   if (!r.ok) throw new Error(`全国 GeoJSON 加载失败: HTTP ${r.status}`);
   return (await r.json()) as FeatureCollection;
 }
