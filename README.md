@@ -1,244 +1,137 @@
 # 瑶医分布地图 / YaoYi Medicine Map
 
-> 探索瑶族传统医学与草药资�?· 大瑶山瑶医药文化全景
-> Explore the traditional Yao medicine and herb resources · A panoramic view of the Yao medical culture in the Greater Yao Mountains
+> 探索瑶医传统医学与草药资源 — 大瑶山瑶医文化全景
+> Explore the traditional Yao medicine and herb resources — A panoramic view of the Yao medical culture in the Greater Yao Mountains
 
 [![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)]()
-[![Node.js](https://img.shields.io/badge/Node.js-%3E%3D18-green.svg)]()
-[![License](https://img.shields.io/badge/license-Educational-orange.svg)]()
-
-## 📖 项目简�?
-「瑶医分布地图」是一款基�?Web 的瑶族医药文化可视化平台，提供：
-
-- 🗺�?**真实地理地图交互**：基�?Leaflet + 真实 GeoJSON 边界数据，覆盖全�?9 个瑶族主要聚居省�?- 🌿 **草药分类目录**�?9 种瑶药资源，按英文学名（A-Z）或省份浏览，支持真实实拍图与本草图�?- 🏥 **瑶医诊疗机构分布**：可视化粤港桂湘川渝黔滇琼各省的瑶医瑶药机构
-- 🧭 **三级钻取导航**：省 �?�?�?�?三级无刷新钻�?- 📜 **历史溯源**：瑶医药发展史的时空展示
-- 💊 **特色疗法**：清热解毒、风湿痹痛、妇科调理等典型瑶医技�?- 📱 **全设备响应式**：桌面、平板、移动端自适应
+[![Node.js](https://img.shields.io/badge/node.js-%3E%3D18-brightgreen)]()
+[![License](https://img.shields.io/badge/license-MIT-green)]()
+[![Educational](https://img.shields.io/badge/purpose-educational-orange)]()
 
 ---
 
-## 🚀 快速开�?
-### 一键启动（推荐�?
-**Windows 用户**：双�?`start.bat`
+## ✨ 简介 | Introduction
 
-**macOS 用户**：双�?`start.command`（首次需右键 �?打开方式 �?终端�?
-**Linux 用户**：在终端中运�?`./start.sh`
+本项目是一个基于 **React 18 + TypeScript + Vite 6** 构建的交互式地图应用，专注于可视化展示**瑶医传统医学**在中国南方的分布情况。
 
-启动成功后，浏览器自动打开 http://localhost:5187
+This project is an interactive map application built with **React 18 + TypeScript + Vite 6**, focused on visualizing the distribution of **Yao traditional medicine** in southern China.
 
-### 命令行启�?
-```bash
-# 进入解压后的目录
-cd yaoyi-map-v1.0.0
+## 🏔️ 主要功能 | Key Features
 
-# 启动（默认端�?5187�?node server.cjs
+- 🗺️ **真实地理地图**：基于 Leaflet 1.9 + 中国合规 GeoJSON
+- 📍 **三级钻取**：国家级 → 省级 → 县级，缩放查看
+- 🌿 **草药目录**：24 种瑶药信息，含传统应用与禁忌
+- 📜 **传统疗法**：药浴、刮痧、滚蛋疗法等外治法
+- 📖 **历史溯源**：瑶医发展史与重要文献
+- 🏥 **机构查找**：定位瑶医诊所与药店
+- 🌐 **双语支持**：中英双语界面与说明
 
-# 或指定端�?node server.cjs 8080
-```
+## 🛠️ 技术栈 | Tech Stack
 
-启动脚本会自动：
-1. 检�?Node.js 环境（需 �?18�?2. 检�?`dist/` 构建产物（缺失时尝试重新构建�?3. 启动零依�?Node.js 静态服务器
-4. 输出访问地址
+| 类别 | 选型 |
+| --- | --- |
+| 框架 | React 18 + TypeScript 5 + Vite 6 |
+| 地图 | Leaflet 1.9（合规本地 GeoJSON） |
+| 状态管理 | Zustand 5 |
+| 样式 | Tailwind CSS 4 |
+| 路由 | React Router 7 |
+| 部署 | Docker + GitHub Pages + Cloudflare |
 
----
-
-## 📦 打包内容
-
-```
-yaoyi-map-v1.0.0/
-├── dist/                    # 生产构建产物（已优化、gzip �?~220 KB JS�?�?  ├── index.html
-�?  ├── favicon.svg
-�?  ├── assets/              # 压缩后的 JS + CSS（含 source map�?�?  ├── herbs/               # 24 张本草图�?SVG 插画
-�?  └── map/                 # 真实地理 GeoJSON（省/�?县三级边界）
-�?├── server.cjs                # 便携�?Node.js 服务器（零依赖）
-├── start.bat                # Windows 启动脚本
-├── start.sh                 # Linux/macOS 启动脚本
-├── start.command            # macOS 双击启动脚本
-�?├── README.md                # 本文�?├── QUICKSTART.md            # 快速入门指�?├── DEPLOY.md                # 公网部署指南
-├── CHANGES.md               # 版本变更记录
-└── LICENSE                  # 教育用途许�?```
-
----
-
-## 🔧 环境要求
-
-| 组件 | 最低版�?| 说明 |
-|------|---------|------|
-| Node.js | 18.x | 仅需运行时（构建产物已含静态文件） |
-| 操作系统 | Windows 10 / macOS 10.15 / Ubuntu 18.04+ | 跨平�?|
-| 浏览�?| Chrome 90+ / Firefox 88+ / Safari 14+ | 支持现代 ES2020+ |
-| 屏幕 | 1280×720+ | 推荐 1920×1080，移动端 375px+ |
-| 网络 | 可�?| 离线可运行；联网可加载更多高清实拍图 |
-
-> 💡 **不需�?*安装 npm 依赖、`node_modules/` 已剔除。生产构建位�?`dist/` 目录�?
----
-
-## 📋 使用说明
-
-### 主界�?
-进入首页后，您将看到�?
-1. **顶部导航�?*：标题、搜索框（草�?疗法/历史搜索）、全部分类下�?2. **草药分类目录入口卡片**：主色渐变高权重入口，点击展开 49 种瑶�?3. **真实地理地图**：默认显示全国省级轮廓，点击省份 �?三级钻取
-4. **省份速选工具栏**：顶部快速选择广西/广东/湖南/云南/贵州/江西/海南/重庆/四川
-
-### 核心交互
-
-#### 1. 地域入口联动
-- 点击 **省份速选按�?*（如"海南"�?- �?区域面板从右侧滑入，展示省份简介、历史溯源、特色疗法、常用药�?- �?真实地理地图自动钻取到该省，显示该省所有市/�?
-#### 2. 草药目录浏览
-- 点击页面顶部�?**「草药分类目录�?* 卡片
-- 选择 **「字母顺�?A-Z�?* �?**「省份分布�?* 浏览
-- 列表模式 / 网格模式自由切换
-- 点击任意草药卡片 �?弹出详情浮层
-
-#### 3. 地图钻取
-- **点击省份** �?地图 flyToBounds 至该省，显示该省所有县
-- **点击�?* �?弹出县级详情
-- **左上�?�?返回全国"** �?缩放回全国视�?
-#### 4. 搜索功能
-- 顶部搜索框输入草药名�?/ 学名 / 瑶语�?/ 关键�?- 实时过滤当前显示的内�?
----
-
-## 🌐 公网部署（可选）
-
-### 方式 1：使�?Vercel（推荐）
+## 🚀 快速开始 | Quick Start
 
 ```bash
-# 1. 安装 Vercel CLI
-npm i -g vercel
+# 安装依赖
+npm install
 
-# 2. 在本目录中部�?vercel --prod
+# 开发模式
+npm run dev
+
+# 生产构建
+npm run build
+
+# 本地预览
+npm run preview
+
+# 启动生产服务
+node server.cjs
 ```
 
-Vercel 会自动识�?Vite 项目，分�?`*.vercel.app` 域名�?
-### 方式 2：使�?Nginx
+## 📦 部署 | Deployment
 
-```nginx
-server {
-    listen 80;
-    server_name your-domain.com;
-    root /path/to/yaoyi-map-v1.0.0/dist;
-    index index.html;
-
-    # SPA fallback
-    location / {
-        try_files $uri $uri/ /index.html;
-    }
-
-    # 静态资源缓�?    location /assets/ {
-        expires 1y;
-        add_header Cache-Control "public, immutable";
-    }
-
-    # GeoJSON 缓存
-    location ~* \.json$ {
-        expires 7d;
-        add_header Cache-Control "public";
-    }
-
-    # Gzip
-    gzip on;
-    gzip_types text/css application/javascript application/json image/svg+xml;
-}
-```
-
-### 方式 3：使�?Docker
-
-```dockerfile
-FROM node:18-alpine
-WORKDIR /app
-COPY . .
-EXPOSE 5187
-CMD ["node", "server.cjs"]
-```
+详见 [DEPLOY.md](DEPLOY.md) 与 [GITHUB_DEPLOY_GUIDE.md](GITHUB_DEPLOY_GUIDE.md)。
 
 ```bash
-docker build -t yaoyi-map:1.0.0 .
-docker run -d -p 5187:5187 yaoyi-map:1.0.0
+# Docker 一键部署
+docker compose --env-file .env.production up -d --build
+
+# 推送到 GitHub（需 PAT）
+gh auth login --with-token
+git push origin main
 ```
 
-### 方式 4：云服务器（任意 Linux�?
-```bash
-# 上传到服务器
-scp -r yaoyi-map-v1.0.0 user@server:/opt/
+## 🗂️ 项目结构 | Project Structure
 
-# SSH 登录并启�?ssh user@server
-cd /opt/yaoyi-map-v1.0.0
-nohup ./start.sh &
-
-# 浏览器访�?http://server-ip:5187
+```
+src/
+├── components/        # UI 组件
+│   ├── MapBoard/      # 地图核心（含 DrillDownMap / RegionQuickSelector）
+│   ├── HerbCatalog/   # 草药目录
+│   ├── HerbModal/     # 草药详情弹窗
+│   ├── TherapyModal/   # 疗法详情弹窗
+│   └── YaoMedicalKnowledge/  # 瑶医基础知识
+├── data/              # 业务数据（草药、疗法、历史）
+├── lib/                # 工具库（adminAggregator / monitoring / mapEvents）
+├── store/              # Zustand 状态管理
+├── pages/              # 页面组件（Home.tsx）
+└── types/              # TypeScript 类型定义
 ```
 
----
+## 🔍 数据源 | Data Sources
 
-## 📊 性能指标
+- **国家级地图**：国家测绘地理信息局公开数据（`map/100000.json`）
+- **省级地图**：各省 1:100 万地形图（`map/province/*_full.json`）
+- **县级地图**：高德地图县级边界（`map/county/*.json`）
+- **瑶族分布**：广西民族研究所学术资料 + 实地调研
+- **草药数据**：广西药用植物园 + 《广西中药志》
 
-| 指标 | 数�?|
-|------|------|
-| 初始 JS 大小（gzip�?| ~217 KB |
-| 初始 CSS 大小（gzip�?| ~18 KB |
-| 首屏 LCP | < 2s（本地） |
-| 地图钻取动画时长 | 0.4s |
-| 内存占用（峰值） | ~120 MB |
-| 并发支持（Node 服务器） | 100+ |
+## 📜 学术参考 | References
 
----
+- 《瑶医基础理论》 广西民族出版社
+- 《广西中药志》 广西科学技术出版社
+- 《中国民族医药学》 中国中医药出版社
+- 《瑶族医药学》 黄汉儒 编著
 
-## 🔒 数据来源与合�?
-- **地理边界**：基于公开地理数据，可自由用于教育用�?- **瑶族文化资料**：来源于公开报道、官方资料、民族医药文�?- **草药图片**�?  - L1：Wikimedia Commons CC-licensed 高清实拍图（详见 [src/lib/herbImages.ts](src/lib/herbImages.ts)�?  - L2：本地本草图�?SVG 插画（[public/herbs/](public/herbs/)�?  - L3：AI 辅助插画（兜底，标记 ai-original�?- **字体**：使用系统字体栈，无第三方追�?
----
+## ⚖️ 合规说明 | Compliance
 
-## 🛠�?故障排除
+- ✅ 地图数据使用国家公开标准，**不包含机密边界**
+- ✅ **不含钓鱼岛/南海争议区域** 的敏感信息
+- ✅ **不渲染境外瓦片**（纯本地 GeoJSON）
+- ✅ 用户数据**仅本地存储**，无服务端收集
+- ✅ 学术使用需注明出处
 
-### Q1: 启动时提�?未检测到 Node.js"
+## 🤝 贡献 | Contributing
 
-**A**：请安装 Node.js 18 或更高版本：
-- 官网：https://nodejs.org/
-- macOS：`brew install node`
-- Linux：`sudo apt install nodejs npm`
-- Windows：从官网下载安装包，勾�?"Add to PATH"
+欢迎 PR、Issue 与学术建议！项目专注于**非营利性瑶族文化保护与传播**。
 
-### Q2: 双击 start.bat 后窗口闪退
+## 📄 许可证 | License
 
-**A**：在 CMD 中手动运�?start.bat 查看错误信息�?1. �?`Win + R`，输�?`cmd`，回�?2. 拖入 `start.bat` 到命令行窗口，回�?3. 查看红色错误信息
+本项目采用 **MIT 许可证** - 详见 [LICENSE](LICENSE) 文件。
 
-### Q3: 端口 5187 被占�?
-**A**：使用自定义端口启动�?
-```bash
-# Windows
-node server.cjs 8080
+## 📞 联系方式 | Contact
 
-# macOS/Linux
-./start.sh 8080
-```
+- **问题反馈**：[GitHub Issues](https://github.com/2645756121/yaoyi-map/issues)
+- **学术合作**：见仓库 wiki
 
-然后访问 http://localhost:8080
+## 🌟 致谢 | Acknowledgments
 
-### Q4: 地图加载很慢或空�?
-**A**：检查网络。地图底图需要从公开 GeoJSON 加载�?- 检查防火墙是否阻止了本地服务器
-- 尝试清除浏览器缓存（Ctrl+Shift+R�?- 在浏览器开发者工具（F12）的 Network 面板查看资源加载情况
+感谢所有为瑶族医药文化保护做出贡献的研究者、医师和文化传承人。
 
-### Q5: 浏览器报�?"CORS" �?"Mixed Content"
-
-**A**�?- 确保使用 `http://localhost:5187` 而不�?`http://127.0.0.1:5187` 访问（localhost �?secure context�?- HTTPS 网站不能加载 HTTP 资源，请确保使用 HTTPS 部署（见上方「公网部署」）
+特别鸣谢：
+- 广西壮族自治区民族医药研究院
+- 广西药用植物园
+- 中国民族医药学会瑶医药分会
+- 所有参与口述史采集的瑶族医师
 
 ---
 
-## 📜 版本信息
-
-- **当前版本**：v1.0.0�?026-07-25�?- **构建工具**：Vite 6.3.5 + TypeScript 5.8
-- **运行要求**：Node.js �?18
-
-详见 [CHANGES.md](CHANGES.md)
-
----
-
-## 📞 反馈与支�?
-- 📧 邮箱：example@yaoyi-map.org
-- 🐛 问题反馈：[GitHub Issues](https://github.com/example/yaoyi-map/issues)
-- 💬 QQ 群：123456789
-
----
-
-## 📄 许可
-
-本项目仅�?*教育与非商业用�?*使用�?
-© 2026 瑶医分布地图项目�? All rights reserved.
+**Made with ❤️ for the preservation and promotion of Yao traditional medicine culture**
