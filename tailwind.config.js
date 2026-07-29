@@ -92,9 +92,33 @@ export default {
         focus: '0 0 0 3px rgba(212, 172, 106, 0.45)',
         // 缁囬敠绾圭悊鎸夐挳闃村奖
         inset: 'inset 0 1px 0 rgba(255, 255, 255, 0.35)',
+        // 瑙嗚缇庡寲绯荤粺锛? 妗ｉ槾褰憋紙鏌斿拰 / 鍗＄墖 / 鎮诞 / 鎶藉眽锛?        'yao-xs': '0 1px 2px rgba(88, 120, 81, 0.06)',
+        'yao-sm': '0 2px 8px -2px rgba(88, 120, 81, 0.10), 0 1px 2px rgba(0, 0, 0, 0.04)',
+        'yao-md': '0 6px 18px -6px rgba(88, 120, 81, 0.16), 0 2px 6px rgba(0, 0, 0, 0.05)',
+        'yao-lg': '0 18px 36px -10px rgba(88, 120, 81, 0.24), 0 6px 14px rgba(0, 0, 0, 0.06)',
+        'yao-xl': '0 28px 60px -16px rgba(88, 120, 81, 0.32), 0 8px 24px rgba(0, 0, 0, 0.08)',
+        'yao-amber-glow': '0 0 24px -4px rgba(212, 172, 106, 0.55)',
+        'yao-green-glow': '0 0 24px -4px rgba(144, 166, 134, 0.55)',
+        // 铚滅倷榛勫厜鏅曢珮浜紙鐢ㄤ簬 hover 鐘舵€侊級
+        'yao-edge-amber': 'inset 0 0 0 1px rgba(212, 172, 106, 0.4)',
+        'yao-edge-green': 'inset 0 0 0 1px rgba(144, 166, 134, 0.4)',
       },
       ringWidth: {
         DEFAULT: '2px',
+      },
+      transitionDuration: {
+        DEFAULT: '200ms',
+        250: '250ms',
+        350: '350ms',
+        450: '450ms',
+        600: '600ms',
+      },
+      transitionTimingFunction: {
+        // 鐟跺尰瀹氬埗缂撳姩鏇茬嚎锛氭ā鎷熺湡瀹炵墿浣撶殑寮规€?/ 缂撳啿
+        'bounce-in': 'cubic-bezier(0.34, 1.56, 0.64, 1)',
+        'yao-soft': 'cubic-bezier(0.16, 1, 0.3, 1)',
+        'yao-smooth': 'cubic-bezier(0.4, 0, 0.2, 1)',
+        'yao-spring': 'cubic-bezier(0.22, 1, 0.36, 1)',
       },
       keyframes: {
         'yao-shine': {
@@ -105,6 +129,67 @@ export default {
           '0%': { opacity: '0', transform: 'translateY(8px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
+        // 椤甸潰棣栧睆鍏ュ満
+        'yao-fade-in-up': {
+          '0%': { opacity: '0', transform: 'translateY(12px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        // 鍗＄墖寤惰繜鍏ュ満
+        'yao-card-up': {
+          '0%': { opacity: '0', transform: 'translateY(20px) scale(0.96)' },
+          '100%': { opacity: '1', transform: 'translateY(0) scale(1)' },
+        },
+        // 寮圭獥缂╂斁鍏ュ満
+        'yao-pop-in': {
+          '0%': { opacity: '0', transform: 'scale(0.92) translateY(8px)' },
+          '60%': { opacity: '1' },
+          '100%': { opacity: '1', transform: 'scale(1) translateY(0)' },
+        },
+        // 鍛煎惛鍏夋檿锛堢敤浜庡己璋冨厓绱狅級
+        'yao-pulse-glow': {
+          '0%, 100%': { boxShadow: '0 0 0 0 rgba(212, 172, 106, 0.4)' },
+          '50%': { boxShadow: '0 0 0 8px rgba(212, 172, 106, 0)' },
+        },
+        // 铚滅倷榛勬尝绾?        'yao-ripple': {
+          '0%': { transform: 'scale(0)', opacity: '0.6' },
+          '100%': { transform: 'scale(4)', opacity: '0' },
+        },
+        // 鑽夋湰缁挎疆姹?        'yao-tide': {
+          '0%, 100%': { backgroundPosition: '0 0' },
+          '50%': { backgroundPosition: '40px 40px' },
+        },
+        // 鎽囨洺锛堣崏鑽浘鏍囷級
+        'yao-sway': {
+          '0%, 100%': { transform: 'rotate(-2deg)' },
+          '50%': { transform: 'rotate(2deg)' },
+        },
+        // 椤堕儴杩涘害鏉?        'yao-progress': {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(100%)' },
+        },
+        // 鎶藉眽婊戝叆
+        'yao-slide-right': {
+          '0%': { transform: 'translateX(20px)', opacity: '0' },
+          '100%': { transform: 'translateX(0)', opacity: '1' },
+        },
+        // 搴曢儴寮瑰嚭
+        'yao-slide-up': {
+          '0%': { transform: 'translateY(20px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+      },
+      animation: {
+        'yao-shine': 'yao-shine 2s ease-in-out infinite',
+        'yao-rise': 'yao-rise 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'yao-fade-in-up': 'yao-fade-in-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'yao-card-up': 'yao-card-up 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards',
+        'yao-pop-in': 'yao-pop-in 0.32s cubic-bezier(0.34, 1.56, 0.64, 1) forwards',
+        'yao-pulse-glow': 'yao-pulse-glow 2.4s ease-in-out infinite',
+        'yao-tide': 'yao-tide 8s ease-in-out infinite',
+        'yao-sway': 'yao-sway 3s ease-in-out infinite',
+        'yao-progress': 'yao-progress 1.6s ease-in-out infinite',
+        'yao-slide-right': 'yao-slide-right 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'yao-slide-up': 'yao-slide-up 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards',
       },
       backgroundImage: {
         // 鐟舵棌缁囬敠绾圭悊锛堜娇鐢ㄦ柊鑹茬郴锛?90A686 + #D4AC6A锛?        'yao-weave':
