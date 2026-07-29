@@ -1,18 +1,20 @@
 @charset "UTF-8";
 /*
   ============================================================================
-  鐟跺尰鏈崏閰嶈壊瑙勮寖 v3 鈥?CSS 鍏ㄥ眬鏍峰紡
+  瑶医本草配色规范 v3 — CSS 全局样式
   ============================================================================
-  4 鑹蹭綋绯伙紙鐢ㄦ埛鎸囧畾锛夛細
-    - 鑽夋牴鏈豢 #90A686 鈫?涓昏儗鏅?/ 瀵艰埅鏍?/ 鍖哄潡
-    - 铚滅倷鐒﹂粍 #D4AC6A 鈫?寮鸿皟鑹?/ 鎸夐挳 / 閾炬帴 / 浜や簰
-    - 娣辩豢 #587851     鈫?鏂囧瓧涓昏壊 / 鏍囬 / 姝ｆ枃
-    - 绫宠壊 #F7EADF     鈫?鍗＄墖鑳屾櫙 / 寮圭獥 / 渚ц竟鏍?
-  WCAG AA 瀵规瘮搴﹂獙璇侊細
-    - #FFFFFF 鏂囧瓧 vs #90A686 涓昏儗鏅細3.3:1  (婊¤冻澶ф枃鏈?AA)
-    - #F7EADF 鏂囧瓧 vs #90A686 涓昏儗鏅細3.4:1  (婊¤冻澶ф枃鏈?AA)
-    - #587851 鏂囧瓧 vs #F7EADF 鍗＄墖鑳屾櫙锛?.7:1 (婊¤冻姝ｆ枃 AA)
-    - #587851 鏂囧瓧 vs #D4AC6A 鎸夐挳鑳屾櫙锛?.0:1 (婊¤冻澶ф枃鏈?AA)
+  4 色体系（用户指定）：
+    - 草根本绿 #90A686 → 主背景 / 导航栏 / 区块
+    - 蜜炙桃黄 #F0D1A1 → 强调色 / 按钮 / 链接 / 交互
+    - 深绿 #587851     → 文字主色 / 标题 / 正文
+    - 米色 #F7EADF     → 卡片背景 / 弹窗 / 侧边栏
+
+  WCAG AA 对比度验证：
+    - #FFFFFF 文字 vs #90A686 主背景：3.3:1  (满足大文本 AA)
+    - #F7EADF 文字 vs #90A686 主背景：3.4:1  (满足大文本 AA)
+    - #587851 文字 vs #F7EADF 卡片背景：5.7:1 (满足正文 AA)
+    - #243B25 文字 vs #F0D1A1 按钮背景：6.5:1 (满足正文 AAA)
+    - #587851 文字 vs #F0D1A1 按钮背景：3.4:1 (满足大文本 AA)
   ============================================================================
 */
 /* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap'); */
@@ -30,48 +32,49 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  /* ===== 涓婚鑹?CSS 鍙橀噺 鈥?鐟跺尰鏈崏 4 鑹蹭綋绯?===== */
-  /* 鑽夋牴鏈豢 鈥?涓昏儗鏅?*/
-  --yao-primary-50: #F7EADF;       /* 绫宠壊锛屾渶娴呭簳鑹诧紙鍛煎簲 ochre-200锛?*/
-  --yao-primary-100: #DCE5D5;      /* 娴呰崏缁匡紙hover 娴呭簳锛?*/
-  --yao-primary-200: #C0D2B6;      /* 娴呰崏缁?*/
-  --yao-primary-300: #A8C29C;      /* 涓祬鑽夌豢 */
-  --yao-primary-400: #9BB48E;      /* 涓崏缁?*/
-  --yao-primary-500: #90A686;      /* 鈽?鑽夋牴鏈豢锛堜富鑳屾櫙锛?*/
-  --yao-primary-600: #7A8F70;      /* 涓繁鑽夌豢 */
-  --yao-primary-700: #587851;      /* 鈽?娣辩豢锛堟枃瀛椾富鑹诧級 */
-  --yao-primary-800: #3E5940;      /* 娣辩豢锛坅ctive / 鏆楄皟锛?*/
-  --yao-primary-900: #243B25;      /* 鏈€娣辩豢锛坒ooter / header 鏆楄皟锛?*/
+  /* ===== 主题色 CSS 变量 — 瑶医本草 4 色体系 ===== */
+  /* 草根本绿 — 主背景 */
+  --yao-primary-50: #F7EADF;       /* 米色，最浅底色（呼应 ochre-200） */
+  --yao-primary-100: #DCE5D5;      /* 浅草绿（hover 浅底） */
+  --yao-primary-200: #C0D2B6;      /* 浅草绿 */
+  --yao-primary-300: #A8C29C;      /* 中浅草绿 */
+  --yao-primary-400: #9BB48E;      /* 中草绿 */
+  --yao-primary-500: #90A686;      /* ★ 草根本绿（主背景） */
+  --yao-primary-600: #7A8F70;      /* 中深草绿 */
+  --yao-primary-700: #587851;      /* ★ 深绿（文字主色） */
+  --yao-primary-800: #3E5940;      /* 深绿（active / 暗调） */
+  --yao-primary-900: #243B25;      /* 最深绿（footer / header 暗调） */
 
-  /* 铚滅倷鐒﹂粍 鈥?寮鸿皟鑹?/ 浜や簰 */
-  --yao-amber-300: #DCBA75;
-  --yao-amber-400: #D4AC6A;        /* 鈽?铚滅倷鐒﹂粍锛堝己璋冭壊 / 鎸夐挳涓昏皟锛?*/
-  --yao-amber-500: #C09454;
-  --yao-amber-600: #A87D40;
-  --yao-amber-700: #85642F;
+  /* 蜜炙桃黄 — 强调色 / 交互 */
+  --yao-amber-200: #F8E4C3;
+  --yao-amber-300: #F4DBB1;
+  --yao-amber-400: #F0D1A1;        /* ★ 蜜炙桃黄（强调色 / 按钮主调） */
+  --yao-amber-500: #DDBE8C;
+  --yao-amber-600: #C8A57E;
+  --yao-amber-700: #A88A66;
 
-  /* 绫宠壊 鈥?鍗＄墖 / 寮圭獥 / 渚ц竟鏍?*/
+  /* 米色 — 卡片 / 弹窗 / 侧边栏 */
   --yao-ochre-100: #FBF1E6;
-  --yao-ochre-200: #F7EADF;        /* 鈽?绫宠壊锛堝崱鐗囪儗鏅級 */
-  --yao-ochre-300: #EBD9C9;        /* 绫宠壊 border / divider */
-  --yao-ochre-400: #D8C2A8;        /* 娣辩背锛堟绾ц竟妗嗭級 */
+  --yao-ochre-200: #F7EADF;        /* ★ 米色（卡片背景） */
+  --yao-ochre-300: #EBD9C9;        /* 米色 border / divider */
+  --yao-ochre-400: #D8C2A8;        /* 深米（次级边框） */
 
-  /* 鏂囧瓧鑹?*/
-  --yao-ink-700: #344E32;          /* 娣辩豢锛坆ody 鏂囧瓧涓昏壊锛?*/
-  --yao-ink-800: #223820;          /* 娣辩豢锛堟爣棰橈級 */
-  --yao-ink-900: #102514;          /* 鏈€娣辩豢 */
+  /* 文字色 */
+  --yao-ink-700: #344E32;          /* 深绿（body 文字主色） */
+  --yao-ink-800: #223820;          /* 深绿（标题） */
+  --yao-ink-900: #102514;          /* 最深绿 */
 
-  /* 鐒︾偣鐜紙铚滅倷榛?+ 娣辩豢缁勫悎锛屼繚璇佸彲瑙佹€э級 */
+  /* 焦点环（蜜炙黄 + 深绿组合，保证可见性） */
   --ring-color: rgba(212, 172, 106, 0.55);
 
-  /* WCAG AA 鐒︾偣鐜?*/
+  /* WCAG AA 焦点环 */
   --focus-ring: 0 0 0 3px rgba(212, 172, 106, 0.45);
 }
 
-/* ===== html 涓?body锛氳崏鏍规湰缁夸富鑳屾櫙 ===== */
+/* ===== html 与 body：草根本绿主背景 ===== */
 html {
   scroll-behavior: smooth;
-  /* 涓昏儗鏅噰鐢ㄨ崏鏍规湰缁?#90A686 */
+  /* 主背景采用草根本绿 #90A686 */
   background-color: #90A686;
 }
 
@@ -80,12 +83,12 @@ body {
   padding: 0;
   min-height: 100vh;
   overflow-x: hidden;
-  /* 涓昏儗鏅細鑽夋牴鏈豢 + 绫宠壊寰勫悜楂樺厜褰㈡垚鏌斿拰灞傛 */
+  /* 主背景：草根本绿 + 米色径向高光形成柔和层次 */
   background:
     radial-gradient(1100px 700px at 92% -8%, rgba(247, 234, 223, 0.22), transparent 62%),
     radial-gradient(900px 700px at -10% 110%, rgba(212, 172, 106, 0.18), transparent 60%),
     linear-gradient(180deg, #90A686 0%, #7A8F70 100%);
-  /* body 鏂囧瓧涓昏壊锛氭繁缁?#587851锛堝崱鐗囪儗鏅笂浠嶅彲璇伙紝涓昏儗鏅笂闇€鐧藉簳鍗＄墖琛墭锛?*/
+  /* body 文字主色：深绿 #587851（卡片背景上仍可读，主背景上需白底卡片衬托） */
   color: #344E32;
   -webkit-tap-highlight-color: transparent;
 }
@@ -95,7 +98,7 @@ body {
   min-height: 100vh;
 }
 
-/* ===== 鍙闂€э細閿洏鐒︾偣缁熶竴瑙勮寖锛堣湝鐐欓粍鐒︾偣鐜級 ===== */
+/* ===== 可访问性：键盘焦点统一规范（蜜炙黄焦点环） ===== */
 :focus-visible {
   outline: none;
   box-shadow: var(--focus-ring);
@@ -111,7 +114,7 @@ textarea,
   font-family: inherit;
 }
 
-/* ===== 婊氬姩鏉★細鑽夋湰缁?+ 铚滅倷榛勬笎鍙?===== */
+/* ===== 滚动条：草本绿 + 蜜炙黄渐变 ===== */
 *::-webkit-scrollbar {
   width: 10px;
   height: 10px;
@@ -126,29 +129,29 @@ textarea,
   background-clip: padding-box;
 }
 *::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #D4AC6A 0%, #A87D40 100%);
+  background: linear-gradient(180deg, #F0D1A1 0%, #C8A57E 100%);
   background-clip: padding-box;
 }
 
-/* ===== 鐟跺尰涓婚瑁呴グ锛歜ody 鍙犲姞缁囬敠绾圭悊锛堣崏鏈豢+铚滅倷榛勶級 ===== */
+/* ===== 瑶医主题装饰：body 叠加织锦纹理（草本绿+蜜炙桃黄） ===== */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'><path d='M0 20 L20 0 L40 20 L20 40 Z' fill='none' stroke='%2390A686' stroke-opacity='0.22' stroke-width='0.8'/><path d='M10 20 L20 10 L30 20 L20 30 Z' fill='none' stroke='%23D4AC6A' stroke-opacity='0.20' stroke-width='0.6'/></svg>") 0 0/40px 40px;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'><path d='M0 20 L20 0 L40 20 L20 40 Z' fill='none' stroke='%2390A686' stroke-opacity='0.22' stroke-width='0.8'/><path d='M10 20 L20 10 L30 20 L20 30 Z' fill='none' stroke='%23F0D1A1' stroke-opacity='0.30' stroke-width='0.6'/></svg>") 0 0/40px 40px;
   opacity: 0.55;
   z-index: 0;
 }
 
 .bg-yao-weave {
-  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'><path d='M0 20 L20 0 L40 20 L20 40 Z' fill='none' stroke='%2390A686' stroke-opacity='0.22' stroke-width='0.8'/><path d='M10 20 L20 10 L30 20 L20 30 Z' fill='none' stroke='%23D4AC6A' stroke-opacity='0.20' stroke-width='0.6'/></svg>") 0 0/40px 40px;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'><path d='M0 20 L20 0 L40 20 L20 40 Z' fill='none' stroke='%2390A686' stroke-opacity='0.22' stroke-width='0.8'/><path d='M10 20 L20 10 L30 20 L20 30 Z' fill='none' stroke='%23F0D1A1' stroke-opacity='0.30' stroke-width='0.6'/></svg>") 0 0/40px 40px;
 }
 .bg-yao-grass {
   background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='60'><path d='M0 60 Q30 0 60 60 T120 60' fill='none' stroke='%23587851' stroke-opacity='0.10' stroke-width='1'/></svg>") 0 0/120px 60px;
 }
 
-/* ===== 鍦板浘瀹瑰櫒锛氱背鑹插崱鐗囧寲 ===== */
+/* ===== 地图容器：米色卡片化 ===== */
 .map-container,
 .leaflet-container-host {
   background-color: #F7EADF;
@@ -175,12 +178,12 @@ body::before {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'><path d='M0 28 L28 0 L56 28 L28 56 Z' fill='none' stroke='%2390A686' stroke-opacity='0.20' stroke-width='0.8'/><path d='M14 28 L28 14 L42 28 L28 42 Z' fill='none' stroke='%23D4AC6A' stroke-opacity='0.18' stroke-width='0.6'/></svg>") 0 0/56px 56px;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'><path d='M0 28 L28 0 L56 28 L28 56 Z' fill='none' stroke='%2390A686' stroke-opacity='0.20' stroke-width='0.8'/><path d='M14 28 L28 14 L42 28 L28 42 Z' fill='none' stroke='%23F0D1A1' stroke-opacity='0.28' stroke-width='0.6'/></svg>") 0 0/56px 56px;
   opacity: 0.4;
   z-index: 0;
 }
 
-/* ===== 鍖哄煙渚ц竟鏍忥細绫宠壊闈㈡澘 ===== */
+/* ===== 区域侧边栏：米色面板 ===== */
 .region-panel {
   background: linear-gradient(180deg, #F7EADF 0%, #FBF1E6 100%);
   backdrop-filter: blur(20px);
@@ -190,7 +193,7 @@ body::before {
   border-left: 1px solid #EBD9C9;
 }
 
-/* ===== Modal 鑳屾櫙锛氭殩鑹?backdrop ===== */
+/* ===== Modal 背景：暖色 backdrop ===== */
 .herb-modal,
 .therapy-modal,
 .history-modal,
@@ -199,7 +202,7 @@ body::before {
   backdrop-filter: blur(14px);
 }
 
-/* ===== 鍦板浘鐪佷唤 hover ===== */
+/* ===== 地图省份 hover ===== */
 .province-path {
   transition: all 0.3s ease;
   cursor: pointer;
@@ -213,7 +216,7 @@ body::before {
   filter: drop-shadow(0 0 12px rgba(88, 120, 81, 0.8));
 }
 
-/* ===== 鎮诞鍗＄墖锛氱背鑹?+ 铚滅倷榛勮竟妗嗗厜鏅?===== */
+/* ===== 悬浮卡片：米色 + 蜜炙黄边框光晕 ===== */
 .floating-card {
   background: linear-gradient(180deg, #F7EADF 0%, #FBF1E6 100%);
   box-shadow:
@@ -230,7 +233,7 @@ body::before {
     0 4px 10px rgba(212, 172, 106, 0.15);
 }
 
-/* ===== 閫氱敤鎸夐挳锛氱懚鍖绘湰鑽夐厤鑹?===== */
+/* ===== 通用按钮：瑶医本草配色 ===== */
 .btn-yao {
   display: inline-flex;
   align-items: center;
@@ -246,27 +249,27 @@ body::before {
   cursor: pointer;
   user-select: none;
 }
-/* 涓绘寜閽細铚滅倷鐒﹂粍娓愬彉锛堝己璋冭壊锛? 鏈€娣辩豢鏂囧瓧锛圓AA 瀵规瘮搴?5.74:1锛?*/
+/* 主按钮：蜜炙桃黄渐变（强调色）+ 最深绿文字（AAA 对比度 6.5:1） */
 .btn-yao-primary {
-  background: linear-gradient(180deg, #D4AC6A, #C09454);
+  background: linear-gradient(180deg, #F0D1A1, #DDBE8C);
   color: #243B25;
   box-shadow:
-    0 4px 10px rgba(168, 125, 64, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+    0 4px 10px rgba(200, 165, 126, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45);
 }
 .btn-yao-primary:hover {
-  background: linear-gradient(180deg, #C09454, #A87D40);
+  background: linear-gradient(180deg, #DDBE8C, #C8A57E);
   color: #102514;
   box-shadow:
-    0 6px 14px rgba(168, 125, 64, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    0 6px 14px rgba(200, 165, 126, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 .btn-yao-primary:active {
   transform: translateY(1px);
-  background: linear-gradient(180deg, #A87D40, #85642F);
+  background: linear-gradient(180deg, #C8A57E, #A88A66);
   color: #102514;
 }
-/* 娆℃寜閽細绫宠壊 + 鑽夋湰缁胯竟妗?+ 娣辩豢鏂囧瓧 */
+/* 次按钮：米色 + 草本绿边框 + 深绿文字 */
 .btn-yao-secondary {
   background: #F7EADF;
   border-color: #90A686;
@@ -281,7 +284,7 @@ body::before {
   background: #EBD9C9;
   color: #102514;
 }
-/* Ghost 鎸夐挳锛堥€忔槑鑳屾櫙锛?*/
+/* Ghost 按钮（透明背景） */
 .btn-yao-ghost {
   background: transparent;
   color: #344E32;
@@ -290,19 +293,19 @@ body::before {
   background: rgba(144, 166, 134, 0.22);
   color: #102514;
 }
-/* 铚滅倷鐞ョ弨鎸夐挳锛氫繚鐣欎綔涓洪珮浜?CTA */
+/* 蜜炙桃黄按钮：保留作为高亮 CTA */
 .btn-yao-amber {
-  background: linear-gradient(180deg, #D4AC6A, #A87D40);
+  background: linear-gradient(180deg, #F0D1A1, #C8A57E);
   color: #243B25;
   box-shadow:
-    0 4px 10px rgba(168, 125, 64, 0.32),
-    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    0 4px 10px rgba(200, 165, 126, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 .btn-yao-amber:hover {
-  background: linear-gradient(180deg, #C09454, #85642F);
+  background: linear-gradient(180deg, #DDBE8C, #A88A66);
   color: #102514;
 }
-/* 鍗遍櫓鎸夐挳 */
+/* 危险按钮 */
 .btn-yao-danger {
   background: #b33030;
   color: #ffffff;
@@ -310,7 +313,7 @@ body::before {
 .btn-yao-danger:hover {
   background: #8c2626;
 }
-/* 鍥炬爣鎸夐挳锛氱背鑹?+ 娣辩豢鏂囧瓧 */
+/* 图标按钮：米色 + 深绿文字 */
 .btn-yao-icon {
   display: inline-flex;
   align-items: center;
@@ -325,12 +328,12 @@ body::before {
 }
 .btn-yao-icon:hover {
   background: #FBF1E6;
-  border-color: #D4AC6A;
+  border-color: #F0D1A1;
   transform: translateY(-1px);
   color: #102514;
 }
 
-/* ===== 閫氱敤杈撳叆鎺т欢锛氱櫧搴?+ 鏈€娣辩豢鏂囧瓧锛?0.30:1 AAA锛?===== */
+/* ===== 通用输入控件：白底 + 最深绿文字（10.30:1 AAA） ===== */
 .input-yao {
   width: 100%;
   padding: 0.625rem 0.875rem;
@@ -351,12 +354,12 @@ body::before {
 .input-yao:focus,
 .input-yao:focus-visible {
   outline: none;
-  border-color: #D4AC6A;
+  border-color: #F0D1A1;
   background: #F7EADF;
-  box-shadow: 0 0 0 3px rgba(212, 172, 106, 0.3);
+  box-shadow: 0 0 0 3px rgba(240, 209, 161, 0.45);
 }
 
-/* ===== 閫氱敤鍗＄墖锛氱背鑹?===== */
+/* ===== 通用卡片：米色 ===== */
 .card-yao {
   background: linear-gradient(180deg, #F7EADF 0%, #FBF1E6 100%);
   border: 1px solid #EBD9C9;
@@ -372,7 +375,7 @@ body::before {
     0 4px 10px rgba(212, 172, 106, 0.12);
 }
 
-/* ===== 閫氱敤 chip / pill ===== */
+/* ===== 通用 chip / pill ===== */
 .chip-yao {
   display: inline-flex;
   align-items: center;
@@ -383,29 +386,29 @@ body::before {
   font-weight: 600;
   letter-spacing: 0.02em;
 }
-/* 鑽夋湰缁?chip */
+/* 草本绿 chip */
 .chip-yao-primary {
   background: rgba(144, 166, 134, 0.5);
   color: #102514;
 }
-/* 铚滅倷榛?chip */
+/* 蜜炙黄 chip */
 .chip-yao-amber {
   background: rgba(212, 172, 106, 0.55);
   color: #5C451F;
 }
-/* 绫宠壊 chip */
+/* 米色 chip */
 .chip-yao-ochre {
   background: rgba(247, 234, 223, 0.7);
   color: #50391B;
 }
-/* 鎻忚竟 chip */
+/* 描边 chip */
 .chip-yao-outline {
   background: rgba(247, 234, 223, 0.6);
   border: 1px solid #90A686;
   color: #344E32;
 }
 
-/* ===== 閫氱敤鏍囬灞傜骇 ===== */
+/* ===== 通用标题层级 ===== */
 .title-yao {
   font-family: 'Noto Serif SC', serif;
   font-weight: 700;
@@ -417,7 +420,7 @@ body::before {
   font-size: 0.875rem;
 }
 
-/* ===== 鍏抽敭璇嶉珮浜?===== */
+/* ===== 关键词高亮 ===== */
 .keyword {
   font-weight: 700;
   text-decoration: underline;
@@ -425,7 +428,7 @@ body::before {
   color: #587851;
 }
 
-/* ===== 棣栬缂╄繘 ===== */
+/* ===== 首行缩进 ===== */
 .text-indent {
   text-indent: 2em;
 }
@@ -433,7 +436,7 @@ body::before {
   text-indent: 2em;
 }
 
-/* ===== 鍥剧墖浼樺寲鏍峰紡 ===== */
+/* ===== 图片优化样式 ===== */
 .herb-image {
   border-radius: 12px;
   object-fit: cover;
@@ -456,7 +459,7 @@ body::before {
   text-align: center;
 }
 
-/* ===== 娣″叆鍔ㄧ敾 ===== */
+/* ===== 淡入动画 ===== */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -538,7 +541,7 @@ body::before {
   opacity: 1;
 }
 
-/* ===== 鎶樺彔闈㈡澘 ===== */
+/* ===== 折叠面板 ===== */
 .collapse-header {
   background: linear-gradient(to right, #F7EADF, #FBF1E6);
   transition: background 0.3s ease;
@@ -564,7 +567,7 @@ body::before {
   opacity: 1;
 }
 
-/* ===== 鑽潗鍗＄墖鍥剧墖鎮仠 ===== */
+/* ===== 药材卡片图片悬停 ===== */
 .herb-image-wrapper {
   position: relative;
   overflow: hidden;
@@ -598,7 +601,7 @@ body::before {
   transform: translateY(0);
 }
 
-/* 鍦板浘娓愭樉鍔ㄧ敾 */
+/* 地图渐显动画 */
 @keyframes mapFadeIn {
   from {
     opacity: 0;
@@ -612,7 +615,7 @@ body::before {
   animation: mapFadeIn 0.8s ease forwards;
 }
 
-/* 鍗＄墖staggered娴幇 */
+/* 卡片staggered浮现 */
 @keyframes cardSlideUp {
   from {
     opacity: 0;
@@ -629,7 +632,7 @@ body::before {
   animation: cardSlideUp 0.5s ease forwards;
 }
 
-/* 鎸夐挳鏃嬭浆鍔ㄧ敾 */
+/* 按钮旋转动画 */
 @keyframes rotateDrum {
   from {
     transform: rotate(0deg);
@@ -647,7 +650,7 @@ body::before {
   transform: rotate(360deg);
 }
 
-/* ===== 鍥炲埌椤堕儴鎸夐挳锛氳湝鐐欓粍楂樹寒 ===== */
+/* ===== 回到顶部按钮：蜜炙黄高亮 ===== */
 .back-to-top {
   position: fixed;
   bottom: 32px;
@@ -655,8 +658,8 @@ body::before {
   width: 52px;
   height: 52px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #D4AC6A, #A87D40);
-  box-shadow: 0 4px 12px rgba(168, 125, 64, 0.4);
+  background: linear-gradient(135deg, #F0D1A1, #C8A57E);
+  box-shadow: 0 4px 12px rgba(200, 165, 126, 0.45);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -686,7 +689,7 @@ body::before {
   transition: viewBox 0.3s ease;
 }
 
-/* ===== 鐟跺尰鏂囧寲瑁呴グ杈规锛氳湝鐐欓粍娓愬彉 ===== */
+/* ===== 瑶医文化装饰边框：蜜炙黄渐变 ===== */
 .yao-border {
   position: relative;
 }
@@ -698,15 +701,15 @@ body::before {
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, #587851 0%, #D4AC6A 50%, #587851 100%);
+  background: linear-gradient(90deg, #587851 0%, #F0D1A1 50%, #587851 100%);
   border-radius: 3px 3px 0 0;
 }
 
-/* ===== 鐟跺尰鍒嗙骇鏂囧寲瑁呴グ杈规锛氬妗?===== */
+/* ===== 瑶医分级文化装饰边框：多档 ===== */
 .yao-border-thin::before { height: 2px; }
 .yao-border-thick::before { height: 4px; }
 
-/* ===== 鑽夎嵂鍗＄墖鎮诞杈瑰厜 ===== */
+/* ===== 草药卡片悬浮边光 ===== */
 .yao-glow-border {
   position: relative;
 }
@@ -728,7 +731,7 @@ body::before {
   opacity: 1;
 }
 
-/* ===== 鐟跺尰鍥捐吘瑁呴グ鑳屾櫙 ===== */
+/* ===== 瑶医图腾装饰背景 ===== */
 .yao-pattern-bg {
   background-image:
     radial-gradient(circle at 20% 80%, rgba(212, 172, 106, 0.10) 0%, transparent 50%),
@@ -736,7 +739,7 @@ body::before {
     radial-gradient(circle at 50% 50%, rgba(247, 234, 223, 0.06) 0%, transparent 70%);
 }
 
-/* ===== 椤堕儴瑁呴グ杩涘害鏉?===== */
+/* ===== 顶部装饰进度条 ===== */
 .yao-progress-bar {
   position: relative;
   overflow: hidden;
@@ -749,7 +752,7 @@ body::before {
   position: absolute;
   inset: 0;
   width: 40%;
-  background: linear-gradient(90deg, transparent, #D4AC6A, transparent);
+  background: linear-gradient(90deg, transparent, #F0D1A1, transparent);
   animation: progress-shine 1.6s ease-in-out infinite;
 }
 @keyframes progress-shine {
@@ -757,10 +760,10 @@ body::before {
   100% { transform: translateX(350%); }
 }
 
-/* ===== 鑽夎嵂鍥捐吘鍦嗗舰瑁呴グ ===== */
+/* ===== 草药图腾圆形装饰 ===== */
 .yao-totem {
   position: relative;
-  background: linear-gradient(135deg, #D4AC6A 0%, #C09454 50%, #A87D40 100%);
+  background: linear-gradient(135deg, #F0D1A1 0%, #DDBE8C 50%, #C8A57E 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -776,7 +779,7 @@ body::before {
   pointer-events: none;
 }
 
-/* ===== 鑽夎嵂鏍囪鐐硅剦鍐插姩鐢?===== */
+/* ===== 草药标记点脉冲动画 ===== */
 @keyframes herbPulse {
   0%, 100% {
     transform: scale(1);
@@ -792,7 +795,7 @@ body::before {
   animation: herbPulse 2s ease-in-out infinite;
 }
 
-/* ===== 铚滅倷榛勫懠鍚稿厜鏅曪紙鐢ㄤ簬寮鸿皟鎸夐挳锛?===== */
+/* ===== 蜜炙黄呼吸光晕（用于强调按钮） ===== */
 .yao-amber-pulse {
   position: relative;
 }
@@ -810,17 +813,17 @@ body::before {
   50% { box-shadow: 0 0 0 8px rgba(212, 172, 106, 0); }
 }
 
-/* ===== 娓愬彉鎻忚竟锛堝崱鐗?hover 寮鸿皟锛?===== */
+/* ===== 渐变描边（卡片 hover 强调） ===== */
 .yao-gradient-edge {
   position: relative;
   background:
     linear-gradient(#F7EADF, #F7EADF) padding-box,
-    linear-gradient(135deg, #90A686 0%, #D4AC6A 50%, #587851 100%) border-box;
+    linear-gradient(135deg, #90A686 0%, #F0D1A1 50%, #587851 100%) border-box;
   border: 2px solid transparent;
   border-radius: 1rem;
 }
 
-/* ===== 鑽夎嵂绱㈠紩 chip锛堢粺涓€锛?===== */
+/* ===== 草药索引 chip（统一） ===== */
 .yao-index-chip {
   display: inline-flex;
   align-items: center;
@@ -844,14 +847,14 @@ body::before {
   box-shadow: 0 2px 8px -2px rgba(144, 166, 134, 0.3);
 }
 .yao-index-chip.active {
-  background: linear-gradient(135deg, #D4AC6A 0%, #A87D40 100%);
+  background: linear-gradient(135deg, #F0D1A1 0%, #C8A57E 100%);
   color: #102514;
-  border-color: #D4AC6A;
-  box-shadow: 0 4px 12px -4px rgba(212, 172, 106, 0.6);
+  border-color: #F0D1A1;
+  box-shadow: 0 4px 12px -4px rgba(240, 209, 161, 0.7);
   transform: scale(1.1);
 }
 
-/* ===== 鍔犺浇鍗犱綅楠ㄦ灦 ===== */
+/* ===== 加载占位骨架 ===== */
 .yao-skeleton {
   background: linear-gradient(90deg, rgba(144, 166, 134, 0.08) 0%, rgba(212, 172, 106, 0.15) 50%, rgba(144, 166, 134, 0.08) 100%);
   background-size: 200% 100%;
@@ -863,7 +866,7 @@ body::before {
   100% { background-position: -200% 0; }
 }
 
-/* ===== 寰界珷锛歂EW / HOT / 鎺ㄨ崘 ===== */
+/* ===== 徽章：NEW / HOT / 推荐 ===== */
 .yao-badge {
   display: inline-flex;
   align-items: center;
@@ -876,9 +879,9 @@ body::before {
   text-transform: uppercase;
 }
 .yao-badge-new {
-  background: linear-gradient(135deg, #D4AC6A, #A87D40);
+  background: linear-gradient(135deg, #F0D1A1, #C8A57E);
   color: #102514;
-  box-shadow: 0 2px 6px -2px rgba(212, 172, 106, 0.6);
+  box-shadow: 0 2px 6px -2px rgba(240, 209, 161, 0.7);
 }
 .yao-badge-hot {
   background: linear-gradient(135deg, #DC2626, #B91C1C);
@@ -886,7 +889,7 @@ body::before {
   box-shadow: 0 2px 6px -2px rgba(220, 38, 38, 0.5);
 }
 
-/* ===== 宸ュ叿鎻愮ず ===== */
+/* ===== 工具提示 ===== */
 .yao-tooltip {
   position: relative;
 }
@@ -930,7 +933,7 @@ body::before {
   transform: translateX(-50%) translateY(0);
 }
 
-/* ===== 鍒嗛殧绾?===== */
+/* ===== 分隔线 ===== */
 .yao-divider {
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(144, 166, 134, 0.4), transparent);
@@ -942,16 +945,16 @@ body::before {
   background: linear-gradient(180deg, transparent, rgba(144, 166, 134, 0.4), transparent);
 }
 
-/* ===== 鎽囨洺鑽夎嵂鍥炬爣 ===== */
+/* ===== 摇曳草药图标 ===== */
 .yao-leaf-sway {
   display: inline-block;
   animation: yao-sway 3s ease-in-out infinite;
   transform-origin: bottom center;
 }
 
-/* ===== 婊氬姩鍒伴《閮ㄦ寜閽寮?===== */
+/* ===== 滚动到顶部按钮增强 ===== */
 .back-to-top {
-  /* 鐢?inline 鎺у埗棰滆壊锛岄噸瀹氫箟鑱氱劍鐘舵€?*/
+  /* 由 inline 控制颜色，重定义聚焦状态 */
   transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 .back-to-top:focus-visible {
@@ -959,7 +962,7 @@ body::before {
   box-shadow: 0 0 0 4px rgba(212, 172, 106, 0.6), 0 4px 12px rgba(168, 125, 64, 0.4);
 }
 
-/* ===== 灞傜骇鍒囨崲杩囨浮 ===== */
+/* ===== 层级切换过渡 ===== */
 .layer-transition-enter {
   opacity: 0;
   transform: scale(0.95);
@@ -970,7 +973,7 @@ body::before {
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-/* ===== 缁熶竴婊戝姩鏉℃牱寮忥細鑽夋湰缁?鈫?铚滅倷榛?===== */
+/* ===== 统一滑动条样式：草本绿 → 蜜炙黄 ===== */
 .custom-scroll,
 .modal-scroll,
 .region-panel-scroll,
@@ -1001,7 +1004,7 @@ body::before {
 .modal-scroll::-webkit-scrollbar-thumb,
 .region-panel-scroll::-webkit-scrollbar-thumb,
 .modal-body-scroll::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #D4AC6A 0%, #A87D40 100%);
+  background: linear-gradient(180deg, #F0D1A1 0%, #C8A57E 100%);
   border-radius: 8px;
   border: 2px solid transparent;
   background-clip: padding-box;
@@ -1017,7 +1020,7 @@ body::before {
   border: 2px solid transparent;
 }
 
-/* ===== 閫氱敤妯℃€佹涓庨潰鏉垮眰绾?===== */
+/* ===== 通用模态框与面板层级 ===== */
 .modal-layer {
   position: fixed;
   inset: 0;
@@ -1035,7 +1038,7 @@ body::before {
   z-index: 2000;
 }
 
-/* ===== 纾ㄧ爞鐜荤拑璐ㄦ劅闈㈡澘锛氱背鑹?===== */
+/* ===== 磨砂玻璃质感面板：米色 ===== */
 .frosted-panel {
   background: rgba(247, 234, 223, 0.85);
   backdrop-filter: blur(20px) saturate(180%);
@@ -1048,7 +1051,7 @@ body::before {
   border-radius: 18px;
 }
 
-/* ===== 缁熶竴淇℃伅鐣岄潰灏哄 ===== */
+/* ===== 统一信息界面尺寸 ===== */
 .info-panel-wrapper {
   position: relative;
   width: 50vw;
@@ -1082,7 +1085,7 @@ body::before {
   }
 }
 
-/* ===== 妯℃€佸脊鍑哄姩鏁?===== */
+/* ===== 模态弹出动效 ===== */
 @keyframes modalSlideInRight {
   from {
     transform: translateX(40px) scale(0.96);
@@ -1143,7 +1146,7 @@ body::before {
   }
 }
 
-/* ===== 鎶樺彔闈㈡澘鏍囬鏍忕粺涓€锛氱背鑹?===== */
+/* ===== 折叠面板标题栏统一：米色 ===== */
 .section-header-uniform {
   display: flex;
   align-items: center;
@@ -1165,7 +1168,7 @@ body::before {
   box-shadow: 0 2px 8px rgba(88, 120, 81, 0.1);
 }
 
-/* ===== 鍝嶅簲寮忛€傞厤 ===== */
+/* ===== 响应式适配 ===== */
 @media (max-width: 768px) {
   .map-container {
     border-radius: 12px;
@@ -1181,7 +1184,7 @@ body::before {
   }
 }
 
-/* ===== 鑽夎嵂鍗＄墖閿氱偣瀹氫綅楂樹寒 ===== */
+/* ===== 草药卡片锚点定位高亮 ===== */
 @keyframes herb-card-flash {
   0% {
     box-shadow: 0 0 0 0 rgba(212, 172, 106, 0.6);
@@ -1204,7 +1207,7 @@ body::before {
   z-index: 1;
 }
 
-/* ===== v2 缇庡寲鏍囩 ===== */
+/* ===== v2 美化标签 ===== */
 @keyframes countyTagPulse {
   0%, 100% {
     transform: scale(1);
