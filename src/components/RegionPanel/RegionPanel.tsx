@@ -6,7 +6,8 @@ import CollapsibleSection from './CollapsibleSection';
 import StarRating from './StarRating';
 import { X, MapPin, Leaf, Clock, Stethoscope, TrendingUp, Sparkles, Calendar, ChevronLeft, Compass } from 'lucide-react';
 
-// 鍏抽敭璇嶉珮浜鐞?const renderHighlightedText = (text: string, keywords: string[] = []): React.ReactNode => {
+// 关键词高亮处理
+const renderHighlightedText = (text: string, keywords: string[] = []): React.ReactNode => {
   if (keywords.length === 0) return text;
   const escapedKeywords = keywords.map(k => k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
   const regex = new RegExp(`(${escapedKeywords.join('|')})`, 'g');
@@ -23,7 +24,8 @@ import { X, MapPin, Leaf, Clock, Stethoscope, TrendingUp, Sparkles, Calendar, Ch
   });
 };
 
-// 甯歌鐟惰嵂鍏抽敭璇?const commonHerbKeywords = ['涓変竷', '澶╅夯', '鐏佃姖', '鏉滀徊', '榛勭簿', '鑼嫇', '閲戦摱鑺?, '鏉胯摑鏍?, '鍗婂', '褰撳綊'];
+// 常见瑶药关键词
+const commonHerbKeywords = ['三七', '天麻', '灵芝', '杜仲', '黄精', '茯苓', '金银花', '板蓝根', '半夏', '当归'];
 
 const RegionPanel: React.FC = () => {
   const { selectedRegion, isPanelOpen, closePanel, setSelectedHerb, openHerbModal, setSelectedTherapy, openTherapyModal, setSelectedHistoryPeriod, openHistoryModal } = useMapStore();
@@ -32,7 +34,7 @@ const RegionPanel: React.FC = () => {
   const therapies = selectedRegion ? getTherapiesByRegion(selectedRegion.id) : [];
   const historyPeriods = selectedRegion ? getHistoryPeriodsByRegion(selectedRegion.id) : [];
 
-  // 鍗＄墖 staggered 鍔ㄧ敾寤惰繜
+  // 卡片 staggered 动画延迟
   const [animationKey, setAnimationKey] = useState(0);
 
   useEffect(() => {
@@ -68,7 +70,8 @@ const RegionPanel: React.FC = () => {
     }
   };
 
-  // 绌虹姸鎬佺粍浠?  const EmptyState = () => (
+  // 空状态组件
+  const EmptyState = () => (
     <div className="flex-1 flex flex-col items-center justify-center p-8 text-center animate-yao-fade-in-up">
       <div className="relative w-28 h-28 mb-6">
         <div className="absolute inset-0 rounded-full bg-amber-200/60 animate-yao-pulse-glow" aria-hidden />
@@ -76,12 +79,12 @@ const RegionPanel: React.FC = () => {
           <Compass className="w-12 h-12 text-amber-700 animate-yao-sway" />
         </div>
       </div>
-      <h3 className="font-serif font-bold text-xl text-ink-800 mb-2">鎺㈢储鐟跺尰鍒嗗竷</h3>
+      <h3 className="font-serif font-bold text-xl text-ink-800 mb-2">探索瑶医分布</h3>
       <p className="text-sm text-ink-600 mb-5 max-w-xs leading-relaxed">
-        鐐瑰嚮鍦板浘涓婄殑缁胯壊鍖哄煙锛屼簡瑙ｅ悇鍦板尯鐨勭懚鍖荤壒鑹层€佽崏鑽祫婧愬拰鍘嗗彶娓婃簮
+        点击地图上的绿色区域，了解各地区的瑶医特色、草药资源和历史渊源
       </p>
       <div className="flex flex-wrap justify-center gap-1.5">
-        {['骞胯タ', '骞夸笢', '婀栧崡', '浜戝崡', '璐靛窞', '姹熻タ', '娴峰崡', '閲嶅簡', '鍥涘窛'].map((region) => (
+        {['广西', '广东', '湖南', '云南', '贵州', '江西', '海南', '重庆', '四川'].map((region) => (
           <span
             key={region}
             className="px-3 py-1 rounded-full bg-ochre-100 text-ink-700 text-xs border border-ochre-300 hover:bg-amber-100 hover:border-amber-300 transition-all duration-200"
@@ -93,7 +96,7 @@ const RegionPanel: React.FC = () => {
     </div>
   );
 
-  // 澶撮儴鍖哄煙
+  // 头部区域
   const PanelHeader = ({ onClose }: { onClose?: () => void }) => (
     <div
       className="relative px-5 py-5 border-b border-ochre-300 overflow-hidden"
@@ -102,7 +105,7 @@ const RegionPanel: React.FC = () => {
           'linear-gradient(135deg, rgba(247, 234, 223, 0.95) 0%, rgba(212, 172, 106, 0.18) 50%, rgba(247, 234, 223, 0.95) 100%)',
       }}
     >
-      {/* 椤堕儴鐞ョ弨鑹查珮鍏?*/}
+      {/* 顶部琥珀色高光 */}
       <span
         className="absolute top-0 left-0 right-0 h-px"
         style={{
@@ -112,13 +115,13 @@ const RegionPanel: React.FC = () => {
       />
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-4">
-          {/* 鐟舵棌鍥捐吘鍦嗗舰鍥炬爣 */}
+          {/* 瑶族图腾圆形图标 */}
           <div
             className="relative w-14 h-14 rounded-2xl flex items-center justify-center shadow-yao-md transition-transform duration-300 hover:scale-105"
             style={{
               background:
-                'linear-gradient(135deg, #D4AC6A 0%, #C09454 50%, #A87D40 100%)',
-              boxShadow: '0 6px 18px -4px rgba(212, 172, 106, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.4)',
+                'linear-gradient(135deg, #F0D1A1 0%, #DDBE8C 50%, #C8A57E 100%)',
+              boxShadow: '0 6px 18px -4px rgba(240, 209, 161, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.5)',
             }}
           >
             <svg
@@ -148,7 +151,7 @@ const RegionPanel: React.FC = () => {
           <button
             onClick={onClose}
             className="p-2 rounded-full bg-ochre-100 hover:bg-amber-100 border border-ochre-200 hover:border-amber-300 text-ink-700 hover:text-amber-900 transition-all duration-200 hover:rotate-90"
-            aria-label="鍏抽棴闈㈡澘"
+            aria-label="关闭面板"
           >
             <X className="w-5 h-5" />
           </button>
@@ -166,14 +169,15 @@ const RegionPanel: React.FC = () => {
             className="w-4 h-4 rounded-full shadow-yao-xs"
             style={{ backgroundColor: selectedRegion!.color }}
           />
-          <span className="text-sm text-ink-600">鍒嗗竷瀵嗗害锛?/span>
+          <span className="text-sm text-ink-600">分布密度：</span>
           <StarRating rating={selectedRegion!.density} />
         </div>
       </div>
     </div>
   );
 
-  // 绠€浠嬫枃鏈尯鍩?  const DescriptionSection = () => (
+  // 简介文本区域
+  const DescriptionSection = () => (
     <div className="px-6 py-4 bg-ochre-50/60 backdrop-blur-sm border-b border-ochre-200">
       <p
         className="text-ink-700 text-base text-indent"
@@ -184,19 +188,19 @@ const RegionPanel: React.FC = () => {
     </div>
   );
 
-  // 鍐呭鍖哄煙
+  // 内容区域
   const PanelContent = () => (
     <div
       key={animationKey}
       className="flex-1 min-h-0 overflow-y-auto p-4 space-y-3 region-panel-scroll"
     >
-      {/* 鍘嗗彶娓婃簮 */}
+      {/* 历史渊源 */}
       <div
         className="animate-yao-card-up"
         style={{ animationDelay: '0.08s' }}
       >
         <CollapsibleSection
-          title="鍘嗗彶娓婃簮"
+          title="历史渊源"
           icon={<Clock className="w-5 h-5 text-amber-700" />}
           count={historyPeriods.length}
           defaultExpanded={false}
@@ -222,13 +226,13 @@ const RegionPanel: React.FC = () => {
         </CollapsibleSection>
       </div>
 
-      {/* 鐗硅壊鐤楁硶 */}
+      {/* 特色疗法 */}
       <div
         className="animate-yao-card-up"
         style={{ animationDelay: '0.18s' }}
       >
         <CollapsibleSection
-          title="鐗硅壊鐤楁硶"
+          title="特色疗法"
           icon={<Stethoscope className="w-5 h-5 text-primary-700" />}
           count={therapies.length}
           defaultExpanded={false}
@@ -250,7 +254,7 @@ const RegionPanel: React.FC = () => {
                       {therapy.system}
                     </span>
                     <span className="text-xs text-ink-500">
-                      {therapy.applicableConditions.length} 涓€傜敤鐥呯棁
+                      {therapy.applicableConditions.length} 个适用病症
                     </span>
                   </div>
                 </div>
@@ -260,13 +264,13 @@ const RegionPanel: React.FC = () => {
         </CollapsibleSection>
       </div>
 
-      {/* 甯哥敤鑽潗 */}
+      {/* 常用药材 */}
       <div
         className="animate-yao-card-up"
         style={{ animationDelay: '0.28s' }}
       >
         <CollapsibleSection
-          title="甯哥敤鑽潗"
+          title="常用药材"
           icon={<Leaf className="w-5 h-5 text-primary-700" />}
           count={herbs.length}
           defaultExpanded={false}
@@ -289,19 +293,19 @@ const RegionPanel: React.FC = () => {
           {herbs.length === 0 && (
             <div className="text-center py-8">
               <Leaf className="w-12 h-12 text-ink-300 mx-auto mb-3" />
-              <p className="text-ink-400 text-sm">鏆傛棤鑽夎嵂鏁版嵁</p>
+              <p className="text-ink-400 text-sm">暂无草药数据</p>
             </div>
           )}
         </CollapsibleSection>
       </div>
 
-      {/* 鐜颁唬鍙戝睍 */}
+      {/* 现代发展 */}
       <div
         className="animate-yao-card-up"
         style={{ animationDelay: '0.38s' }}
       >
         <CollapsibleSection
-          title="鐜颁唬鍙戝睍"
+          title="现代发展"
           icon={<TrendingUp className="w-5 h-5 text-amber-700" />}
         >
           <p className="text-ink-700 text-base text-indent" style={{ lineHeight: '1.8' }}>
@@ -312,7 +316,7 @@ const RegionPanel: React.FC = () => {
     </div>
   );
 
-  // 搴曢儴鎸夐挳
+  // 底部按钮
   const PanelFooter = () => (
     <div className="p-4 border-t border-ochre-300 bg-ochre-100/70 backdrop-blur-sm">
       <button
@@ -320,7 +324,7 @@ const RegionPanel: React.FC = () => {
         className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-gradient-to-r from-amber-500 to-amber-600 text-ink-700 rounded-xl shadow-yao-md hover:shadow-yao-lg transition-all duration-200 hover:from-amber-400 hover:to-amber-500 font-semibold active:translate-y-0.5"
       >
         <ChevronLeft className="w-5 h-5" />
-        杩斿洖鍦板浘鎺㈢储
+        返回地图探索
       </button>
     </div>
   );
@@ -343,7 +347,7 @@ const RegionPanel: React.FC = () => {
             <>
               <EmptyState />
               <div className="px-4 py-3 border-t border-ochre-300 bg-ochre-100/60 backdrop-blur-sm text-center">
-                <span className="text-xs text-ink-500">鐐瑰嚮鍦板浘鎺㈢储</span>
+                <span className="text-xs text-ink-500">点击地图探索</span>
               </div>
             </>
           ) : (
