@@ -12,20 +12,57 @@ import { SearchResult } from '../../types';
 
 type SearchType = 'all' | 'herb' | 'therapy' | 'history';
 
-const TYPE_THEME: Record<SearchType | 'default', { chip: string; iconBg: string; chipText: string; iconColor: string }> = {
-  all: { chip: 'bg-primary-50 text-primary-700', iconBg: 'bg-primary-100', chipText: 'text-primary-700', iconColor: 'text-primary-600' },
-  herb: { chip: 'bg-emerald-50 text-emerald-700', iconBg: 'bg-emerald-100', chipText: 'text-emerald-700', iconColor: 'text-emerald-600' },
-  therapy: { chip: 'bg-amber-50 text-amber-700', iconBg: 'bg-amber-100', chipText: 'text-amber-700', iconColor: 'text-amber-600' },
-  history: { chip: 'bg-ochre-50 text-ochre-700', iconBg: 'bg-ochre-100', chipText: 'text-ochre-700', iconColor: 'text-ochre-600' },
-  default: { chip: 'bg-ink-50 text-ink-700', iconBg: 'bg-ink-100', chipText: 'text-ink-700', iconColor: 'text-ink-500' },
+// 4 鑹蹭綋绯讳富棰橈細姣忕绫诲瀷瀵瑰簲澶╃劧鑹茬郴
+const TYPE_THEME: Record<SearchType | 'default', {
+  chip: string;
+  iconBg: string;
+  chipText: string;
+  iconColor: string;
+  ringColor: string;
+}> = {
+  all: {
+    chip: 'bg-primary-100 text-primary-800 border-primary-300',
+    iconBg: 'bg-primary-200',
+    chipText: 'text-primary-800',
+    iconColor: 'text-primary-700',
+    ringColor: 'ring-primary-300',
+  },
+  herb: {
+    chip: 'bg-primary-50 text-primary-700 border-primary-300',
+    iconBg: 'bg-primary-100',
+    chipText: 'text-primary-700',
+    iconColor: 'text-primary-700',
+    ringColor: 'ring-primary-300',
+  },
+  therapy: {
+    chip: 'bg-amber-100 text-amber-900 border-amber-400',
+    iconBg: 'bg-amber-200',
+    chipText: 'text-amber-900',
+    iconColor: 'text-amber-700',
+    ringColor: 'ring-amber-300',
+  },
+  history: {
+    chip: 'bg-ochre-100 text-ink-700 border-ochre-300',
+    iconBg: 'bg-ochre-200',
+    chipText: 'text-ink-700',
+    iconColor: 'text-primary-700',
+    ringColor: 'ring-ochre-300',
+  },
+  default: {
+    chip: 'bg-ink-50 text-ink-700 border-ink-200',
+    iconBg: 'bg-ink-100',
+    chipText: 'text-ink-700',
+    iconColor: 'text-ink-500',
+    ringColor: 'ring-ink-200',
+  },
 };
 
 const TYPE_LABEL: Record<SearchType | 'default', string> = {
-  all: '全部',
-  herb: '草药',
-  therapy: '疗法',
-  history: '历史',
-  default: '全部',
+  all: '鍏ㄩ儴',
+  herb: '鑽夎嵂',
+  therapy: '鐤楁硶',
+  history: '鍘嗗彶',
+  default: '鍏ㄩ儴',
 };
 
 const SearchBar: React.FC = () => {
@@ -36,6 +73,7 @@ const SearchBar: React.FC = () => {
   const [searchType, setSearchType] = useState<SearchType>('all');
   const [activeIndex, setActiveIndex] = useState(-1);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const {
     setSelectedHerb,
@@ -69,7 +107,6 @@ const SearchBar: React.FC = () => {
         setIsTypeMenuOpen(false);
       }
     };
-
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
@@ -78,7 +115,6 @@ const SearchBar: React.FC = () => {
     (result: SearchResult) => {
       setKeyword(result.name);
       setIsDropdownOpen(false);
-
       if (result.type === 'herb') {
         const herb = getHerbById(result.id);
         if (herb) {
@@ -98,7 +134,6 @@ const SearchBar: React.FC = () => {
           openHistoryModal();
         }
       }
-
       const region = getRegionById(result.regionId);
       if (region) {
         setSelectedRegion(region);
@@ -120,7 +155,6 @@ const SearchBar: React.FC = () => {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (!isDropdownOpen || results.length === 0) return;
-
       switch (event.key) {
         case 'ArrowDown':
           event.preventDefault();
@@ -141,7 +175,6 @@ const SearchBar: React.FC = () => {
           break;
       }
     };
-
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [isDropdownOpen, results, activeIndex, handleResultClick]);
@@ -149,13 +182,13 @@ const SearchBar: React.FC = () => {
   const getIcon = (type: string) => {
     switch (type) {
       case 'herb':
-        return <Leaf className="w-4 h-4 text-primary-600" />;
+        return <Leaf className="w-4 h-4 text-primary-700" />;
       case 'therapy':
-        return <Stethoscope className="w-4 h-4 text-amber-600" />;
+        return <Stethoscope className="w-4 h-4 text-amber-700" />;
       case 'history':
-        return <Clock className="w-4 h-4 text-ochre-600" />;
+        return <Clock className="w-4 h-4 text-ink-700" />;
       default:
-        return <Search className="w-4 h-4 text-ink-400" />;
+        return <Search className="w-4 h-4 text-ink-500" />;
     }
   };
 
@@ -164,37 +197,41 @@ const SearchBar: React.FC = () => {
 
   return (
     <div className="relative w-full max-w-md" ref={dropdownRef}>
-      <div className="flex items-stretch gap-2 rounded-2xl bg-amber-50/95 p-1.5 shadow-card border border-amber-200/70 backdrop-blur-sm">
+      {/* ===== 鎼滅储鏍忓妗嗭細绫宠壊 + 铚滅倷榛勯槾褰?===== */}
+      <div className="flex items-stretch gap-1.5 rounded-2xl bg-ochre-100/95 p-1.5 shadow-yao-md border border-ochre-300/70 backdrop-blur-sm transition-all duration-200 focus-within:shadow-yao-lg focus-within:border-amber-400 focus-within:ring-2 focus-within:ring-amber-300/40">
         <div className="relative flex-1">
           <Search
             aria-hidden
-            className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-amber-500"
+            className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-amber-600 transition-colors"
           />
           <input
+            ref={inputRef}
             type="text"
             value={keyword}
             onChange={(e) => setKeyword(e.target.value)}
             onFocus={() => keyword.trim() && results.length > 0 && setIsDropdownOpen(true)}
-            aria-label="搜索草药、疗法或历史"
-            placeholder="搜索草药、疗法或历史..."
-            className="input-yao pl-9 pr-9 bg-white/95 border-transparent"
+            aria-label="鎼滅储鑽夎嵂銆佺枟娉曟垨鍘嗗彶"
+            placeholder="鎼滅储鑽夎嵂銆佺枟娉曟垨鍘嗗彶..."
+            className="input-yao pl-9 pr-9 bg-white/95 border-ochre-200 hover:border-amber-400 focus:border-amber-500 focus:bg-white focus:shadow-yao-sm"
           />
           {keyword && (
             <button
               type="button"
-              aria-label="清除搜索"
+              aria-label="娓呴櫎鎼滅储"
               onClick={() => {
                 setKeyword('');
                 setResults([]);
                 setIsDropdownOpen(false);
+                inputRef.current?.focus();
               }}
-              className="btn-yao-icon absolute right-1.5 top-1/2 -translate-y-1/2 w-7 h-7"
+              className="btn-yao-icon absolute right-1.5 top-1/2 -translate-y-1/2 w-7 h-7 bg-ochre-100 hover:bg-amber-100 border-ochre-200 hover:border-amber-300 text-ink-700 hover:text-amber-900"
             >
               <X className="w-3.5 h-3.5" />
             </button>
           )}
         </div>
 
+        {/* ===== 绫诲瀷涓嬫媺閫夋嫨 ===== */}
         <div className="relative flex-shrink-0">
           <button
             type="button"
@@ -204,18 +241,18 @@ const SearchBar: React.FC = () => {
               setIsTypeMenuOpen((open) => !open);
               setIsDropdownOpen(false);
             }}
-            className={`h-full px-3 input-yao flex items-center gap-1.5 justify-between cursor-pointer ${activeTypeTheme.chipText}`}
+            className={`h-full px-3 input-yao flex items-center gap-1.5 justify-between cursor-pointer font-semibold ${activeTypeTheme.chipText} bg-white/95 border-ochre-200 hover:border-amber-400`}
             style={{ minWidth: '6.5rem' }}
           >
-            <span className="text-sm font-semibold">{TYPE_LABEL[searchType]}</span>
+            <span className="text-sm">{TYPE_LABEL[searchType]}</span>
             <ChevronDown
-              className={`w-4 h-4 transition-transform ${isTypeMenuOpen ? 'rotate-180' : ''}`}
+              className={`w-4 h-4 transition-transform duration-200 ${isTypeMenuOpen ? 'rotate-180' : ''}`}
             />
           </button>
 
           {isTypeMenuOpen && (
             <div
-              className="absolute top-full right-0 mt-2 w-32 bg-white/95 backdrop-blur-sm border border-primary-100 rounded-xl shadow-floating py-1.5 z-60 overflow-hidden animate-[yao-rise_0.18s_ease-out]"
+              className="absolute top-full right-0 mt-2 w-36 bg-ochre-50/98 backdrop-blur-md border border-ochre-300 rounded-xl shadow-yao-lg py-1.5 z-60 overflow-hidden animate-yao-rise"
               role="listbox"
             >
               {typeOptions.map((type) => {
@@ -231,14 +268,21 @@ const SearchBar: React.FC = () => {
                       setSearchType(type);
                       setIsTypeMenuOpen(false);
                     }}
-                    className={`w-full px-3 py-2 text-left text-sm transition-colors flex items-center gap-2 ${
+                    className={`w-full px-3 py-2 text-left text-sm transition-all flex items-center gap-2 ${
                       active
-                        ? `${theme.chip} font-semibold`
-                        : 'text-ink-700 hover:bg-amber-50/60'
+                        ? `font-semibold ${theme.chip}`
+                        : 'text-ink-700 hover:bg-ochre-100/70'
                     }`}
                   >
-                    <span className={`inline-block w-2 h-2 rounded-full ${active ? 'bg-primary-600' : 'bg-ink-200'}`} />
+                    <span
+                      className={`inline-block w-2.5 h-2.5 rounded-full border-2 transition-all ${
+                        active ? 'bg-amber-500 border-amber-700 scale-125' : 'border-ochre-300 bg-ochre-100'
+                      }`}
+                    />
                     {TYPE_LABEL[type]}
+                    <span className="ml-auto text-[0.625rem] text-ink-500 font-normal">
+                      {type === 'all' ? '4绫? : '鍙瓫閫?}
+                    </span>
                   </button>
                 );
               })}
@@ -247,11 +291,16 @@ const SearchBar: React.FC = () => {
         </div>
       </div>
 
+      {/* ===== 鎼滅储缁撴灉涓嬫媺 ===== */}
       {isDropdownOpen && results.length > 0 && (
         <div
-          className="absolute top-full left-0 right-0 mt-2 bg-white/97 backdrop-blur-md border border-primary-100 rounded-2xl shadow-floating z-50 overflow-hidden max-h-80 overflow-y-auto"
+          className="absolute top-full left-0 right-0 mt-2 bg-ochre-50/98 backdrop-blur-md border border-ochre-300 rounded-2xl shadow-yao-xl z-50 overflow-hidden max-h-96 overflow-y-auto animate-yao-slide-up"
           role="listbox"
         >
+          <div className="px-4 py-2 border-b border-ochre-200 bg-ochre-100/60 flex items-center justify-between text-xs text-ink-600">
+            <span>鍏?<span className="font-semibold text-primary-700">{results.length}</span> 鏉＄粨鏋?/span>
+            <span className="text-ink-500">鈫戔啌 閫夋嫨 路 Enter 纭 路 Esc 鍏抽棴</span>
+          </div>
           <ul className="p-2 space-y-1">
             {results.map((result, index) => {
               const region = getRegionById(result.regionId);
@@ -260,32 +309,32 @@ const SearchBar: React.FC = () => {
               return (
                 <li key={`${result.type}-${result.id}`}>
                   <button
-                    type="button"
                     onClick={() => handleResultClick(result)}
                     className={`w-full flex items-center gap-3 p-3 rounded-xl text-left transition-all border ${
                       active
-                        ? 'bg-primary-50 border-primary-300 shadow-soft'
-                        : 'bg-white/60 border-transparent hover:bg-amber-50/60 hover:border-amber-200'
+                        ? 'bg-amber-50 border-amber-400 shadow-yao-sm'
+                        : 'bg-white/70 border-transparent hover:bg-ochre-100/70 hover:border-amber-200'
                     }`}
                     role="option"
                     aria-selected={active}
                   >
                     <div
-                      className={`w-10 h-10 rounded-xl flex items-center justify-center ${theme.iconBg}`}
+                      className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 transition-all ${
+                        active ? 'bg-amber-200 shadow-yao-xs' : theme.iconBg
+                      }`}
                     >
                       {getIcon(result.type)}
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2">
                         <h4
-                          className={`text-sm font-semibold truncate ${active ? 'text-primary-700' : 'text-ink-800'}`}
+                          className={`text-sm font-semibold truncate ${
+                            active ? 'text-amber-900' : 'text-ink-800'
+                          }`}
                         >
                           {result.name}
                         </h4>
-                        <span
-                          className={`chip-yao ${theme.chip}`}
-                          style={{ background: theme.chip.replace('text-', '').split(' ')[0] }}
-                        >
+                        <span className={`chip-yao-outline`}>
                           {TYPE_LABEL[result.type]}
                         </span>
                       </div>
@@ -305,11 +354,14 @@ const SearchBar: React.FC = () => {
         </div>
       )}
 
+      {/* ===== 绌虹姸鎬?===== */}
       {isDropdownOpen && results.length === 0 && (
-        <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-primary-100 rounded-2xl shadow-floating z-50 p-5 text-center">
-          <Search className="w-8 h-8 text-ink-300 mx-auto mb-2" />
-          <p className="text-sm text-ink-600 font-medium">未找到相关结果</p>
-          <p className="text-xs text-ink-500 mt-1">请尝试其他关键词</p>
+        <div className="absolute top-full left-0 right-0 mt-2 bg-ochre-50 border border-ochre-300 rounded-2xl shadow-yao-xl z-50 p-6 text-center animate-yao-rise">
+          <div className="w-14 h-14 rounded-full bg-amber-100 flex items-center justify-center mx-auto mb-3">
+            <Search className="w-7 h-7 text-amber-600" />
+          </div>
+          <p className="text-sm font-medium text-ink-700">鏈壘鍒扮浉鍏崇粨鏋?/p>
+          <p className="text-xs text-ink-500 mt-1">璇峰皾璇曞叾浠栧叧閿瘝</p>
         </div>
       )}
     </div>
