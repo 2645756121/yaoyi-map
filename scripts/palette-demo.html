@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>鐟跺尰鏈崏閰嶈壊 v3 路 鍝嶅簲寮?& 浜や簰鎬佽瑙夋紨绀?/title>
+<style>
+/* ============================================================
+   鐟跺尰鏈崏閰嶈壊 v3 鈥?婕旂ず椤垫牱寮?   涓?src/index.css 瀹屽叏涓€鑷寸殑鑹插€硷紝鍙嫭绔嬫墦寮€棰勮
+   ============================================================ */
+:root {
+  /* 涓昏儗鏅笎鍙?*/
+  --bg-primary: #90A686;
+  --bg-primary-dark: #7A8F70;
+  /* 鍗＄墖绫宠壊 */
+  --card-cream: #F7EADF;
+  --card-cream-light: #FBF1E6;
+  --card-border: #EBD9C9;
+  /* 鏂囧瓧 */
+  --text-primary: #587851;     /* 娣辩豢 */
+  --text-strong: #243B25;      /* 鏈€娣辩豢锛堟寜閽枃瀛楋級 */
+  --text-heading: #102514;     /* 鏍囬绾ф繁缁?*/
+  --text-body: #344E32;        /* 姝ｆ枃娣辩豢 */
+  /* 寮鸿皟 */
+  --accent-amber: #D4AC6A;
+  --accent-amber-dark: #C09454;
+  --accent-amber-deep: #A87D40;
+  /* 鐏扮豢杈呭姪 */
+  --green-mute: #DCE5D5;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  font-family: 'PingFang SC', 'Microsoft YaHei', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+  color: var(--text-body);
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(1100px 700px at 92% -8%, rgba(247, 234, 223, 0.22), transparent 62%),
+    radial-gradient(900px 700px at -10% 110%, rgba(212, 172, 106, 0.18), transparent 60%),
+    linear-gradient(180deg, #90A686 0%, #7A8F70 100%);
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><path d='M0 20 L20 0 L40 20 L20 40 Z' fill='none' stroke='%2390A686' stroke-opacity='0.22' stroke-width='0.8'/><path d='M10 20 L20 10 L30 20 L20 30 Z' fill='none' stroke='%23D4AC6A' stroke-opacity='0.20' stroke-width='0.6'/></svg>") 0 0/40px 40px;
+  opacity: 0.55;
+  z-index: 0;
+}
+
+.wrap { position: relative; z-index: 1; max-width: 1280px; margin: 0 auto; padding: 32px 24px 80px; }
+
+/* ===== 椤堕儴 Header锛堟ā鎷熺湡瀹為」鐩級 ===== */
+.demo-header {
+  background: linear-gradient(135deg, #1a4f23 0%, #22652c 50%, #1a4f23 100%);
+  color: #F7EADF;
+  padding: 28px 32px;
+  border-radius: 18px;
+  box-shadow: 0 18px 40px -16px rgba(88, 120, 81, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  margin-bottom: 32px;
+  position: relative;
+  overflow: hidden;
+}
+.demo-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><path d='M0 20 L20 0 L40 20 L20 40 Z' fill='none' stroke='%23f0fdf4' stroke-opacity='0.55' stroke-width='0.8'/></svg>") 0 0/40px 40px;
+  opacity: 0.2;
+  pointer-events: none;
+}
+.demo-header h1 {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 2rem;
+  margin-bottom: 8px;
+  letter-spacing: 0.02em;
+  position: relative;
+  color: #F7EADF;
+}
+.demo-header p { font-size: 0.95rem; opacity: 0.92; position: relative; }
+
+/* ===== Section 閫氱敤 ===== */
+.section {
+  background: linear-gradient(180deg, #F7EADF 0%, #FBF1E6 100%);
+  border: 1px solid #EBD9C9;
+  border-radius: 18px;
+  padding: 28px;
+  margin-bottom: 24px;
+  box-shadow: 0 6px 24px -8px rgba(88, 120, 81, 0.18);
+}
+.section h2 {
+  font-family: 'Noto Serif SC', serif;
+  color: #102514;
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+  padding-bottom: 12px;
+  border-bottom: 3px solid transparent;
+  border-image: linear-gradient(90deg, #587851 0%, #D4AC6A 50%, #587851 100%) 1;
+}
+.section h3 {
+  font-size: 1.1rem;
+  color: #587851;
+  margin: 20px 0 12px;
+}
+.section p, .section li {
+  color: #344E32;
+  font-size: 0.95rem;
+}
+.section ul { padding-left: 20px; margin: 8px 0; }
+.section code {
+  background: #DCE5D5;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.85em;
+  color: #102514;
+}
+
+/* ===== 1. 璋冭壊鏉?swatch ===== */
+.swatch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+.swatch {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #EBD9C9;
+  background: #F7EADF;
+  box-shadow: 0 4px 12px -6px rgba(88, 120, 81, 0.15);
+}
+.swatch-color {
+  height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.04em;
+}
+.swatch-info {
+  padding: 12px 14px;
+  font-size: 0.85rem;
+  background: #F7EADF;
+}
+.swatch-info strong {
+  display: block;
+  color: #102514;
+  margin-bottom: 4px;
+  font-family: 'Noto Serif SC', serif;
+}
+.swatch-info span {
+  color: #587851;
+  font-family: monospace;
+  font-size: 0.78rem;
+}
+
+/* ===== 2. 浜や簰鎬佹紨绀?===== */
+.demo-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin: 16px 0;
+}
+
+/* 閫氱敤鎸夐挳 */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.125rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  letter-spacing: 0.01em;
+  transition: all 0.18s ease;
+  border: 1px solid transparent;
+  cursor: pointer;
+  user-select: none;
+}
+.btn-primary {
+  background: linear-gradient(180deg, #D4AC6A, #C09454);
+  color: #243B25;
+  box-shadow: 0 4px 10px rgba(168, 125, 64, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+.btn-primary:hover {
+  background: linear-gradient(180deg, #C09454, #A87D40);
+  color: #102514;
+  box-shadow: 0 6px 14px rgba(168, 125, 64, 0.4);
+  transform: translateY(-1px);
+}
+.btn-primary:active {
+  transform: translateY(1px);
+  background: linear-gradient(180deg, #A87D40, #85642F);
+}
+.btn-primary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(212, 172, 106, 0.45);
+}
+
+.btn-secondary {
+  background: #F7EADF;
+  border-color: #90A686;
+  color: #243B25;
+}
+.btn-secondary:hover {
+  background: #FBF1E6;
+  border-color: #587851;
+  color: #102514;
+}
+.btn-secondary:active { background: #EBD9C9; }
+.btn-secondary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(212, 172, 106, 0.45);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: #344E32;
+}
+.btn-ghost:hover {
+  background: rgba(144, 166, 134, 0.22);
+  color: #102514;
+}
+
+.btn-amber {
+  background: linear-gradient(180deg, #D4AC6A, #A87D40);
+  color: #243B25;
+  box-shadow: 0 4px 10px rgba(168, 125, 64, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+.btn-amber:hover {
+  background: linear-gradient(180deg, #C09454, #85642F);
+}
+
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 0.625rem;
+  background: #F7EADF;
+  border: 1px solid #EBD9C9;
+  color: #243B25;
+  font-size: 1.1rem;
+  transition: all 0.2s ease;
+}
+.btn-icon:hover {
+  background: #FBF1E6;
+  border-color: #D4AC6A;
+  transform: translateY(-1px);
+  color: #102514;
+}
+
+.btn-danger {
+  background: #b33030;
+  color: #ffffff;
+}
+.btn-danger:hover { background: #8c2626; }
+
+.btn:disabled {
+  background: #DCE5D5;
+  color: #8AA580;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* 杈撳叆妗?*/
+.input {
+  width: 280px;
+  padding: 0.625rem 0.875rem;
+  border: 1px solid #DCE5D5;
+  border-radius: 0.625rem;
+  background: #FFFCF8;
+  color: #243B25;
+  font-size: 0.9375rem;
+  transition: all 0.2s ease;
+}
+.input::placeholder { color: #8AA580; }
+.input:hover { border-color: #90A686; }
+.input:focus {
+  outline: none;
+  border-color: #D4AC6A;
+  background: #F7EADF;
+  box-shadow: 0 0 0 3px rgba(212, 172, 106, 0.3);
+}
+
+/* 鍗＄墖 */
+.card {
+  background: linear-gradient(180deg, #F7EADF 0%, #FBF1E6 100%);
+  border: 1px solid #EBD9C9;
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: 0 6px 20px -10px rgba(88, 120, 81, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px -12px rgba(88, 120, 81, 0.25), 0 4px 10px rgba(212, 172, 106, 0.12);
+}
+
+/* chip */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.chip-primary { background: rgba(144, 166, 134, 0.5); color: #102514; }
+.chip-amber { background: rgba(212, 172, 106, 0.55); color: #5C451F; }
+.chip-outline { background: rgba(247, 234, 223, 0.6); border: 1px solid #90A686; color: #344E32; }
+
+/* 閾炬帴 */
+.link { color: #587851; text-decoration: underline; text-underline-offset: 3px; }
+.link:hover { color: #102514; }
+
+/* ===== 3. 鍝嶅簲寮忓竷灞€婕旂ず ===== */
+.viewport-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.viewport-tab {
+  padding: 8px 16px;
+  border: 1px solid #90A686;
+  border-radius: 9999px;
+  background: #F7EADF;
+  color: #587851;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+.viewport-tab.active {
+  background: linear-gradient(180deg, #D4AC6A, #C09454);
+  color: #243B25;
+  border-color: #D4AC6A;
+}
+
+.viewport-frame {
+  border: 2px dashed #90A686;
+  border-radius: 16px;
+  padding: 12px;
+  background: #F7EADF;
+  overflow: hidden;
+}
+.viewport-inner {
+  margin: 0 auto;
+  border: 1px solid #EBD9C9;
+  border-radius: 8px;
+  background: linear-gradient(180deg, #90A686 0%, #7A8F70 100%);
+  transition: width 0.3s ease;
+  position: relative;
+}
+.viewport-inner::before {
+  content: attr(data-label);
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 0.7rem;
+  color: #102514;
+  background: rgba(247, 234, 223, 0.85);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+.viewport-desktop { width: 100%; min-height: 360px; }
+.viewport-tablet  { width: 768px; max-width: 100%; min-height: 480px; }
+.viewport-mobile  { width: 375px; max-width: 100%; min-height: 600px; }
+
+/* 妯℃嫙椤甸潰甯冨眬 */
+.mock-page {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 100%;
+}
+.mock-header {
+  background: linear-gradient(135deg, #1a4f23 0%, #22652c 50%, #1a4f23 100%);
+  color: #F7EADF;
+  padding: 14px 16px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.mock-header strong { font-family: 'Noto Serif SC', serif; font-size: 1.05rem; }
+.mock-content { display: grid; gap: 12px; flex: 1; }
+.mock-content.desktop { grid-template-columns: 1fr 1fr 280px; }
+.mock-content.tablet  { grid-template-columns: 1fr 1fr; }
+.mock-content.mobile  { grid-template-columns: 1fr; }
+
+.mock-card {
+  background: linear-gradient(180deg, #F7EADF 0%, #FBF1E6 100%);
+  border: 1px solid #EBD9C9;
+  border-radius: 10px;
+  padding: 12px;
+  min-height: 80px;
+  color: #344E32;
+  font-size: 0.85rem;
+}
+.mock-btn {
+  display: inline-block;
+  background: linear-gradient(180deg, #D4AC6A, #C09454);
+  color: #243B25;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* ===== 4. 瀵规瘮搴﹀窘绔?===== */
+.contrast-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  margin: 2px;
+}
+.badge-aaa { background: #DCBA75; color: #243B25; }
+.badge-aa  { background: rgba(144, 166, 134, 0.55); color: #102514; }
+.badge-fail{ background: #fad0d0; color: #651c1c; text-decoration: line-through; }
+
+/* ===== 婊氬姩鏉?===== */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: rgba(144, 166, 134, 0.12); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #90A686 0%, #587851 100%);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #D4AC6A 0%, #A87D40 100%);
+  background-clip: padding-box;
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ===== 椤堕儴妯℃嫙 Header ===== -->
+  <header class="demo-header">
+    <h1>鐟跺尰鏈崏閰嶈壊 v3 路 瑙嗚婕旂ず</h1>
+    <p>4 鑹蹭綋绯伙細<code style="background: rgba(255,255,255,0.18); color:#F7EADF;">#90A686</code> 鑽夋牴鏈豢 路 <code style="background: rgba(255,255,255,0.18); color:#F7EADF;">#D4AC6A</code> 铚滅倷鐒﹂粍 路 <code style="background: rgba(255,255,255,0.18); color:#F7EADF;">#587851</code> 娣辩豢 路 <code style="background: rgba(255,255,255,0.18); color:#F7EADF;">#F7EADF</code> 绫宠壊</p>
+  </header>
+
+  <!-- ===== 1. 璋冭壊鏉?swatch ===== -->
+  <section class="section">
+    <h2>涓€銆? 鑹叉牳蹇冧綋绯?/h2>
+    <p>鐢ㄦ埛鎸囧畾鐨?4 鑹插崱锛屾瘡涓壊鍧椾笅鏂规樉绀鸿壊鍚嶃€丠EX銆乄CAG 绛夌骇銆?/p>
+    <div class="swatch-grid">
+      <div class="swatch">
+        <div class="swatch-color" style="background: #90A686; color: #F7EADF;">涓昏儗鏅?/div>
+        <div class="swatch-info"><strong>鑽夋牴鏈豢</strong><span>#90A686</span><br /><span class="contrast-badge badge-aa">AA 瑁呴グ搴曡壊</span></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #D4AC6A; color: #243B25;">寮鸿皟鑹?/div>
+        <div class="swatch-info"><strong>铚滅倷鐒﹂粍</strong><span>#D4AC6A</span><br /><span class="contrast-badge badge-aaa">AAA 閰嶆繁缁挎枃瀛?/span></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #587851; color: #F7EADF;">鏂囧瓧涓昏壊</div>
+        <div class="swatch-info"><strong>娣辩豢</strong><span>#587851</span><br /><span class="contrast-badge badge-aa">AA 澶ф枃鏈?(4.22:1)</span></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #F7EADF; color: #587851; border-bottom: 1px solid #EBD9C9;">鍗＄墖鑳屾櫙</div>
+        <div class="swatch-info"><strong>绫宠壊</strong><span>#F7EADF</span><br /><span class="contrast-badge badge-aaa">AAA 閰?#243B25 (10.30:1)</span></div>
+      </div>
+    </div>
+
+    <h3>娲剧敓鑹查樁锛圱ailwind class锛?/h3>
+    <p>椤圭洰鎵€鏈夎壊鍗￠€氳繃 <code>primary-*</code> / <code>amber-*</code> / <code>ochre-*</code> / <code>ink-*</code> 绫诲紩鐢紝鏃犻渶淇敼缁勪欢浠ｇ爜銆?/p>
+    <div class="swatch-grid">
+      <div class="swatch"><div class="swatch-color" style="background:#F7EADF;color:#243B25">50</div><div class="swatch-info"><strong>primary-50</strong><span>#F7EADF</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#DCE5D5;color:#102514">100</div><div class="swatch-info"><strong>primary-100</strong><span>#DCE5D5</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#C0D2B6;color:#102514">200</div><div class="swatch-info"><strong>primary-200</strong><span>#C0D2B6</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#A8C29C;color:#102514">300</div><div class="swatch-info"><strong>primary-300</strong><span>#A8C29C</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#9BB48E;color:#102514">400</div><div class="swatch-info"><strong>primary-400</strong><span>#9BB48E</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#90A686;color:#F7EADF">500 鈽?/div><div class="swatch-info"><strong>primary-500</strong><span>#90A686</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#7A8F70;color:#F7EADF">600</div><div class="swatch-info"><strong>primary-600</strong><span>#7A8F70</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#587851;color:#F7EADF">700 鈽?/div><div class="swatch-info"><strong>primary-700</strong><span>#587851</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#3E5940;color:#F7EADF">800</div><div class="swatch-info"><strong>primary-800</strong><span>#3E5940</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#243B25;color:#F7EADF">900</div><div class="swatch-info"><strong>primary-900</strong><span>#243B25</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#FBF3E5;color:#243B25">amber-50</div><div class="swatch-info"><strong>amber-50</strong><span>#FBF3E5</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#F4E2BD;color:#243B25">amber-100</div><div class="swatch-info"><strong>amber-100</strong><span>#F4E2BD</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#E8CE94;color:#243B25">amber-200</div><div class="swatch-info"><strong>amber-200</strong><span>#E8CE94</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#DCBA75;color:#243B25">amber-300</div><div class="swatch-info"><strong>amber-300</strong><span>#DCBA75</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#D4AC6A;color:#243B25">amber-400 鈽?/div><div class="swatch-info"><strong>amber-400</strong><span>#D4AC6A</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#C09454;color:#243B25">amber-500</div><div class="swatch-info"><strong>amber-500</strong><span>#C09454</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#A87D40;color:#F7EADF">amber-600</div><div class="swatch-info"><strong>amber-600</strong><span>#A87D40</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#85642F;color:#F7EADF">amber-700</div><div class="swatch-info"><strong>amber-700</strong><span>#85642F</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#FFFCF8;color:#102514">ochre-50</div><div class="swatch-info"><strong>ochre-50</strong><span>#FFFCF8</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#FBF1E6;color:#102514">ochre-100</div><div class="swatch-info"><strong>ochre-100</strong><span>#FBF1E6</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#F7EADF;color:#102514;border-bottom:1px solid #EBD9C9">ochre-200 鈽?/div><div class="swatch-info"><strong>ochre-200</strong><span>#F7EADF</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#EBD9C9;color:#102514">ochre-300</div><div class="swatch-info"><strong>ochre-300</strong><span>#EBD9C9</span></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#D8C2A8;color:#102514">ochre-400</div><div class="swatch-info"><strong>ochre-400</strong><span>#D8C2A8</span></div></div>
+    </div>
+  </section>
+
+  <!-- ===== 2. 浜や簰鎬佹紨绀?===== -->
+  <section class="section">
+    <h2>浜屻€佹寜閽?/ 杈撳叆 / 鍗＄墖浜や簰鎬?/h2>
+    <p>榧犳爣绉讳笂鍘?/ 鐐瑰嚮 / Tab 閿仛鐒︼紝浣撲細浜や簰杩囨浮鑹茬殑杩炶疮鎬с€?/p>
+
+    <h3>涓绘寜閽?(.btn-primary) 鈥?铚滅倷鐒﹂粍 + 鏈€娣辩豢鏂囧瓧锛圓AA 5.74:1锛?/h3>
+    <div class="demo-row">
+      <button class="btn btn-primary">榛樿鎬?/button>
+      <button class="btn btn-primary" style="background: linear-gradient(180deg, #C09454, #A87D40);">hover 鍔犳繁</button>
+      <button class="btn btn-primary" style="background: linear-gradient(180deg, #A87D40, #85642F); transform: translateY(1px);">active 鎸変笅</button>
+      <button class="btn btn-primary" style="box-shadow: 0 0 0 3px rgba(212,172,106,0.45);">focus 鐒︾偣鐜?/button>
+      <button class="btn btn-primary" disabled>disabled 绂佺敤</button>
+    </div>
+
+    <h3>娆℃寜閽?(.btn-secondary) 鈥?绫宠壊 + 鑽夋湰缁胯竟妗?/h3>
+    <div class="demo-row">
+      <button class="btn btn-secondary">榛樿鎬?/button>
+      <button class="btn btn-secondary" style="background: #FBF1E6; border-color: #587851;">hover 鍔犳繁</button>
+      <button class="btn btn-secondary" style="background: #EBD9C9;">active 鎸変笅</button>
+      <button class="btn btn-secondary" style="box-shadow: 0 0 0 3px rgba(212,172,106,0.45);">focus 鐒︾偣鐜?/button>
+    </div>
+
+    <h3>Ghost 鎸夐挳锛堥€忔槑锛?/h3>
+    <div class="demo-row">
+      <button class="btn btn-ghost">榛樿閫忔槑</button>
+      <button class="btn btn-ghost" style="background: rgba(144, 166, 134, 0.22);">hover 鑽夋湰缁垮簳</button>
+    </div>
+
+    <h3>铚滅倷鐞ョ弨 CTA 鎸夐挳</h3>
+    <div class="demo-row">
+      <button class="btn btn-amber">绔嬪嵆鎺㈢储</button>
+      <button class="btn btn-amber" style="background: linear-gradient(180deg, #C09454, #85642F);">hover 鍔犳繁</button>
+    </div>
+
+    <h3>鍥炬爣鎸夐挳</h3>
+    <div class="demo-row">
+      <button class="btn-icon">鈿?/button>
+      <button class="btn-icon">馃攳</button>
+      <button class="btn-icon">鈽?/button>
+    </div>
+
+    <h3>鍗遍櫓鎸夐挳</h3>
+    <div class="demo-row">
+      <button class="btn btn-danger">鍒犻櫎</button>
+      <button class="btn btn-danger" style="background: #8c2626;">hover 鍔犳繁</button>
+    </div>
+
+    <h3>杈撳叆妗?/h3>
+    <div class="demo-row">
+      <input class="input" placeholder="榛樿鎬侊細鎼滅储鑽夎嵂銆佺枟娉曟垨鍘嗗彶..." />
+      <input class="input" value="涓瑰弬" style="border-color: #90A686;" />
+      <input class="input" value="姝ｅ湪鎼滅储..." style="border-color: #D4AC6A; background: #F7EADF; box-shadow: 0 0 0 3px rgba(212,172,106,0.3);" />
+    </div>
+
+    <h3>鍗＄墖锛坔over 鎶捣锛?/h3>
+    <div class="demo-row">
+      <div class="card" style="width: 220px;">
+        <h4 style="color: #102514; font-family: 'Noto Serif SC', serif; margin-bottom: 6px;">妗旀</h4>
+        <p style="color: #587851; font-size: 0.85rem;">Platycodon grandiflorus</p>
+        <span class="chip chip-primary" style="margin-top: 8px;">琛ユ皵鑽?/span>
+      </div>
+      <div class="card" style="width: 220px; transform: translateY(-2px); box-shadow: 0 12px 28px -12px rgba(88, 120, 81, 0.25), 0 4px 10px rgba(212, 172, 106, 0.12);">
+        <h4 style="color: #102514; font-family: 'Noto Serif SC', serif; margin-bottom: 6px;">鐏佃姖锛坔over锛?/h4>
+        <p style="color: #587851; font-size: 0.85rem;">Ganoderma lucidum</p>
+        <span class="chip chip-amber" style="margin-top: 8px;">鐝嶈吹鑽潗</span>
+      </div>
+    </div>
+
+    <h3>閾炬帴 / Chip / 寮鸿皟鍏冪礌</h3>
+    <div class="demo-row">
+      <a href="#" class="link">鐐瑰嚮鏌ョ湅鍏ㄩ儴 24 绉嶇懚鑽?/a>
+      <span class="chip chip-primary">鑽夋湰缁?chip</span>
+      <span class="chip chip-amber">铚滅倷榛?chip</span>
+      <span class="chip chip-outline">绫宠壊鎻忚竟 chip</span>
+    </div>
+  </section>
+
+  <!-- ===== 3. 鍝嶅簲寮忓竷灞€婕旂ず ===== -->
+  <section class="section">
+    <h2>涓夈€佸搷搴斿紡甯冨眬婕旂ず</h2>
+    <p>鐐瑰嚮涓嬫柟鏍囩鏌ョ湅妗岄潰 / 骞虫澘 / 绉诲姩绔笁绉嶅搴︾殑閰嶈壊鍛堢幇銆傛墍鏈夋柇鐐逛笅閰嶈壊浣撶郴淇濇寔涓€鑷淬€?/p>
+
+    <div class="viewport-tabs">
+      <button class="viewport-tab active" data-vp="desktop">馃枼 妗岄潰 (鈮?024px)</button>
+      <button class="viewport-tab" data-vp="tablet">馃摫 骞虫澘 (768-1023px)</button>
+      <button class="viewport-tab" data-vp="mobile">馃摫 绉诲姩 (&lt;768px)</button>
+    </div>
+
+    <div class="viewport-frame">
+      <div id="vp" class="viewport-inner viewport-desktop" data-label="妗岄潰 鈮?024px">
+        <div class="mock-page">
+          <div class="mock-header">
+            <strong>鐟跺尰鍒嗗竷鍦板浘</strong>
+            <span class="mock-btn">鍏充簬鐟跺尰</span>
+          </div>
+          <div class="mock-content desktop">
+            <div class="mock-card"><strong style="color:#102514">鑽夎嵂鐩綍</strong><br/>24 绉嶇懚鑽崱鐗?/div>
+            <div class="mock-card"><strong style="color:#102514">鍦板浘</strong><br/>Leaflet 涓浗鍚堣 GeoJSON</div>
+            <div class="mock-card"><strong style="color:#102514">鍖哄煙閫夋嫨</strong><br/>9 鐪佺瓫閫?/div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 4. 瀵规瘮搴﹂獙璇佹憳瑕?===== -->
+  <section class="section">
+    <h2>鍥涖€乄CAG AA 瀵规瘮搴﹂獙璇佹憳瑕?/h2>
+    <p>鎵€鏈?搴旇浣跨敤"鐨勮壊褰╃粍鍚堥兘宸茬粡杩?<code>scripts/verify-wcag-contrast.mjs</code> 楠岃瘉銆傝繍琛?<code>node scripts/verify-wcag-contrast.mjs</code> 鍙幏鍙栧畬鏁存姤鍛娿€?/p>
+
+    <h3>鍚堣缁勫悎锛堝疄闄呬娇鐢級</h3>
+    <div>
+      <span class="contrast-badge badge-aaa">#243B25 鏈€娣辩豢 / #F7EADF 绫宠壊 鈫?10.30:1 AAA</span>
+      <span class="contrast-badge badge-aaa">#102514 鏍囬缁?/ #F7EADF 鈫?13.72:1 AAA</span>
+      <span class="contrast-badge badge-aaa">#243B25 / #D4AC6A 铚滅倷榛勬寜閽?鈫?5.74:1 AAA</span>
+      <span class="contrast-badge badge-aa">#587851 娣辩豢 / #F7EADF 绫宠壊 鈫?4.22:1 AA 澶ф枃鏈?/span>
+      <span class="contrast-badge badge-aa">#587851 / #FFFFFF 鐧藉簳 鈫?4.98:1 AAA 澶ф枃鏈?/span>
+    </div>
+
+    <h3>绂佺敤缁勫悎锛堝凡琚伐绋嬪疄璺垫帓闄わ級</h3>
+    <div>
+      <span class="contrast-badge badge-fail">#D4AC6A 铚滅倷榛?/ #F7EADF 绫宠壊 鈫?1.80:1 FAIL</span>
+      <span class="contrast-badge badge-fail">#FFFFFF 鐧?/ #90A686 鑽夋湰缁?鈫?2.63:1 FAIL</span>
+      <span class="contrast-badge badge-fail">#587851 娣辩豢 / #D4AC6A 铚滅倷榛?鈫?2.35:1 FAIL</span>
+      <span class="contrast-badge badge-fail">#D4AC6A 铚滅倷榛?/ #FFFFFF 鐧?鈫?2.12:1 FAIL</span>
+    </div>
+  </section>
+
+  <!-- ===== 5. 搴旂敤娓呭崟鎽樿 ===== -->
+  <section class="section">
+    <h2>浜斻€佸簲鐢ㄦ竻鍗?/h2>
+    <ul>
+      <li><strong>椤甸潰涓讳綋</strong>锛?code>linear-gradient(180deg, #90A686 鈫?#7A8F70)</code> + 铚滅倷榛勫緞鍚戦珮鍏?/li>
+      <li><strong>Header锛堝鑸爮锛?/strong>锛氭繁缁挎笎鍙?<code>from-primary-700 via-primary-600 to-primary-700</code> + 绫宠壊鏂囧瓧</li>
+      <li><strong>鑽夎嵂鐩綍鍖?/strong>锛氭瀬娴呴粍杩囨浮 <code>from-amber-50 to-amber-100/40</code></li>
+      <li><strong>鍦板浘瀹瑰櫒</strong>锛氱背鑹?<code>#F7EADF</code> + 绫宠壊杈规 + 鑽夋湰缁块槾褰?/li>
+      <li><strong>渚ц竟鏍?/strong>锛氱背鑹叉笎鍙?<code>#F7EADF 鈫?#FBF1E6</code> + 鑽夋湰缁块槾褰?/li>
+      <li><strong>寮圭獥</strong>锛氭渶娣辩豢鍗婇€忔槑钂欏眰 <code>rgba(36,59,37,0.55)</code> + 绫宠壊闈㈡澘</li>
+      <li><strong>涓绘寜閽?/strong>锛氳湝鐐欓粍娓愬彉 <code>#D4AC6A 鈫?#C09454</code> + 鏈€娣辩豢鏂囧瓧 <code>#243B25</code></li>
+      <li><strong>娆℃寜閽?/strong>锛氱背鑹?<code>#F7EADF</code> + 鑽夋湰缁胯竟妗?<code>#90A686</code></li>
+      <li><strong>杈撳叆妗?/strong>锛氳繎鐧藉簳 <code>#FFFCF8</code> + 鑽夋湰缁?铚滅倷榛勮竟妗嗚繃娓?/li>
+      <li><strong>婊氬姩鏉?/strong>锛氳崏鏈豢娓愬彉 鈫?hover 铚滅倷榛勫姞娣?/li>
+    </ul>
+    <p>璇︾粏鍦烘櫙娓呭崟璇峰弬鑰?<a href="../PALETTE_USAGE.md" style="color: #587851;">PALETTE_USAGE.md</a>銆?/p>
+  </section>
+
+</div>
+
+<script>
+  // 鍝嶅簲寮?viewport 鍒囨崲
+  const tabs = document.querySelectorAll('.viewport-tab');
+  const vp = document.getElementById('vp');
+  const labels = {
+    desktop: '妗岄潰 鈮?024px',
+    tablet: '骞虫澘 768px',
+    mobile: '绉诲姩 375px',
+  };
+  const mockLayouts = {
+    desktop: 'desktop',
+    tablet: 'tablet',
+    mobile: 'mobile',
+  };
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = tab.dataset.vp;
+      vp.className = `viewport-inner viewport-${target}`;
+      vp.dataset.label = labels[target];
+      const content = vp.querySelector('.mock-content');
+      content.className = `mock-content ${mockLayouts[target]}`;
+    });
+  });
+</script>
+</body>
+</html>
