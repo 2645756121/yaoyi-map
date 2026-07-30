@@ -193,8 +193,6 @@ body::before {
   border-left: 1px solid #EBD9C9;
 }
 
-<<<<<<< HEAD
-=======
 /* ===== 流式布局的省份面板容器 =====
    与原 modal-layer 不同：本类无 position: fixed，参与文档流，
    可以跟随页面滚动；z-index 略高于地图区域，但不遮挡 Modals。 */
@@ -238,7 +236,6 @@ body::before {
   }
 }
 
->>>>>>> 3f57f56 (feat: 省份瑶医瑶药深度资料 + 流式面板布局 + 统一 Logo 组件)
 /* ===== Modal 背景：暖色 backdrop ===== */
 .herb-modal,
 .therapy-modal,
@@ -998,8 +995,6 @@ body::before {
   transform-origin: bottom center;
 }
 
-<<<<<<< HEAD
-=======
 /* ===== Logo 图像 — 顶部导航 / Footer / 通用 ===== */
 /* 需求：Web 友好（PNG + SVG 双源降级）、透明背景、响应式、懒加载、悬停过渡、可点击回首页 */
 .yao-logo-img {
@@ -1088,7 +1083,6 @@ body::before {
   }
 }
 
->>>>>>> 3f57f56 (feat: 省份瑶医瑶药深度资料 + 流式面板布局 + 统一 Logo 组件)
 /* ===== 滚动到顶部按钮增强 ===== */
 .back-to-top {
   /* 由 inline 控制颜色，重定义聚焦状态 */

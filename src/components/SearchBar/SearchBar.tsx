@@ -12,11 +12,7 @@ import { SearchResult } from '../../types';
 
 type SearchType = 'all' | 'herb' | 'therapy' | 'history';
 
-<<<<<<< HEAD
-// 4 鑹蹭綋绯讳富棰橈細姣忕绫诲瀷瀵瑰簲澶╃劧鑹茬郴
-=======
 // 4 色体系主题：每种类型对应天然色系
->>>>>>> 3f57f56 (feat: 省份瑶医瑶药深度资料 + 流式面板布局 + 统一 Logo 组件)
 const TYPE_THEME: Record<SearchType | 'default', {
   chip: string;
   iconBg: string;
@@ -201,11 +197,7 @@ const SearchBar: React.FC = () => {
 
   return (
     <div className="relative w-full max-w-md" ref={dropdownRef}>
-<<<<<<< HEAD
-      {/* ===== 鎼滅储鏍忓妗嗭細绫宠壊 + 铚滅倷榛勯槾褰?===== */}
-=======
       {/* ===== 搜索栏外框：米色 + 蜜炙黄阴影 ===== */}
->>>>>>> 3f57f56 (feat: 省份瑶医瑶药深度资料 + 流式面板布局 + 统一 Logo 组件)
       <div className="flex items-stretch gap-1.5 rounded-2xl bg-ochre-100/95 p-1.5 shadow-yao-md border border-ochre-300/70 backdrop-blur-sm transition-all duration-200 focus-within:shadow-yao-lg focus-within:border-amber-400 focus-within:ring-2 focus-within:ring-amber-300/40">
         <div className="relative flex-1">
           <Search
@@ -218,13 +210,8 @@ const SearchBar: React.FC = () => {
             value={keyword}
             onChange={(e) => setKeyword(e.target.value)}
             onFocus={() => keyword.trim() && results.length > 0 && setIsDropdownOpen(true)}
-<<<<<<< HEAD
-            aria-label="鎼滅储鑽夎嵂銆佺枟娉曟垨鍘嗗彶"
-            placeholder="鎼滅储鑽夎嵂銆佺枟娉曟垨鍘嗗彶..."
-=======
             aria-label="搜索草药、疗法或历史"
             placeholder="搜索草药、疗法或历史..."
->>>>>>> 3f57f56 (feat: 省份瑶医瑶药深度资料 + 流式面板布局 + 统一 Logo 组件)
             className="input-yao pl-9 pr-9 bg-white/95 border-ochre-200 hover:border-amber-400 focus:border-amber-500 focus:bg-white focus:shadow-yao-sm"
           />
           {keyword && (
@@ -244,11 +231,7 @@ const SearchBar: React.FC = () => {
           )}
         </div>
 
-<<<<<<< HEAD
-        {/* ===== 绫诲瀷涓嬫媺閫夋嫨 ===== */}
-=======
         {/* ===== 类型下拉选择 ===== */}
->>>>>>> 3f57f56 (feat: 省份瑶医瑶药深度资料 + 流式面板布局 + 统一 Logo 组件)
         <div className="relative flex-shrink-0">
           <button
             type="button"
@@ -298,11 +281,7 @@ const SearchBar: React.FC = () => {
                     />
                     {TYPE_LABEL[type]}
                     <span className="ml-auto text-[0.625rem] text-ink-500 font-normal">
-<<<<<<< HEAD
-                      {type === 'all' ? '4绫? : '鍙瓫閫?}
-=======
                       {type === 'all' ? '4类' : '可筛选'}
->>>>>>> 3f57f56 (feat: 省份瑶医瑶药深度资料 + 流式面板布局 + 统一 Logo 组件)
                     </span>
                   </button>
                 );
@@ -312,24 +291,15 @@ const SearchBar: React.FC = () => {
         </div>
       </div>
 
-<<<<<<< HEAD
-      {/* ===== 鎼滅储缁撴灉涓嬫媺 ===== */}
-=======
       {/* ===== 搜索结果下拉 ===== */}
->>>>>>> 3f57f56 (feat: 省份瑶医瑶药深度资料 + 流式面板布局 + 统一 Logo 组件)
       {isDropdownOpen && results.length > 0 && (
         <div
           className="absolute top-full left-0 right-0 mt-2 bg-ochre-50/98 backdrop-blur-md border border-ochre-300 rounded-2xl shadow-yao-xl z-50 overflow-hidden max-h-96 overflow-y-auto animate-yao-slide-up"
           role="listbox"
         >
           <div className="px-4 py-2 border-b border-ochre-200 bg-ochre-100/60 flex items-center justify-between text-xs text-ink-600">
-<<<<<<< HEAD
-            <span>鍏?<span className="font-semibold text-primary-700">{results.length}</span> 鏉＄粨鏋?/span>
-            <span className="text-ink-500">鈫戔啌 閫夋嫨 路 Enter 纭 路 Esc 鍏抽棴</span>
-=======
             <span>共 <span className="font-semibold text-primary-700">{results.length}</span> 条结果</span>
             <span className="text-ink-500">↑↓ 选择 · Enter 确认 · Esc 关闭</span>
->>>>>>> 3f57f56 (feat: 省份瑶医瑶药深度资料 + 流式面板布局 + 统一 Logo 组件)
           </div>
           <ul className="p-2 space-y-1">
             {results.map((result, index) => {
@@ -384,23 +354,14 @@ const SearchBar: React.FC = () => {
         </div>
       )}
 
-<<<<<<< HEAD
-      {/* ===== 绌虹姸鎬?===== */}
-=======
       {/* ===== 空状态 ===== */}
->>>>>>> 3f57f56 (feat: 省份瑶医瑶药深度资料 + 流式面板布局 + 统一 Logo 组件)
       {isDropdownOpen && results.length === 0 && (
         <div className="absolute top-full left-0 right-0 mt-2 bg-ochre-50 border border-ochre-300 rounded-2xl shadow-yao-xl z-50 p-6 text-center animate-yao-rise">
           <div className="w-14 h-14 rounded-full bg-amber-100 flex items-center justify-center mx-auto mb-3">
             <Search className="w-7 h-7 text-amber-600" />
           </div>
-<<<<<<< HEAD
-          <p className="text-sm font-medium text-ink-700">鏈壘鍒扮浉鍏崇粨鏋?/p>
-          <p className="text-xs text-ink-500 mt-1">璇峰皾璇曞叾浠栧叧閿瘝</p>
-=======
           <p className="text-sm font-medium text-ink-700">未找到相关结果</p>
           <p className="text-xs text-ink-500 mt-1">请尝试其他关键词</p>
->>>>>>> 3f57f56 (feat: 省份瑶医瑶药深度资料 + 流式面板布局 + 统一 Logo 组件)
         </div>
       )}
     </div>

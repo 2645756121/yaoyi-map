@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from 'react';
-<<<<<<< HEAD
-import { Leaf, Info, BookOpen } from 'lucide-react';
-=======
 import { Info, BookOpen } from 'lucide-react';
->>>>>>> 3f57f56 (feat: 省份瑶医瑶药深度资料 + 流式面板布局 + 统一 Logo 组件)
 import SearchBar from '../SearchBar/SearchBar';
 import Logo from './Logo';
 
@@ -72,11 +68,7 @@ const Header: React.FC = () => {
         className="absolute top-0 left-0 right-0 h-px"
         style={{
           background:
-<<<<<<< HEAD
-            'linear-gradient(90deg, transparent 0%, rgba(212, 172, 106, 0.6) 30%, rgba(212, 172, 106, 0.9) 50%, rgba(212, 172, 106, 0.6) 70%, transparent 100%)',
-=======
             'linear-gradient(90deg, transparent, rgba(212, 172, 106, 0.6), rgba(212, 172, 106, 0.9), rgba(212, 172, 106, 0.6), transparent)',
->>>>>>> 3f57f56 (feat: 省份瑶医瑶药深度资料 + 流式面板布局 + 统一 Logo 组件)
         }}
         aria-hidden
       />
@@ -85,34 +77,6 @@ const Header: React.FC = () => {
         <div className="flex flex-col md:flex-row items-center justify-between gap-3 md:gap-4 h-auto md:h-22 py-3.5 md:py-4">
           {/* ===== Logo + 标题 ===== */}
           <a
-<<<<<<< HEAD
-            href="#"
-            onClick={(e) => e.preventDefault()}
-            className="flex items-center gap-3.5 w-full md:w-auto group yao-tooltip"
-            data-tip="瑶医分布地图"
-            aria-label="瑶医分布地图 — 回到顶部"
-          >
-            {/* 蜜炙桃黄图标徽章：渐变 + 摇曳草药图标 */}
-            <div
-              className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center shadow-yao-md transition-all duration-300 ease-yao-bounce group-hover:rotate-3 group-hover:scale-105 flex-shrink-0"
-              style={{
-                background:
-                  'linear-gradient(135deg,#FFF7EC 0%, #F0D1A1 40%, #DDBE8C 70%, #C8A57E 100%)',
-                boxShadow:
-                  '0 8px 22px -8px rgba(240, 209, 161, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.55), inset 0 -1px 0 rgba(200, 165, 126, 0.3)',
-              }}
-            >
-              <Leaf
-                className="w-7 h-7 sm:w-8 sm:h-8 text-primary-900 yao-leaf-sway"
-                style={{ filter: 'drop-shadow(0 1px 1px rgba(0, 0, 0, 0.15))' }}
-              />
-              {/* 右上角装饰小圆点 */}
-              <span
-                className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-amber-300 ring-2 ring-primary-700"
-                aria-hidden
-              />
-            </div>
-=======
             href="/"
             onClick={(e) => {
               // 允许修饰键走默认行为（Ctrl/Meta/Shift = 新标签）
@@ -133,7 +97,6 @@ const Header: React.FC = () => {
               alt="瑶医分布地图 logo · 瑶族医药文化标识"
               title="瑶医分布地图 · 官方 Logo"
             />
->>>>>>> 3f57f56 (feat: 省份瑶医瑶药深度资料 + 流式面板布局 + 统一 Logo 组件)
 
             <div className="text-primary-50 min-w-0 flex-1">
               <h1
@@ -194,11 +157,7 @@ const Header: React.FC = () => {
         className="absolute bottom-0 left-0 right-0 h-px"
         style={{
           background:
-<<<<<<< HEAD
-            'linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.25) 50%, transparent 100%)',
-=======
             'linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.25), transparent)',
->>>>>>> 3f57f56 (feat: 省份瑶医瑶药深度资料 + 流式面板布局 + 统一 Logo 组件)
         }}
         aria-hidden
       />

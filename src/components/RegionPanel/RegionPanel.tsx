@@ -4,9 +4,6 @@ import { getHerbsByRegion, getTherapiesByRegion, getHistoryPeriodsByRegion } fro
 import HerbCard from './HerbCard';
 import CollapsibleSection from './CollapsibleSection';
 import StarRating from './StarRating';
-<<<<<<< HEAD
-import { X, MapPin, Leaf, Clock, Stethoscope, TrendingUp, Sparkles, Calendar, ChevronLeft, Compass } from 'lucide-react';
-=======
 import {
   X,
   MapPin,
@@ -26,7 +23,6 @@ import {
   Sprout,
   Hammer,
 } from 'lucide-react';
->>>>>>> 3f57f56 (feat: 省份瑶医瑶药深度资料 + 流式面板布局 + 统一 Logo 组件)
 
 // 关键词高亮处理
 const renderHighlightedText = (text: string, keywords: string[] = []): React.ReactNode => {
@@ -58,8 +54,6 @@ const RegionPanel: React.FC = () => {
 
   // 卡片 staggered 动画延迟
   const [animationKey, setAnimationKey] = useState(0);
-<<<<<<< HEAD
-=======
   const [expandedSections, setExpandedSections] = useState({
     philosophy: true,
     lineage: true,
@@ -73,7 +67,6 @@ const RegionPanel: React.FC = () => {
     common: false,
     development: false,
   });
->>>>>>> 3f57f56 (feat: 省份瑶医瑶药深度资料 + 流式面板布局 + 统一 Logo 组件)
 
   useEffect(() => {
     if (selectedRegion) {
@@ -120,14 +113,11 @@ const RegionPanel: React.FC = () => {
     }
   };
 
-<<<<<<< HEAD
-=======
   // 切换折叠
   const toggleSection = (key: keyof typeof expandedSections) => {
     setExpandedSections(prev => ({ ...prev, [key]: !prev[key] }));
   };
 
->>>>>>> 3f57f56 (feat: 省份瑶医瑶药深度资料 + 流式面板布局 + 统一 Logo 组件)
   // 空状态组件
   const EmptyState = () => (
     <div className="flex-1 flex flex-col items-center justify-center p-8 text-center animate-yao-fade-in-up">
@@ -154,84 +144,6 @@ const RegionPanel: React.FC = () => {
     </div>
   );
 
-<<<<<<< HEAD
-  // 头部区域
-  const PanelHeader = ({ onClose }: { onClose?: () => void }) => (
-    <div
-      className="relative px-5 py-5 border-b border-ochre-300 overflow-hidden"
-      style={{
-        background:
-          'linear-gradient(135deg, rgba(247, 234, 223, 0.95) 0%, rgba(212, 172, 106, 0.18) 50%, rgba(247, 234, 223, 0.95) 100%)',
-      }}
-    >
-      {/* 顶部琥珀色高光 */}
-      <span
-        className="absolute top-0 left-0 right-0 h-px"
-        style={{
-          background: 'linear-gradient(90deg, transparent, rgba(212, 172, 106, 0.8), transparent)',
-        }}
-        aria-hidden
-      />
-      <div className="flex items-center justify-between mb-3">
-        <div className="flex items-center gap-4">
-          {/* 瑶族图腾圆形图标 */}
-          <div
-            className="relative w-14 h-14 rounded-2xl flex items-center justify-center shadow-yao-md transition-transform duration-300 hover:scale-105"
-            style={{
-              background:
-                'linear-gradient(135deg, #F0D1A1 0%, #DDBE8C 50%, #C8A57E 100%)',
-              boxShadow: '0 6px 18px -4px rgba(240, 209, 161, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.5)',
-            }}
-          >
-            <svg
-              className="w-8 h-8 text-ink-700"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.8"
-            >
-              <circle cx="12" cy="6" r="2" />
-              <path d="M8 10 Q12 8 16 10" />
-              <path d="M6 14 Q12 11 18 14" />
-              <path d="M4 18 Q12 14 20 18" />
-              <circle cx="12" cy="12" r="1" fill="currentColor" />
-            </svg>
-          </div>
-          <div>
-            <h2 className="font-serif font-bold text-2xl text-ink-800 leading-tight">
-              {selectedRegion!.name}
-            </h2>
-            <p className="text-sm text-ink-600 mt-0.5 font-light">
-              {selectedRegion!.nameEn}
-            </p>
-          </div>
-        </div>
-        {onClose && (
-          <button
-            onClick={onClose}
-            className="p-2 rounded-full bg-ochre-100 hover:bg-amber-100 border border-ochre-200 hover:border-amber-300 text-ink-700 hover:text-amber-900 transition-all duration-200 hover:rotate-90"
-            aria-label="关闭面板"
-          >
-            <X className="w-5 h-5" />
-          </button>
-        )}
-      </div>
-
-      <div className="flex items-center gap-5 mb-1 flex-wrap">
-        <div className="flex items-center gap-2 text-amber-700 text-sm">
-          <MapPin className="w-4 h-4" />
-          <span>{selectedRegion!.location}</span>
-        </div>
-
-        <div className="flex items-center gap-2">
-          <div
-            className="w-4 h-4 rounded-full shadow-yao-xs"
-            style={{ backgroundColor: selectedRegion!.color }}
-          />
-          <span className="text-sm text-ink-600">分布密度：</span>
-          <StarRating rating={selectedRegion!.density} />
-        </div>
-=======
   // 头像（图腾）+ 标题
   const RegionIdentity = () => (
     <div className="flex items-center gap-4">
@@ -265,132 +177,10 @@ const RegionPanel: React.FC = () => {
         <p className="text-sm text-ink-600 mt-0.5 font-light truncate">
           {selectedRegion!.nameEn}
         </p>
->>>>>>> 3f57f56 (feat: 省份瑶医瑶药深度资料 + 流式面板布局 + 统一 Logo 组件)
       </div>
     </div>
   );
 
-<<<<<<< HEAD
-  // 简介文本区域
-  const DescriptionSection = () => (
-    <div className="px-6 py-4 bg-ochre-50/60 backdrop-blur-sm border-b border-ochre-200">
-      <p
-        className="text-ink-700 text-base text-indent"
-        style={{ lineHeight: '1.8' }}
-      >
-        {renderHighlightedText(selectedRegion!.description, commonHerbKeywords)}
-      </p>
-    </div>
-  );
-
-  // 内容区域
-  const PanelContent = () => (
-    <div
-      key={animationKey}
-      className="flex-1 min-h-0 overflow-y-auto p-4 space-y-3 region-panel-scroll"
-    >
-      {/* 历史渊源 */}
-      <div
-        className="animate-yao-card-up"
-        style={{ animationDelay: '0.08s' }}
-      >
-        <CollapsibleSection
-          title="历史渊源"
-          icon={<Clock className="w-5 h-5 text-amber-700" />}
-          count={historyPeriods.length}
-          defaultExpanded={false}
-        >
-          <p className="text-ink-700 text-base text-indent" style={{ lineHeight: '1.8', marginBottom: '16px' }}>
-            {selectedRegion!.history}
-          </p>
-          <div className="flex flex-wrap gap-2">
-            {historyPeriods.map((period) => (
-              <button
-                key={period.id}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleHistoryClick(period.id);
-                }}
-                className="inline-flex items-center gap-1 px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 bg-amber-100 text-amber-900 border border-amber-300 hover:bg-amber-200 hover:shadow-yao-xs"
-              >
-                <Calendar className="w-4 h-4" />
-                {period.periodName}
-              </button>
-            ))}
-          </div>
-        </CollapsibleSection>
-      </div>
-
-      {/* 特色疗法 */}
-      <div
-        className="animate-yao-card-up"
-        style={{ animationDelay: '0.18s' }}
-      >
-        <CollapsibleSection
-          title="特色疗法"
-          icon={<Stethoscope className="w-5 h-5 text-primary-700" />}
-          count={therapies.length}
-          defaultExpanded={false}
-        >
-          <div className="space-y-2">
-            {therapies.map((therapy) => (
-              <button
-                key={therapy.id}
-                onClick={() => handleTherapyClick(therapy.id)}
-                className="w-full flex items-center gap-4 p-4 rounded-xl transition-all duration-200 text-left group border border-ochre-200 hover:border-amber-400 hover:shadow-yao-sm bg-ochre-50 hover:bg-amber-50"
-              >
-                <div className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 bg-amber-200 text-amber-700 group-hover:scale-110 transition-all duration-200">
-                  <Sparkles className="w-5 h-5" />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <h4 className="font-semibold text-ink-800 group-hover:text-amber-700 text-base">{therapy.name}</h4>
-                  <div className="flex items-center gap-2 mt-1 flex-wrap">
-                    <span className="text-xs px-2.5 py-0.5 rounded-full bg-primary-100 text-primary-700 border border-primary-200">
-                      {therapy.system}
-                    </span>
-                    <span className="text-xs text-ink-500">
-                      {therapy.applicableConditions.length} 个适用病症
-                    </span>
-                  </div>
-                </div>
-              </button>
-            ))}
-          </div>
-        </CollapsibleSection>
-      </div>
-
-      {/* 常用药材 */}
-      <div
-        className="animate-yao-card-up"
-        style={{ animationDelay: '0.28s' }}
-      >
-        <CollapsibleSection
-          title="常用药材"
-          icon={<Leaf className="w-5 h-5 text-primary-700" />}
-          count={herbs.length}
-          defaultExpanded={false}
-        >
-          <div className="space-y-2">
-            {herbs.map((herb) => (
-              <div
-                key={herb.id}
-                className="cursor-pointer"
-                onClick={() => handleHerbClick(herb.id)}
-              >
-                <HerbCard
-                  herb={herb}
-                  onClick={() => handleHerbClick(herb.id)}
-                />
-              </div>
-            ))}
-          </div>
-
-          {herbs.length === 0 && (
-            <div className="text-center py-8">
-              <Leaf className="w-12 h-12 text-ink-300 mx-auto mb-3" />
-              <p className="text-ink-400 text-sm">暂无草药数据</p>
-            </div>
-=======
   // 通用章节头部（折叠头）
   const SectionToggleHead = ({
     sectionKey,
@@ -422,56 +212,9 @@ const RegionPanel: React.FC = () => {
           </h3>
           {badge && (
             <span className="text-xs text-ink-500 mt-0.5 truncate block">{badge}</span>
->>>>>>> 3f57f56 (feat: 省份瑶医瑶药深度资料 + 流式面板布局 + 统一 Logo 组件)
           )}
         </div>
       </div>
-<<<<<<< HEAD
-
-      {/* 现代发展 */}
-      <div
-        className="animate-yao-card-up"
-        style={{ animationDelay: '0.38s' }}
-      >
-        <CollapsibleSection
-          title="现代发展"
-          icon={<TrendingUp className="w-5 h-5 text-amber-700" />}
-        >
-          <p className="text-ink-700 text-base text-indent" style={{ lineHeight: '1.8' }}>
-            {selectedRegion!.modernDevelopment}
-          </p>
-        </CollapsibleSection>
-      </div>
-    </div>
-  );
-
-  // 底部按钮
-  const PanelFooter = () => (
-    <div className="p-4 border-t border-ochre-300 bg-ochre-100/70 backdrop-blur-sm">
-      <button
-        onClick={closePanel}
-        className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-gradient-to-r from-amber-500 to-amber-600 text-ink-700 rounded-xl shadow-yao-md hover:shadow-yao-lg transition-all duration-200 hover:from-amber-400 hover:to-amber-500 font-semibold active:translate-y-0.5"
-      >
-        <ChevronLeft className="w-5 h-5" />
-        返回地图探索
-      </button>
-    </div>
-  );
-
-  return (
-    <>
-      <div
-        className={`modal-layer transition-all duration-300 ease-yao-soft ${
-          isPanelOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
-        }`}
-        onClick={closePanel}
-      >
-        <div
-          className={`info-panel-wrapper frosted-panel transform transition-all duration-450 ease-yao-soft ${
-            isPanelOpen ? 'scale-100 opacity-100' : 'scale-95 opacity-0'
-          }`}
-          onClick={(e) => e.stopPropagation()}
-=======
       <ChevronLeft
         className={`w-5 h-5 text-ink-600 transition-transform duration-300 flex-shrink-0 ${
           expandedSections[sectionKey] ? '-rotate-90' : 'rotate-180'
@@ -505,7 +248,6 @@ const RegionPanel: React.FC = () => {
             // 允许在窄屏下完整展示内容，并通过内部滚动保证高内容也能完整访问
             width: '100%',
           }}
->>>>>>> 3f57f56 (feat: 省份瑶医瑶药深度资料 + 流式面板布局 + 统一 Logo 组件)
         >
           {!selectedRegion ? (
             <>
