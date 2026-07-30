@@ -25,7 +25,7 @@ const Header: React.FC = () => {
 
   return (
     <header
-      className={`relative bg-gradient-to-br from-primary-700 via-primary-800 to-primary-900 text-primary-50 overflow-hidden transition-shadow duration-450 ease-yao-soft ${
+      className={`relative bg-gradient-to-br from-primary-700 via-primary-800 to-primary-900 text-primary-50 transition-shadow duration-450 ease-yao-soft ${
         scrolled ? 'shadow-yao-xl' : 'shadow-yao-lg'
       }`}
       style={{
@@ -89,7 +89,7 @@ const Header: React.FC = () => {
             aria-label="瑶医分布地图 — 回到首页"
             data-tip="瑶医分布地图 · 回到首页"
           >
-            {/* 统一 Logo 组件：响应式、PNG→SVG→占位三级降级、懒加载 */}
+            {/* 统一 Logo 组件：响应式、LOGO(1).svg→PNG→SVG→占位四级降级、懒加载 */}
             <Logo
               size="md"
               interactive

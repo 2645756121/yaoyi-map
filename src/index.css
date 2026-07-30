@@ -996,18 +996,21 @@ body::before {
 }
 
 /* ===== Logo 图像 — 顶部导航 / Footer / 通用 ===== */
-/* 需求：Web 友好（PNG + SVG 双源降级）、透明背景、响应式、懒加载、悬停过渡、可点击回首页 */
+/* 需求：Web 友好（LOGO(1).svg 矢量主源 + PNG/SVG/占位 三级降级）、透明背景、响应式、懒加载、悬停过渡、可点击回首页 */
 .yao-logo-img {
   /* 浅淡过渡：透明度 + 缩放 + 旋转均在 300ms 内完成，缓动用 yao-soft */
   transition:
     transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
     opacity 0.3s ease,
     filter 0.3s ease;
-  /* 默认防锯齿，保证小尺寸渲染清晰 */
+  /* 默认防锯齿，保证 SVG 在小尺寸下渲染清晰 */
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   /* 防止 SVG 在某些浏览器中默认带 1px 间距 */
   line-height: 0;
+  /* 矢量图在不同 DPR 下保持锐利 */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
 }
 
 /* Logo 容器徽章：背景透明，仅靠 hover 时增加柔光与阴影 */

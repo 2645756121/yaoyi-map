@@ -7,8 +7,12 @@ import { assetPath } from '../../lib/assetPath';
  * 核心特性：
  *  1. 资源路径：使用 assetPath() 自动注入运行时 base 前缀，
  *     兼容 GitHub Pages 子路径、vercel 自定义域名等部署形态，绝不出现 404。
- *  2. 加载策略：logo.png 为主源、logo.svg 为高保真备用图、
- *     纯色占位块兜底；主图加载失败时自动降级到备用图。
+ *  2. 加载策略：四级降级链
+ *       ① LOGO(1).svg  → 1024×1024 高保真矢量主源（项目最新官方设计稿）
+ *       ② logo.png      → 1.15 MB 栅格备用（SVG 不可用时的兜底）
+ *       ③ logo.svg      → 10 KB 精简矢量备用
+ *       ④ data:URL 占位 → 永不失败的最小兜底
+ *     任一级失败时自动降级到下一级，绝不出现破图。
  *  3. 懒加载：使用原生 loading="lazy" + decoding="async"，
  *     配合 fetchpriority 与 IntersectionObserver，控制首屏加载预算。
  *  4. 响应式：基于 size 预设（xs / sm / md / lg / xl）自动切换 CSS clamp 数值，
@@ -62,12 +66,18 @@ const sizeMap: Record<LogoSize, { min: string; max: string; defaultMin: number }
   xl: { min: '6rem',    max: '9rem',    defaultMin: 96 },
 };
 
+// 资源路径按优先级排序：
+//   1. LOGO(1).svg — 项目最新官方设计稿（1024×1024 矢量，锐利可缩放）
+//   2. logo.png     — 栅格备用，覆盖 SVG 不支持的边缘场景
+//   3. logo.svg     — 轻量矢量备用，体积仅为 LOGO(1).svg 的 1.5%
+//   4. data:URL     — 内联占位，永不失败
+const LOGO_PRIMARY = assetPath('logo/LOGO(1).svg');
 const LOGO_PNG = assetPath('logo/logo.png');
 const LOGO_SVG = assetPath('logo/logo.svg');
-const LOGO_PNG_FALLBACK_DIMS = { w: 1024, h: 1024 }; // logo.png 原始尺寸约为 1024×1024
+const LOGO_DIMS = { w: 1024, h: 1024 };
 
 /**
- * 占位 fallback：当 svg 也加载失败时显示的极简 SVG 兜底
+ * 占位 fallback：当所有外部资源都失败时显示的极简 SVG 兜底
  * 直接走 data: URL，不依赖任何外部资源 → 永远不会失败
  */
 const PLACEHOLDER_SVG =
@@ -100,8 +110,8 @@ const Logo: React.FC<LogoProps> = ({
   onLoaded,
   onError,
 }) => {
-  // 三级降级：png → svg → 占位 data-url
-  const [stage, setStage] = useState<0 | 1 | 2>(0);
+  // 四级降级：LOGO(1).svg → logo.png → logo.svg → 占位 data-url
+  const [stage, setStage] = useState<0 | 1 | 2 | 3>(0);
   const [loaded, setLoaded] = useState(false);
   const [viewportVisible, setViewportVisible] = useState(!lazy);
   const containerRef = useRef<HTMLSpanElement | null>(null);
@@ -135,15 +145,21 @@ const Logo: React.FC<LogoProps> = ({
     (e) => {
       const target = e.currentTarget;
       if (stage === 0) {
-        // png 失败 → 切 svg
-        target.src = LOGO_SVG;
+        // LOGO(1).svg 失败 → 切 logo.png
+        target.src = LOGO_PNG;
         setStage(1);
         return;
       }
       if (stage === 1) {
-        // svg 失败 → 占位
-        target.src = PLACEHOLDER_SVG;
+        // logo.png 失败 → 切 logo.svg
+        target.src = LOGO_SVG;
         setStage(2);
+        return;
+      }
+      if (stage === 2) {
+        // logo.svg 失败 → 占位
+        target.src = PLACEHOLDER_SVG;
+        setStage(3);
         onError?.(e);
         return;
       }
@@ -168,7 +184,10 @@ const Logo: React.FC<LogoProps> = ({
 
   // 当前阶段的 src（依次降级）
   const currentSrc =
-    stage === 0 ? LOGO_PNG : stage === 1 ? LOGO_SVG : PLACEHOLDER_SVG;
+    stage === 0 ? LOGO_PRIMARY :
+    stage === 1 ? LOGO_PNG :
+    stage === 2 ? LOGO_SVG :
+    PLACEHOLDER_SVG;
 
   // 图片渲染层
   const imageEl = (
@@ -193,8 +212,8 @@ const Logo: React.FC<LogoProps> = ({
           draggable={false}
           onLoad={handleLoad}
           onError={handleError}
-          width={LOGO_PNG_FALLBACK_DIMS.w}
-          height={LOGO_PNG_FALLBACK_DIMS.h}
+          width={LOGO_DIMS.w}
+          height={LOGO_DIMS.h}
           className={`yao-logo-img block w-full h-full object-contain select-none transition-opacity duration-300 ${
             loaded ? 'opacity-100' : 'opacity-0'
           }`}

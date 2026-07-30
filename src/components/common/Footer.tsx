@@ -83,6 +83,7 @@ const Footer: React.FC = () => {
           {/* ===== 列 1：Logo + 简介 ===== */}
           <div className="flex flex-col gap-3">
             <div className="flex items-center gap-3">
+              {/* 官方 LOGO(1).svg 矢量主源，自动四级降级 */}
               <Logo
                 size="sm"
                 interactive

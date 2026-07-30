@@ -58,11 +58,11 @@ const TYPE_THEME: Record<SearchType | 'default', {
 };
 
 const TYPE_LABEL: Record<SearchType | 'default', string> = {
-  all: '鍏ㄩ儴',
-  herb: '鑽夎嵂',
-  therapy: '鐤楁硶',
-  history: '鍘嗗彶',
-  default: '鍏ㄩ儴',
+  all: '全部',
+  herb: '草药',
+  therapy: '疗法',
+  history: '历史',
+  default: '全部',
 };
 
 const SearchBar: React.FC = () => {
@@ -217,7 +217,7 @@ const SearchBar: React.FC = () => {
           {keyword && (
             <button
               type="button"
-              aria-label="娓呴櫎鎼滅储"
+              aria-label="清除搜索"
               onClick={() => {
                 setKeyword('');
                 setResults([]);
@@ -252,7 +252,7 @@ const SearchBar: React.FC = () => {
 
           {isTypeMenuOpen && (
             <div
-              className="absolute top-full right-0 mt-2 w-36 bg-ochre-50/98 backdrop-blur-md border border-ochre-300 rounded-xl shadow-yao-lg py-1.5 z-60 overflow-hidden animate-yao-rise"
+              className="absolute top-full right-0 mt-2 w-36 bg-ochre-50/98 backdrop-blur-md border border-ochre-300 rounded-xl shadow-yao-lg py-1.5 z-[100] overflow-visible animate-yao-rise"
               role="listbox"
             >
               {typeOptions.map((type) => {
@@ -294,7 +294,7 @@ const SearchBar: React.FC = () => {
       {/* ===== 搜索结果下拉 ===== */}
       {isDropdownOpen && results.length > 0 && (
         <div
-          className="absolute top-full left-0 right-0 mt-2 bg-ochre-50/98 backdrop-blur-md border border-ochre-300 rounded-2xl shadow-yao-xl z-50 overflow-hidden max-h-96 overflow-y-auto animate-yao-slide-up"
+          className="absolute top-full left-0 right-0 mt-2 bg-ochre-50/98 backdrop-blur-md border border-ochre-300 rounded-2xl shadow-yao-xl z-[100] overflow-hidden max-h-96 overflow-y-auto animate-yao-slide-up"
           role="listbox"
         >
           <div className="px-4 py-2 border-b border-ochre-200 bg-ochre-100/60 flex items-center justify-between text-xs text-ink-600">
@@ -356,7 +356,7 @@ const SearchBar: React.FC = () => {
 
       {/* ===== 空状态 ===== */}
       {isDropdownOpen && results.length === 0 && (
-        <div className="absolute top-full left-0 right-0 mt-2 bg-ochre-50 border border-ochre-300 rounded-2xl shadow-yao-xl z-50 p-6 text-center animate-yao-rise">
+        <div className="absolute top-full left-0 right-0 mt-2 bg-ochre-50 border border-ochre-300 rounded-2xl shadow-yao-xl z-[100] p-6 text-center animate-yao-rise">
           <div className="w-14 h-14 rounded-full bg-amber-100 flex items-center justify-center mx-auto mb-3">
             <Search className="w-7 h-7 text-amber-600" />
           </div>
