@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { useMapStore } from '../../store/mapStore';
 
 const BackToTop: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const { isPanelOpen } = useMapStore();
 
   useEffect(() => {
     const toggleVisibility = () => {
@@ -22,6 +24,10 @@ const BackToTop: React.FC = () => {
       behavior: 'smooth',
     });
   };
+
+  // 当省份面板打开时，隐藏回到顶部按钮，避免与面板底部按钮产生视觉冲突。
+  // 面板自身有"返回地图探索"按钮，能够覆盖返回顶部的功能诉求。
+  if (isPanelOpen && isVisible) return null;
 
   return (
     <div

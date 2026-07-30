@@ -1,3 +1,34 @@
+/**
+ * 省份级瑶医瑶药详细资料：
+ * 包含诊疗理念、传承脉络、特色技法、药材资源、炮制工艺、现代应用等维度
+ * 用于在省份简介模块中向用户呈现瑶医文化的完整知识图谱。
+ */
+export interface YaoMedicineProfile {
+  /** 瑶医核心诊疗理念（理论体系概述） */
+  corePhilosophy: string;
+  /** 关键诊疗理念要点（3-5 条） */
+  philosophyPoints: string[];
+  /** 传承发展脉络（按朝代/时期划分的历史阶段） */
+  inheritanceLineage: string;
+  /** 代表性诊疗技法（如药浴、磨刀诊脉、药锤、火攻等） */
+  representativeTechniques: {
+    name: string;
+    description: string;
+  }[];
+  /** 瑶药资源分布特点（地形、气候、生物多样性） */
+  resourceDistribution: string;
+  /** 常用道地药材品种列表（3-6 种） */
+  authenticHerbs: string[];
+  /** 传统炮制工艺概述（采集、炮制、储存） */
+  processingCraft: string;
+  /** 炮制要点列表（3-5 条） */
+  processingPoints: string[];
+  /** 现代应用成果（产业、研究、标准化） */
+  modernApplications: string;
+  /** 现代应用亮点（3-5 条） */
+  modernHighlights: string[];
+}
+
 export interface Region {
   id: string;
   name: string;
@@ -11,6 +42,8 @@ export interface Region {
   history: string;
   modernDevelopment: string;
   historyPeriods: string[];
+  /** 省份级瑶医瑶药详细资料（诊疗理念、传承脉络、特色技法、药材资源、炮制工艺、现代应用） */
+  yaoMedicineProfile?: YaoMedicineProfile;
 }
 
 /**

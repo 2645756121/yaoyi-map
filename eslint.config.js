@@ -13,7 +13,11 @@ export default tseslint.config(
       'yao-medical-map-*/**',
       'node_modules',
       'yaoyi data/**',
+<<<<<<< HEAD
       // 椤圭洰閰嶇疆鏂囦欢涓庢紨绀?楠岃瘉鑴氭湰锛氶潪婧愮爜锛岃烦杩?lint
+=======
+      // 项目配置文件与演示/验证脚本：非源码，跳过 lint
+>>>>>>> 3f57f56 (feat: 省份瑶医瑶药深度资料 + 流式面板布局 + 统一 Logo 组件)
       'tailwind.config.js',
       'postcss.config.js',
       'vite.config.ts',

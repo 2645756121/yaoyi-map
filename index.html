@@ -2,8 +2,44 @@
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
+
+    <!--
+      🟡 官方 Logo：logo.png + logo.svg 双源 favicon 配置
+      - PNG：现代浏览器主显
+      - SVG：矢量高保真备用（部分嵌入式设备优先用）
+      - Apple Touch Icon：iOS 启动屏 / 添加到主屏
+      Vite 构建时会按 base 配置自动改写 logo/ 下所有静态资源引用
+    -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/logo/logo.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/logo/logo.png" />
+    <link rel="alternate icon" type="image/svg+xml" href="/logo/logo.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/logo/logo.png" />
+    <link rel="apple-touch-icon-precomposed" href="/logo/logo.png" />
+    <meta name="theme-color" content="#90A686" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--
+      🟡 官方 Logo 预加载：
+      - as="image" + fetchpriority="high"：告知浏览器这是关键首屏图像，
+        即使 <img loading="lazy">，preload 仍会让浏览器尽早拿到资源
+      - imagesrcset + imagesizes：响应式分发，移动端 / 桌面端按需加载
+      注：base 部署在子路径（如 /yaoyi-map/）下时，Vite 构建会自动改写 HTML 中的 src
+    -->
+    <link
+      rel="preload"
+      as="image"
+      href="/logo/logo.png"
+      type="image/png"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="/logo/logo.svg"
+      type="image/svg+xml"
+      fetchpriority="high"
+    />
     <meta
       name="description"
       content="瑶医分布交互式地图：探索瑶族传统医学与草药资源的可视化平台"

@@ -193,6 +193,52 @@ body::before {
   border-left: 1px solid #EBD9C9;
 }
 
+<<<<<<< HEAD
+=======
+/* ===== 流式布局的省份面板容器 =====
+   与原 modal-layer 不同：本类无 position: fixed，参与文档流，
+   可以跟随页面滚动；z-index 略高于地图区域，但不遮挡 Modals。 */
+.region-panel-streaming {
+  position: relative;
+  width: 100%;
+  z-index: 5;
+  /* 避免页面横向滚动条 */
+  overflow-x: hidden;
+}
+
+/* 粘性头部：保留省份标题在视口顶部始终可见 */
+.region-panel-sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  backdrop-filter: blur(14px) saturate(180%);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+}
+
+/* 流式布局下面板的滚动容器不需要自身滚动，整体让浏览器滚动即可 */
+.region-panel-scroll {
+  /* 不再限制 max-height，确保内容自然向下展开 */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(212, 172, 106, 0.5) rgba(247, 234, 223, 0.7);
+}
+
+/* 流式面板在不同视口下的尺寸调节 */
+@media (max-width: 640px) {
+  /* 在移动端缩小上下内边距，给内容更多空间 */
+  .region-panel-sticky-header {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  /* 在大屏提供更强的层次阴影，弱化边缘 */
+  .region-panel-streaming {
+    padding-bottom: 2rem;
+  }
+}
+
+>>>>>>> 3f57f56 (feat: 省份瑶医瑶药深度资料 + 流式面板布局 + 统一 Logo 组件)
 /* ===== Modal 背景：暖色 backdrop ===== */
 .herb-modal,
 .therapy-modal,
@@ -952,6 +998,97 @@ body::before {
   transform-origin: bottom center;
 }
 
+<<<<<<< HEAD
+=======
+/* ===== Logo 图像 — 顶部导航 / Footer / 通用 ===== */
+/* 需求：Web 友好（PNG + SVG 双源降级）、透明背景、响应式、懒加载、悬停过渡、可点击回首页 */
+.yao-logo-img {
+  /* 浅淡过渡：透明度 + 缩放 + 旋转均在 300ms 内完成，缓动用 yao-soft */
+  transition:
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.3s ease,
+    filter 0.3s ease;
+  /* 默认防锯齿，保证小尺寸渲染清晰 */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  /* 防止 SVG 在某些浏览器中默认带 1px 间距 */
+  line-height: 0;
+}
+
+/* Logo 容器徽章：背景透明，仅靠 hover 时增加柔光与阴影 */
+.yao-logo-badge {
+  background: transparent;
+  border-radius: 1rem;
+  transition: box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform, box-shadow;
+}
+
+/* Logo 骨架占位（CLS = 0） */
+.yao-logo-skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(247, 234, 223, 0.6) 0%,
+    rgba(212, 172, 106, 0.25) 50%,
+    rgba(247, 234, 223, 0.6) 100%
+  );
+  background-size: 200% 100%;
+  animation: yao-logo-skeleton-shimmer 1.6s linear infinite;
+}
+@keyframes yao-logo-skeleton-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* 当 Logo 作为可点击链接：hover 时缩放 + 旋转 + 柔光 */
+.yao-logo-link {
+  text-decoration: none;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.yao-logo-link:hover .yao-logo-badge-interactive {
+  transform: scale(1.05) rotate(3deg);
+  box-shadow: 0 10px 24px -8px rgba(212, 172, 106, 0.5);
+}
+.yao-logo-link:active .yao-logo-badge-interactive {
+  transform: scale(0.95);
+}
+.yao-logo-link:focus-visible .yao-logo-badge-interactive {
+  box-shadow: 0 0 0 4px rgba(212, 172, 106, 0.55);
+}
+
+/* hover：父级 group 在 hover 时由 Tailwind 触发；这里补一个微妙的亮度提升 */
+.group:hover .yao-logo-img,
+.yao-logo-link:hover .yao-logo-img {
+  filter: brightness(1.05) drop-shadow(0 2px 4px rgba(212, 172, 106, 0.35));
+}
+
+/* 焦点态：键盘导航可见（与父级 focus-visible 环配合） */
+.group:focus-visible .yao-logo-img,
+.yao-logo-link:focus-visible .yao-logo-img {
+  filter: brightness(1.08) drop-shadow(0 2px 6px rgba(212, 172, 106, 0.5));
+}
+
+/* 用户偏好减少动效：跳过过渡 */
+@media (prefers-reduced-motion: reduce) {
+  .yao-logo-img,
+  .yao-logo-badge,
+  .yao-logo-link,
+  .yao-logo-skeleton {
+    transition: none !important;
+    animation: none !important;
+  }
+  .group:hover .yao-logo-img,
+  .group:focus-visible .yao-logo-img,
+  .yao-logo-link:hover .yao-logo-img,
+  .yao-logo-link:focus-visible .yao-logo-img,
+  .yao-logo-link:hover .yao-logo-badge-interactive,
+  .yao-logo-link:focus-visible .yao-logo-badge-interactive {
+    transform: none !important;
+    filter: none !important;
+  }
+}
+
+>>>>>>> 3f57f56 (feat: 省份瑶医瑶药深度资料 + 流式面板布局 + 统一 Logo 组件)
 /* ===== 滚动到顶部按钮增强 ===== */
 .back-to-top {
   /* 由 inline 控制颜色，重定义聚焦状态 */
