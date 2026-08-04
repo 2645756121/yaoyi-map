@@ -8,7 +8,7 @@ import { assetPath } from '../../lib/assetPath';
  *  1. 资源路径：使用 assetPath() 自动注入运行时 base 前缀，
  *     兼容 GitHub Pages 子路径、vercel 自定义域名等部署形态，绝不出现 404。
  *  2. 加载策略：四级降级链
- *       ① LOGO(1).svg  → 1024×1024 高保真矢量主源（项目最新官方设计稿）
+ *       ① LOGO(1).svg  → 767×784 高保真矢量主源（项目最新官方设计稿，已裁剪冗余白边）
  *       ② logo.png      → 1.15 MB 栅格备用（SVG 不可用时的兜底）
  *       ③ logo.svg      → 10 KB 精简矢量备用
  *       ④ data:URL 占位 → 永不失败的最小兜底
@@ -67,14 +67,17 @@ const sizeMap: Record<LogoSize, { min: string; max: string; defaultMin: number }
 };
 
 // 资源路径按优先级排序：
-//   1. LOGO(1).svg — 项目最新官方设计稿（1024×1024 矢量，锐利可缩放）
+//   1. LOGO(1).svg — 项目最新官方设计稿（裁剪白边后 767×784 矢量，锐利可缩放）
 //   2. logo.png     — 栅格备用，覆盖 SVG 不支持的边缘场景
 //   3. logo.svg     — 轻量矢量备用，体积仅为 LOGO(1).svg 的 1.5%
 //   4. data:URL     — 内联占位，永不失败
 const LOGO_PRIMARY = assetPath('logo/LOGO(1).svg');
 const LOGO_PNG = assetPath('logo/logo.png');
 const LOGO_SVG = assetPath('logo/logo.svg');
-const LOGO_DIMS = { w: 1024, h: 1024 };
+// 原始 LOGO(1).svg 1024×1024 中存在约 12–13% 的统一白边。
+// 已裁剪为 viewBox="127.72 116.46 767 784"，SVG 内部自带 width/height；
+// 这里保留近似方形的宽高值，仅供 <img> 元素的 intrinsic ratio 使用。
+const LOGO_DIMS = { w: 768, h: 784 };
 
 /**
  * 占位 fallback：当所有外部资源都失败时显示的极简 SVG 兜底
