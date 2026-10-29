@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#EDEEDA"/>
+      <stop offset="100%" stop-color="#EDEEDA" stop-opacity="0.6"/>
+    </linearGradient>
+    <pattern id="wv" patternUnits="userSpaceOnUse" width="20" height="20">
+      <path d="M 0,10 L 20,10 M 10,0 L 10,20" stroke="#B8923A" stroke-width="0.3" opacity="0.15"/>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#bg)"/>
+  <rect width="100%" height="100%" fill="url(#wv)"/>
+  <rect x="6" y="6" width="388" height="288" fill="none" stroke="#B8923A" stroke-width="2" opacity="0.4"/>
+  <rect x="10" y="10" width="380" height="280" fill="none" stroke="#B8923A" stroke-width="0.5" opacity="0.3"/>
+  <line x1="20" y1="22" x2="380" y2="22" stroke="#B8923A" stroke-width="1" opacity="0.5"/>
+  <text x="20" y="18" font-family="Noto Sans SC" font-size="9" fill="#B8923A" opacity="0.7">本草图鉴</text>
+  <text x="380" y="18" text-anchor="end" font-family="serif" font-size="9" fill="#B8923A" opacity="0.7">HERBARIUM</text>
+  
+  <path d="M 200,90 L 200,210" stroke="#A77E50" stroke-width="6"/>
+  <line x1="190" y1="110" x2="210" y2="110" stroke="#7A5C2D" stroke-width="1"/>
+  <line x1="190" y1="130" x2="210" y2="130" stroke="#7A5C2D" stroke-width="1"/>
+  <line x1="190" y1="150" x2="210" y2="150" stroke="#7A5C2D" stroke-width="1"/>
+  <line x1="190" y1="170" x2="210" y2="170" stroke="#7A5C2D" stroke-width="1"/>
+  <line x1="190" y1="190" x2="210" y2="190" stroke="#7A5C2D" stroke-width="1"/>
+
+  <ellipse cx="180" cy="130" rx="22" ry="6" fill="#4A7C3A" stroke="#2D5016" stroke-width="0.8" transform="rotate(-15 180 130)"/>
+  <ellipse cx="180" cy="110" rx="22" ry="6" fill="#4A7C3A" stroke="#2D5016" stroke-width="0.8" transform="rotate(-20 180 110)"/>
+  <ellipse cx="180" cy="150" rx="22" ry="6" fill="#4A7C3A" stroke="#2D5016" stroke-width="0.8" transform="rotate(-10 180 150)"/>
+  <ellipse cx="220" cy="130" rx="22" ry="6" fill="#4A7C3A" stroke="#2D5016" stroke-width="0.8" transform="rotate(15 220 130)"/>
+  <ellipse cx="220" cy="110" rx="22" ry="6" fill="#4A7C3A" stroke="#2D5016" stroke-width="0.8" transform="rotate(20 220 110)"/>
+  <ellipse cx="220" cy="150" rx="22" ry="6" fill="#4A7C3A" stroke="#2D5016" stroke-width="0.8" transform="rotate(10 220 150)"/>
+
+  <path d="M 195,70 Q 195,78 199,82 L 205,82 Q 209,78 209,70 Q 205,65 200,65 Q 195,65 195,70 Z" fill="#D4C460" stroke="#B8923A" stroke-width="0.8"/>
+  <circle cx="200" cy="73" r="1" fill="#FCD34D"/>
+  <rect x="225" y="200" width="20" height="6" fill="#F4D35E" stroke="#B8923A" stroke-width="0.8"/>
+  <rect x="225" y="208" width="20" height="6" fill="#F4D35E" stroke="#B8923A" stroke-width="0.8"/>
+  <rect x="225" y="216" width="20" height="6" fill="#F4D35E" stroke="#B8923A" stroke-width="0.8"/>
+
+  <text x="235" y="238" text-anchor="middle" font-family="serif" font-size="7" fill="#7A8B4A" opacity="0.7">树皮</text>
+
+  <g transform="translate(200, 252)">
+    <text text-anchor="middle" font-family="Noto Sans SC" font-size="22" font-weight="700" fill="#B8923A">川黄柏</text>
+    <text text-anchor="middle" y="22" font-family="serif" font-size="10" font-style="italic" fill="#B8923A" opacity="0.85">Phellodendron chinense</text>
+  </g>
+  <text x="14" y="290" font-family="serif" font-size="8" fill="#B8923A" opacity="0.5">Real Plant 2026</text>
+  <text x="386" y="290" text-anchor="end" font-family="serif" font-size="8" fill="#B8923A" opacity="0.5">YaoYi YaoYao</text>
+</svg>

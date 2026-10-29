@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <linearGradient id="bg-山药" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#F5EDD8" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#F5EDD8" stop-opacity="0.6"/>
+    </linearGradient>
+    <pattern id="weave-山药" patternUnits="userSpaceOnUse" width="20" height="20">
+      <path d="M 0,10 L 20,10 M 10,0 L 10,20" stroke="#B5945F" stroke-width="0.3" opacity="0.15"/>
+    </pattern>
+  </defs>
+
+  <!-- 背景渐变 -->
+  <rect width="100%" height="100%" fill="url(#bg-山药)"/>
+
+  <!-- 本草图鉴纹饰底纹 -->
+  <rect width="100%" height="100%" fill="url(#weave-山药)"/>
+
+  <!-- 边框（仿古医书风格） -->
+  <rect x="6" y="6" width="388" height="288" fill="none" stroke="#B5945F" stroke-width="2" opacity="0.4"/>
+  <rect x="10" y="10" width="380" height="280" fill="none" stroke="#B5945F" stroke-width="0.5" opacity="0.3"/>
+
+  <!-- 顶部装饰横线 -->
+  <line x1="20" y1="22" x2="380" y2="22" stroke="#B5945F" stroke-width="1" opacity="0.5"/>
+  <text x="20" y="18" font-family="Noto Sans SC, serif" font-size="9" fill="#B5945F" opacity="0.7">本草图鉴</text>
+  <text x="380" y="18" text-anchor="end" font-family="serif" font-size="9" fill="#B5945F" opacity="0.7">HERBARIUM</text>
+
+  
+        <!-- 根/根茎 -->
+        <g transform="translate(200, 150)">
+          <path d="M 0,-60 Q -15,-30 -10,0 Q -15,30 0,60 Q -20,40 -25,0 Q -20,-40 0,-60"
+                fill="#B5945F" stroke="#B5945F" stroke-width="2" opacity="0.85"/>
+          <path d="M -8,-50 Q -8,-25 -8,0 Q -8,25 -8,50" stroke="#fff" stroke-width="1.5" fill="none" opacity="0.4"/>
+          <circle cx="0" cy="0" r="3" fill="#FCD34D"/>
+        </g>
+
+  <!-- 名称 -->
+  <g transform="translate(200, 250)">
+    <text text-anchor="middle" font-family="Noto Sans SC, serif" font-size="22" font-weight="700" fill="#B5945F">山药</text>
+    <text text-anchor="middle" y="22" font-family="serif" font-size="10" font-style="italic" fill="#B5945F" opacity="0.8">Dioscorea polystachya</text>
+    <line x1="-40" y1="32" x2="40" y2="32" stroke="#B5945F" stroke-width="0.5" opacity="0.5"/>
+  </g>
+
+  <!-- 角标 -->
+  <text x="14" y="290" font-family="serif" font-size="8" fill="#B5945F" opacity="0.5">Real · Plant · 2026</text>
+  <text x="386" y="290" text-anchor="end" font-family="serif" font-size="8" fill="#B5945F" opacity="0.5">YaoYi · 瑶药</text>
+</svg>

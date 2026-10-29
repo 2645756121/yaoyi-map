@@ -1,0 +1,60 @@
+MIT License
+
+Copyright (c) 2026 瑶医分布地图项目组 (YaoYi Medicine Map Project)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+## 第三方资源许可
+
+本项目使用了以下第三方资源，遵守其各自许可协议：
+
+### 地理边界数据
+- 数据来源：高德地图 / 阿里 DataV 公开地理数据
+- 许可类型：仅限学习与非商业用途
+- 商业使用请联系数据源方获取授权
+
+### 草药图片（Wikimedia Commons 部分）
+- 桔梗 (Platycodon grandiflorus)：CC-BY-SA-4.0 © Gaeho77
+- 灵芝 (Ganoderma lucidum)：CC-BY-SA-3.0 / GFDL © Eric Steinert
+- 甘草 (Glycyrrhiza uralensis)：Public Domain © Franz Eugen Köhler
+- 黄芪、党参、白术、山药、当归、丹参、茯苓、黄芩、杜仲、白芍、川芎、红花、三七、牡丹皮、玉竹、石斛、陈皮、厚朴、柴胡、郁金、香附：CC-BY-SA-3.0/4.0 © Wikimedia Commons 贡献者
+- 完整署名列表参见 [src/lib/herbImages.ts](src/lib/herbImages.ts)
+
+### 本草图鉴 SVG 插画
+- 自绘插画 © 2026 瑶医分布地图项目组
+- 矢量格式，可自由使用于教育与非商业用途
+
+### 字体
+- 使用系统字体栈（system-ui, -apple-system, sans-serif）
+- 未引入第三方字体，无版权问题
+
+### Leaflet / OpenStreetMap
+- 地图渲染：Leaflet 1.9.4（BSD-2-Clause）
+- 地图数据：本项目使用本地 GeoJSON，未调用 OSM 在线瓦片服务
+
+---
+
+## 使用限制
+
+1. **非商业用途**：本项目仅供学习、研究、教育和文化展示使用。
+2. **署名要求**：使用本项目代码或资源时，请保留原作者署名。
+3. **第三方资源**：商业使用前请确认第三方资源（地理数据、药品图片等）的合规性。
+4. **免责声明**：本项目中的中医药内容仅供参考，不构成医疗建议。

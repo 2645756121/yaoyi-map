@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#EDEEDA"/>
+      <stop offset="100%" stop-color="#EDEEDA" stop-opacity="0.6"/>
+    </linearGradient>
+    <pattern id="wv" patternUnits="userSpaceOnUse" width="20" height="20">
+      <path d="M 0,10 L 20,10 M 10,0 L 10,20" stroke="#8B6F47" stroke-width="0.3" opacity="0.15"/>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#bg)"/>
+  <rect width="100%" height="100%" fill="url(#wv)"/>
+  <rect x="6" y="6" width="388" height="288" fill="none" stroke="#8B6F47" stroke-width="2" opacity="0.4"/>
+  <rect x="10" y="10" width="380" height="280" fill="none" stroke="#8B6F47" stroke-width="0.5" opacity="0.3"/>
+  <line x1="20" y1="22" x2="380" y2="22" stroke="#8B6F47" stroke-width="1" opacity="0.5"/>
+  <text x="20" y="18" font-family="Noto Sans SC" font-size="9" fill="#8B6F47" opacity="0.7">本草图鉴</text>
+  <text x="380" y="18" text-anchor="end" font-family="serif" font-size="9" fill="#8B6F47" opacity="0.7">HERBARIUM</text>
+  
+  <path d="M 180,225 Q 200,222 220,225" stroke="#6B4E3C" stroke-width="2" fill="none"/>
+  <path d="M 200,90 L 200,220" stroke="#5C8C42" stroke-width="2.5"/>
+  <ellipse cx="180" cy="120" rx="6" ry="28" fill="#4A7C3A" stroke="#2D5016" stroke-width="0.8" transform="rotate(-10 180 120)"/>
+  <ellipse cx="220" cy="120" rx="6" ry="28" fill="#4A7C3A" stroke="#2D5016" stroke-width="0.8" transform="rotate(-10 220 120)"/>
+  <ellipse cx="180" cy="160" rx="5" ry="22" fill="#4A7C3A" stroke="#2D5016" stroke-width="0.8" transform="rotate(-10 180 160)"/>
+  <ellipse cx="220" cy="160" rx="5" ry="22" fill="#4A7C3A" stroke="#2D5016" stroke-width="0.8" transform="rotate(-10 220 160)"/>
+  <ellipse cx="180" cy="195" rx="4" ry="18" fill="#4A7C3A" stroke="#2D5016" stroke-width="0.8" transform="rotate(-10 180 195)"/>
+  <ellipse cx="220" cy="195" rx="4" ry="18" fill="#4A7C3A" stroke="#2D5016" stroke-width="0.8" transform="rotate(-10 220 195)"/>
+
+  <ellipse cx="200" cy="80" rx="12" ry="10" fill="#A8895E" stroke="#6B5235" stroke-width="1"/>
+  <line x1="195" y1="72" x2="195" y2="86" stroke="#6B5235" stroke-width="0.4" opacity="0.6"/>
+  <line x1="200" y1="71" x2="200" y2="87" stroke="#6B5235" stroke-width="0.4" opacity="0.6"/>
+  <line x1="205" y1="72" x2="205" y2="86" stroke="#6B5235" stroke-width="0.4" opacity="0.6"/>
+
+  <text x="200" y="106" text-anchor="middle" font-family="serif" font-size="7" fill="#7A8B4A" opacity="0.7">果实</text>
+
+  <g transform="translate(200, 252)">
+    <text text-anchor="middle" font-family="Noto Sans SC" font-size="22" font-weight="700" fill="#8B6F47">砂仁</text>
+    <text text-anchor="middle" y="22" font-family="serif" font-size="10" font-style="italic" fill="#8B6F47" opacity="0.85">Amomum villosum</text>
+  </g>
+  <text x="14" y="290" font-family="serif" font-size="8" fill="#8B6F47" opacity="0.5">Real Plant 2026</text>
+  <text x="386" y="290" text-anchor="end" font-family="serif" font-size="8" fill="#8B6F47" opacity="0.5">YaoYi YaoYao</text>
+</svg>

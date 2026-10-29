@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#EDEEDA"/>
+      <stop offset="100%" stop-color="#EDEEDA" stop-opacity="0.6"/>
+    </linearGradient>
+    <pattern id="wv" patternUnits="userSpaceOnUse" width="20" height="20">
+      <path d="M 0,10 L 20,10 M 10,0 L 10,20" stroke="#C4956A" stroke-width="0.3" opacity="0.15"/>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#bg)"/>
+  <rect width="100%" height="100%" fill="url(#wv)"/>
+  <rect x="6" y="6" width="388" height="288" fill="none" stroke="#C4956A" stroke-width="2" opacity="0.4"/>
+  <rect x="10" y="10" width="380" height="280" fill="none" stroke="#C4956A" stroke-width="0.5" opacity="0.3"/>
+  <line x1="20" y1="22" x2="380" y2="22" stroke="#C4956A" stroke-width="1" opacity="0.5"/>
+  <text x="20" y="18" font-family="Noto Sans SC" font-size="9" fill="#C4956A" opacity="0.7">本草图鉴</text>
+  <text x="380" y="18" text-anchor="end" font-family="serif" font-size="9" fill="#C4956A" opacity="0.7">HERBARIUM</text>
+  
+  <path d="M 200,90 Q 200,160 200,210" stroke="#5C8C42" stroke-width="2.5"/>
+  <ellipse cx="185" cy="170" rx="5" ry="20" fill="#4A7C3A" stroke="#2D5016" stroke-width="0.8" transform="rotate(-30 185 170)"/>
+  <ellipse cx="215" cy="170" rx="5" ry="20" fill="#4A7C3A" stroke="#2D5016" stroke-width="0.8" transform="rotate(-30 215 170)"/>
+  <ellipse cx="187" cy="140" rx="4" ry="16" fill="#4A7C3A" stroke="#2D5016" stroke-width="0.8" transform="rotate(-30 187 140)"/>
+  <ellipse cx="213" cy="140" rx="4" ry="16" fill="#4A7C3A" stroke="#2D5016" stroke-width="0.8" transform="rotate(-30 213 140)"/>
+  <ellipse cx="189" cy="110" rx="3" ry="13" fill="#4A7C3A" stroke="#2D5016" stroke-width="0.8" transform="rotate(-30 189 110)"/>
+  <ellipse cx="211" cy="110" rx="3" ry="13" fill="#4A7C3A" stroke="#2D5016" stroke-width="0.8" transform="rotate(-30 211 110)"/>
+
+  <path d="M 190,83 Q 190,93 194,97 L 206,97 Q 210,93 210,83 Q 206,77 200,77 Q 194,77 190,83 Z" fill="#D4B896" stroke="#8B6F47" stroke-width="0.8"/>
+  <circle cx="197" cy="87" r="0.8" fill="#FCD34D"/>
+  <circle cx="200" cy="88" r="0.8" fill="#FCD34D"/>
+  <circle cx="203" cy="87" r="0.8" fill="#FCD34D"/>
+
+  <path d="M 115,220 Q 112,225 115,230 L 125,233 L 140,230 L 155,233 L 165,230 Q 168,225 165,220 L 155,217 L 140,220 L 125,217 Z" fill="#D4B896" stroke="#8B6F47" stroke-width="1"/>
+  <circle cx="125" cy="225" r="2" fill="#FFFFFF" stroke="#8B6F47" stroke-width="0.5"/>
+  <circle cx="140" cy="225" r="2" fill="#FFFFFF" stroke="#8B6F47" stroke-width="0.5"/>
+  <circle cx="155" cy="225" r="2" fill="#FFFFFF" stroke="#8B6F47" stroke-width="0.5"/>
+
+  <text x="140" y="247" text-anchor="middle" font-family="serif" font-size="7" fill="#7A8B4A" opacity="0.7">根茎</text>
+
+  <g transform="translate(200, 252)">
+    <text text-anchor="middle" font-family="Noto Sans SC" font-size="22" font-weight="700" fill="#C4956A">黄精</text>
+    <text text-anchor="middle" y="22" font-family="serif" font-size="10" font-style="italic" fill="#C4956A" opacity="0.85">Polygonatum cyrtonema</text>
+  </g>
+  <text x="14" y="290" font-family="serif" font-size="8" fill="#C4956A" opacity="0.5">Real Plant 2026</text>
+  <text x="386" y="290" text-anchor="end" font-family="serif" font-size="8" fill="#C4956A" opacity="0.5">YaoYi YaoYao</text>
+</svg>

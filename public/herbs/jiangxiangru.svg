@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#EDEEDA"/>
+      <stop offset="100%" stop-color="#EDEEDA" stop-opacity="0.6"/>
+    </linearGradient>
+    <pattern id="wv" patternUnits="userSpaceOnUse" width="20" height="20">
+      <path d="M 0,10 L 20,10 M 10,0 L 10,20" stroke="#8B5C8B" stroke-width="0.3" opacity="0.15"/>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#bg)"/>
+  <rect width="100%" height="100%" fill="url(#wv)"/>
+  <rect x="6" y="6" width="388" height="288" fill="none" stroke="#8B5C8B" stroke-width="2" opacity="0.4"/>
+  <rect x="10" y="10" width="380" height="280" fill="none" stroke="#8B5C8B" stroke-width="0.5" opacity="0.3"/>
+  <line x1="20" y1="22" x2="380" y2="22" stroke="#8B5C8B" stroke-width="1" opacity="0.5"/>
+  <text x="20" y="18" font-family="Noto Sans SC" font-size="9" fill="#8B5C8B" opacity="0.7">本草图鉴</text>
+  <text x="380" y="18" text-anchor="end" font-family="serif" font-size="9" fill="#8B5C8B" opacity="0.7">HERBARIUM</text>
+  
+  <path d="M 200,90 L 200,210" stroke="#6B8E4E" stroke-width="2"/>
+  <ellipse cx="185" cy="130" rx="4" ry="14" fill="#5C8C42" stroke="#3D6B2E" stroke-width="0.8" transform="rotate(-20 185 130)"/>
+  <ellipse cx="215" cy="130" rx="4" ry="14" fill="#5C8C42" stroke="#3D6B2E" stroke-width="0.8" transform="rotate(20 215 130)"/>
+  <ellipse cx="185" cy="170" rx="4" ry="16" fill="#5C8C42" stroke="#3D6B2E" stroke-width="0.8" transform="rotate(-20 185 170)"/>
+  <ellipse cx="215" cy="170" rx="4" ry="16" fill="#5C8C42" stroke="#3D6B2E" stroke-width="0.8" transform="rotate(20 215 170)"/>
+
+  <line x1="200" y1="85" x2="200" y2="120" stroke="#5C8C42" stroke-width="1.5"/>
+  <path d="M 194,90 Q 194,95 200,97 Q 206,95 206,90 Q 204,88 200,88 Q 196,88 194,90 Z" fill="#9C6BA8" stroke="#5B3D6B" stroke-width="0.5"/>
+  <path d="M 194,100 Q 194,105 200,107 Q 206,105 206,100 Q 204,98 200,98 Q 196,98 194,100 Z" fill="#9C6BA8" stroke="#5B3D6B" stroke-width="0.5"/>
+  <path d="M 194,110 Q 194,115 200,117 Q 206,115 206,110 Q 204,108 200,108 Q 196,108 194,110 Z" fill="#9C6BA8" stroke="#5B3D6B" stroke-width="0.5"/>
+
+  <circle cx="200" cy="93" r="0.6" fill="#FCD34D"/>
+  <circle cx="200" cy="103" r="0.6" fill="#FCD34D"/>
+  <circle cx="200" cy="113" r="0.6" fill="#FCD34D"/>
+
+  <g transform="translate(200, 252)">
+    <text text-anchor="middle" font-family="Noto Sans SC" font-size="22" font-weight="700" fill="#8B5C8B">江香薷</text>
+    <text text-anchor="middle" y="22" font-family="serif" font-size="10" font-style="italic" fill="#8B5C8B" opacity="0.85">Mosla chinensis</text>
+  </g>
+  <text x="14" y="290" font-family="serif" font-size="8" fill="#8B5C8B" opacity="0.5">Real Plant 2026</text>
+  <text x="386" y="290" text-anchor="end" font-family="serif" font-size="8" fill="#8B5C8B" opacity="0.5">YaoYi YaoYao</text>
+</svg>

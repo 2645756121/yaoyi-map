@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" width="180" height="180" role="img" aria-label="瑶医分布地图">
+  <title>瑶医分布地图</title>
+  <defs>
+    <linearGradient id="ring180" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F0D1A1" />
+      <stop offset="50%" stop-color="#DDBE8C" />
+      <stop offset="100%" stop-color="#90A686" />
+    </linearGradient>
+    <linearGradient id="herb180" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#90A686" />
+      <stop offset="100%" stop-color="#587851" />
+    </linearGradient>
+  </defs>
+  <circle cx="90" cy="90" r="89" fill="#F7EADF" />
+  <circle cx="90" cy="90" r="87" fill="none" stroke="url(#ring180)" stroke-width="2" />
+
+  <!-- 中心女性剪影（简化） -->
+  <g transform="translate(90, 90)">
+    <!-- 头饰 -->
+    <path d="M -14 -42 Q -16 -50 -8 -52 L 8 -52 Q 16 -50 14 -42 L 12 -28 L -12 -28 Z" fill="#243B25" />
+    <!-- 脸部 -->
+    <ellipse cx="0" cy="-20" rx="6" ry="7" fill="#F7EADF" stroke="#243B25" stroke-width="0.6" />
+    <path d="M -3 -20 Q -2 -19 -1 -20" stroke="#243B25" stroke-width="0.6" fill="none" stroke-linecap="round" />
+    <path d="M 1 -20 Q 2 -19 3 -20" stroke="#243B25" stroke-width="0.6" fill="none" stroke-linecap="round" />
+    <path d="M -2 -14 Q 0 -13 2 -14" stroke="#243B25" stroke-width="0.6" fill="none" stroke-linecap="round" />
+    <!-- 项圈 -->
+    <circle cx="0" cy="-6" r="2.5" fill="url(#ring180)" />
+    <!-- 衣身 -->
+    <path d="M -16 -3 L -8 4 L 8 4 L 16 -3 L 20 50 L -20 50 Z" fill="#587851" stroke="#243B25" stroke-width="0.8" />
+    <!-- 衣领 -->
+    <path d="M -8 -3 L 0 4 L 8 -3 Z" fill="#90A686" />
+    <!-- 草药（左手托起） -->
+    <path d="M -18 -5 Q -25 -20 -28 -32" fill="none" stroke="#587851" stroke-width="3" stroke-linecap="round" />
+    <ellipse cx="-30" cy="-35" rx="4" ry="3" fill="#F7EADF" stroke="#243B25" stroke-width="0.6" />
+  </g>
+
+  <!-- 草药（左上） -->
+  <g transform="translate(60, 50)">
+    <path d="M 0 0 Q 5 -10 12 -18" fill="none" stroke="#587851" stroke-width="1.5" stroke-linecap="round" />
+    <path d="M 5 -10 Q 0 -16 5 -22 Q 12 -18 10 -10 Z" fill="url(#herb180)" stroke="#243B25" stroke-width="0.5" />
+    <circle cx="0" cy="-22" r="1.5" fill="#F0D1A1" stroke="#D4AC6A" stroke-width="0.4" />
+  </g>
+
+  <!-- 圆框 -->
+  <circle cx="90" cy="90" r="86" fill="none" stroke="url(#ring180)" stroke-width="2" />
+</svg>

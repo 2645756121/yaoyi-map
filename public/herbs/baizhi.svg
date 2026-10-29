@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#EDEEDA"/>
+      <stop offset="100%" stop-color="#EDEEDA" stop-opacity="0.6"/>
+    </linearGradient>
+    <pattern id="wv" patternUnits="userSpaceOnUse" width="20" height="20">
+      <path d="M 0,10 L 20,10 M 10,0 L 10,20" stroke="#9FB892" stroke-width="0.3" opacity="0.15"/>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#bg)"/>
+  <rect width="100%" height="100%" fill="url(#wv)"/>
+  <rect x="6" y="6" width="388" height="288" fill="none" stroke="#9FB892" stroke-width="2" opacity="0.4"/>
+  <rect x="10" y="10" width="380" height="280" fill="none" stroke="#9FB892" stroke-width="0.5" opacity="0.3"/>
+  <line x1="20" y1="22" x2="380" y2="22" stroke="#9FB892" stroke-width="1" opacity="0.5"/>
+  <text x="20" y="18" font-family="Noto Sans SC" font-size="9" fill="#9FB892" opacity="0.7">本草图鉴</text>
+  <text x="380" y="18" text-anchor="end" font-family="serif" font-size="9" fill="#9FB892" opacity="0.7">HERBARIUM</text>
+  
+  <path d="M 200,90 L 200,210" stroke="#5C8C42" stroke-width="2.5"/>
+  <ellipse cx="160" cy="180" rx="20" ry="5" fill="#5C8C42" stroke="#3D6B2E" stroke-width="0.8" transform="rotate(-10 160 180)"/>
+  <ellipse cx="172" cy="172" rx="18" ry="5" fill="#5C8C42" stroke="#3D6B2E" stroke-width="0.8" transform="rotate(-20 172 172)"/>
+  <ellipse cx="240" cy="180" rx="20" ry="5" fill="#5C8C42" stroke="#3D6B2E" stroke-width="0.8" transform="rotate(10 240 180)"/>
+  <ellipse cx="228" cy="172" rx="18" ry="5" fill="#5C8C42" stroke="#3D6B2E" stroke-width="0.8" transform="rotate(20 228 172)"/>
+
+  <line x1="200" y1="80" x2="200" y2="68" stroke="#5C8C42" stroke-width="1.8"/>
+  <line x1="200" y1="68" x2="175" y2="52" stroke="#5C8C42" stroke-width="0.9"/>
+  <line x1="200" y1="68" x2="185" y2="48" stroke="#5C8C42" stroke-width="0.9"/>
+  <line x1="200" y1="68" x2="194" y2="46" stroke="#5C8C42" stroke-width="0.9"/>
+  <line x1="200" y1="68" x2="200" y2="44" stroke="#5C8C42" stroke-width="0.9"/>
+  <line x1="200" y1="68" x2="206" y2="46" stroke="#5C8C42" stroke-width="0.9"/>
+  <line x1="200" y1="68" x2="215" y2="48" stroke="#5C8C42" stroke-width="0.9"/>
+  <line x1="200" y1="68" x2="225" y2="52" stroke="#5C8C42" stroke-width="0.9"/>
+
+  <circle cx="175" cy="52" r="2.5" fill="#FFFFFF" stroke="#A8A8A8" stroke-width="0.4"/>
+  <circle cx="185" cy="48" r="2.5" fill="#FFFFFF" stroke="#A8A8A8" stroke-width="0.4"/>
+  <circle cx="194" cy="46" r="2.5" fill="#FFFFFF" stroke="#A8A8A8" stroke-width="0.4"/>
+  <circle cx="200" cy="44" r="2.5" fill="#FFFFFF" stroke="#A8A8A8" stroke-width="0.4"/>
+  <circle cx="206" cy="46" r="2.5" fill="#FFFFFF" stroke="#A8A8A8" stroke-width="0.4"/>
+  <circle cx="215" cy="48" r="2.5" fill="#FFFFFF" stroke="#A8A8A8" stroke-width="0.4"/>
+  <circle cx="225" cy="52" r="2.5" fill="#FFFFFF" stroke="#A8A8A8" stroke-width="0.4"/>
+
+  <circle cx="175" cy="52" r="0.7" fill="#FCD34D"/>
+  <circle cx="185" cy="48" r="0.7" fill="#FCD34D"/>
+  <circle cx="194" cy="46" r="0.7" fill="#FCD34D"/>
+  <circle cx="200" cy="44" r="0.7" fill="#FCD34D"/>
+  <circle cx="206" cy="46" r="0.7" fill="#FCD34D"/>
+  <circle cx="215" cy="48" r="0.7" fill="#FCD34D"/>
+  <circle cx="225" cy="52" r="0.7" fill="#FCD34D"/>
+
+  <g transform="translate(200, 252)">
+    <text text-anchor="middle" font-family="Noto Sans SC" font-size="22" font-weight="700" fill="#9FB892">白芷</text>
+    <text text-anchor="middle" y="22" font-family="serif" font-size="10" font-style="italic" fill="#9FB892" opacity="0.85">Angelica dahurica</text>
+  </g>
+  <text x="14" y="290" font-family="serif" font-size="8" fill="#9FB892" opacity="0.5">Real Plant 2026</text>
+  <text x="386" y="290" text-anchor="end" font-family="serif" font-size="8" fill="#9FB892" opacity="0.5">YaoYi YaoYao</text>
+</svg>

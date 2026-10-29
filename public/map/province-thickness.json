@@ -1,0 +1,317 @@
+{
+ "110000": {
+  "name": "北京市",
+  "meanElev": 368,
+  "medianElev": 276,
+  "maxElev": 2043,
+  "landPixels": 19385,
+  "tier": 2,
+  "thickness": 36000
+ },
+ "120000": {
+  "name": "天津市",
+  "meanElev": 18,
+  "medianElev": 5,
+  "maxElev": 785,
+  "landPixels": 13041,
+  "tier": 0,
+  "thickness": 18000
+ },
+ "130000": {
+  "name": "河北省",
+  "meanElev": 563,
+  "medianElev": 405,
+  "maxElev": 2585,
+  "landPixels": 213729,
+  "tier": 2,
+  "thickness": 36000
+ },
+ "140000": {
+  "name": "山西省",
+  "meanElev": 1162,
+  "medianElev": 1147,
+  "maxElev": 2845,
+  "landPixels": 169007,
+  "tier": 3,
+  "thickness": 48000
+ },
+ "150000": {
+  "name": "内蒙古自治区",
+  "meanElev": 983,
+  "medianElev": 1020,
+  "maxElev": 3308,
+  "landPixels": 1507325,
+  "tier": 3,
+  "thickness": 48000
+ },
+ "210000": {
+  "name": "辽宁省",
+  "meanElev": 235,
+  "medianElev": 180,
+  "maxElev": 1222,
+  "landPixels": 175365,
+  "tier": 1,
+  "thickness": 26000
+ },
+ "220000": {
+  "name": "吉林省",
+  "meanElev": 402,
+  "medianElev": 303,
+  "maxElev": 2511,
+  "landPixels": 246999,
+  "tier": 2,
+  "thickness": 36000
+ },
+ "230000": {
+  "name": "黑龙江省",
+  "meanElev": 321,
+  "medianElev": 276,
+  "maxElev": 1619,
+  "landPixels": 679655,
+  "tier": 2,
+  "thickness": 36000
+ },
+ "310000": {
+  "name": "上海市",
+  "meanElev": 4,
+  "medianElev": 4,
+  "maxElev": 20,
+  "landPixels": 6598,
+  "tier": 0,
+  "thickness": 18000
+ },
+ "320000": {
+  "name": "江苏省",
+  "meanElev": 14,
+  "medianElev": 6,
+  "maxElev": 434,
+  "landPixels": 89624,
+  "tier": 0,
+  "thickness": 18000
+ },
+ "330000": {
+  "name": "浙江省",
+  "meanElev": 297,
+  "medianElev": 213,
+  "maxElev": 1709,
+  "landPixels": 93048,
+  "tier": 1,
+  "thickness": 26000
+ },
+ "340000": {
+  "name": "安徽省",
+  "meanElev": 120,
+  "medianElev": 36,
+  "maxElev": 1570,
+  "landPixels": 132159,
+  "tier": 1,
+  "thickness": 26000
+ },
+ "350000": {
+  "name": "福建省",
+  "meanElev": 470,
+  "medianElev": 450,
+  "maxElev": 1892,
+  "landPixels": 104021,
+  "tier": 2,
+  "thickness": 36000
+ },
+ "360000": {
+  "name": "江西省",
+  "meanElev": 251,
+  "medianElev": 189,
+  "maxElev": 2046,
+  "landPixels": 144384,
+  "tier": 1,
+  "thickness": 26000
+ },
+ "370000": {
+  "name": "山东省",
+  "meanElev": 90,
+  "medianElev": 46,
+  "maxElev": 1292,
+  "landPixels": 161152,
+  "tier": 0,
+  "thickness": 18000
+ },
+ "410000": {
+  "name": "河南省",
+  "meanElev": 247,
+  "medianElev": 105,
+  "maxElev": 2175,
+  "landPixels": 163024,
+  "tier": 1,
+  "thickness": 26000
+ },
+ "420000": {
+  "name": "湖北省",
+  "meanElev": 433,
+  "medianElev": 188,
+  "maxElev": 2921,
+  "landPixels": 171850,
+  "tier": 2,
+  "thickness": 36000
+ },
+ "430000": {
+  "name": "湖南省",
+  "meanElev": 360,
+  "medianElev": 293,
+  "maxElev": 1889,
+  "landPixels": 183205,
+  "tier": 2,
+  "thickness": 36000
+ },
+ "440000": {
+  "name": "广东省",
+  "meanElev": 219,
+  "medianElev": 148,
+  "maxElev": 1645,
+  "landPixels": 142209,
+  "tier": 1,
+  "thickness": 26000
+ },
+ "450000": {
+  "name": "广西壮族自治区",
+  "meanElev": 397,
+  "medianElev": 303,
+  "maxElev": 1884,
+  "landPixels": 192206,
+  "tier": 2,
+  "thickness": 36000
+ },
+ "460000": {
+  "name": "海南省",
+  "meanElev": 179,
+  "medianElev": 92,
+  "maxElev": 1522,
+  "landPixels": 27190,
+  "tier": 1,
+  "thickness": 26000
+ },
+ "500000": {
+  "name": "重庆市",
+  "meanElev": 742,
+  "medianElev": 629,
+  "maxElev": 2594,
+  "landPixels": 75468,
+  "tier": 3,
+  "thickness": 48000
+ },
+ "510000": {
+  "name": "四川省",
+  "meanElev": 2598,
+  "medianElev": 2990,
+  "maxElev": 6720,
+  "landPixels": 444784,
+  "tier": 4,
+  "thickness": 62000
+ },
+ "520000": {
+  "name": "贵州省",
+  "meanElev": 1105,
+  "medianElev": 1031,
+  "maxElev": 2752,
+  "landPixels": 150568,
+  "tier": 3,
+  "thickness": 48000
+ },
+ "530000": {
+  "name": "云南省",
+  "meanElev": 1894,
+  "medianElev": 1822,
+  "maxElev": 5912,
+  "landPixels": 316954,
+  "tier": 4,
+  "thickness": 62000
+ },
+ "540000": {
+  "name": "西藏自治区",
+  "meanElev": 4741,
+  "medianElev": 4917,
+  "maxElev": 8057,
+  "landPixels": 1115894,
+  "tier": 5,
+  "thickness": 78000
+ },
+ "610000": {
+  "name": "陕西省",
+  "meanElev": 1129,
+  "medianElev": 1143,
+  "maxElev": 3612,
+  "landPixels": 209080,
+  "tier": 3,
+  "thickness": 48000
+ },
+ "620000": {
+  "name": "甘肃省",
+  "meanElev": 2150,
+  "medianElev": 1843,
+  "maxElev": 5551,
+  "landPixels": 464239,
+  "tier": 4,
+  "thickness": 62000
+ },
+ "630000": {
+  "name": "青海省",
+  "meanElev": 4040,
+  "medianElev": 4259,
+  "maxElev": 6348,
+  "landPixels": 712303,
+  "tier": 5,
+  "thickness": 78000
+ },
+ "640000": {
+  "name": "宁夏回族自治区",
+  "meanElev": 1561,
+  "medianElev": 1531,
+  "maxElev": 3308,
+  "landPixels": 56161,
+  "tier": 4,
+  "thickness": 62000
+ },
+ "650000": {
+  "name": "新疆维吾尔自治区",
+  "meanElev": 1874,
+  "medianElev": 1236,
+  "maxElev": 7622,
+  "landPixels": 1935352,
+  "tier": 4,
+  "thickness": 62000
+ },
+ "710000": {
+  "name": "台湾省",
+  "meanElev": 751,
+  "medianElev": 397,
+  "maxElev": 3636,
+  "landPixels": 29992,
+  "tier": 3,
+  "thickness": 48000
+ },
+ "810000": {
+  "name": "香港特别行政区",
+  "meanElev": 102,
+  "medianElev": 64,
+  "maxElev": 695,
+  "landPixels": 1087,
+  "tier": 1,
+  "thickness": 26000
+ },
+ "820000": {
+  "name": "澳门特别行政区",
+  "meanElev": 12,
+  "medianElev": 9,
+  "maxElev": 44,
+  "landPixels": 44,
+  "tier": 0,
+  "thickness": 18000
+ },
+ "100000_JD": {
+  "name": "100000_JD",
+  "meanElev": 0,
+  "medianElev": 0,
+  "maxElev": 0,
+  "landPixels": 0,
+  "tier": 0,
+  "thickness": 18000
+ }
+}

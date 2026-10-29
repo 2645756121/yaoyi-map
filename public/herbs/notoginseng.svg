@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <!--
+    滇重楼（Paris polyphylla var. yunnanensis）本草图鉴插画
+    用途：public/herbs/notoginseng.svg —— 由 lib/herbImages.ts 在远程图失败时兜底。
+    说明：mockData 中 id 为 'notoginseng' 的药材实际是"滇重楼"（scientificName: Paris polyphylla），
+          id 命名沿用了历史值（真正的三七是 id 'sanqi'）。此处插画按**实际物种**绘制：
+          轮生叶一轮 + 顶生单花，避免图文不符。
+  -->
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#EDEEDA"/>
+      <stop offset="100%" stop-color="#EDEEDA" stop-opacity="0.6"/>
+    </linearGradient>
+    <pattern id="wv" patternUnits="userSpaceOnUse" width="20" height="20">
+      <path d="M 0,10 L 20,10 M 10,0 L 10,20" stroke="#4A7C3A" stroke-width="0.3" opacity="0.15"/>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#bg)"/>
+  <rect width="100%" height="100%" fill="url(#wv)"/>
+  <rect x="6" y="6" width="388" height="288" fill="none" stroke="#4A7C3A" stroke-width="2" opacity="0.4"/>
+  <rect x="10" y="10" width="380" height="280" fill="none" stroke="#4A7C3A" stroke-width="0.5" opacity="0.3"/>
+  <line x1="20" y1="22" x2="380" y2="22" stroke="#4A7C3A" stroke-width="1" opacity="0.5"/>
+  <text x="20" y="18" font-family="Noto Sans SC" font-size="9" fill="#4A7C3A" opacity="0.7">本草图鉴</text>
+  <text x="380" y="18" text-anchor="end" font-family="serif" font-size="9" fill="#4A7C3A" opacity="0.7">HERBARIUM</text>
+
+  <!-- 茎 -->
+  <path d="M 200,80 Q 200,160 200,200" stroke="#5B7B3D" stroke-width="3" fill="none"/>
+  <!-- 轮生叶（一轮 7 片） -->
+  <ellipse cx="200" cy="135" rx="65" ry="14" fill="#4A7C3A" stroke="#2D5016" stroke-width="1.2" transform="rotate(0 200 135)"/>
+  <ellipse cx="200" cy="135" rx="65" ry="14" fill="#4A7C3A" stroke="#2D5016" stroke-width="1.2" transform="rotate(26 200 135)"/>
+  <ellipse cx="200" cy="135" rx="65" ry="14" fill="#4A7C3A" stroke="#2D5016" stroke-width="1.2" transform="rotate(51 200 135)"/>
+  <ellipse cx="200" cy="135" rx="65" ry="14" fill="#4A7C3A" stroke="#2D5016" stroke-width="1.2" transform="rotate(77 200 135)"/>
+  <ellipse cx="200" cy="135" rx="65" ry="14" fill="#4A7C3A" stroke="#2D5016" stroke-width="1.2" transform="rotate(103 200 135)"/>
+  <ellipse cx="200" cy="135" rx="65" ry="14" fill="#4A7C3A" stroke="#2D5016" stroke-width="1.2" transform="rotate(129 200 135)"/>
+  <ellipse cx="200" cy="135" rx="65" ry="14" fill="#4A7C3A" stroke="#2D5016" stroke-width="1.2" transform="rotate(154 200 135)"/>
+
+  <!-- 顶生单花 -->
+  <path d="M 200,55 Q 182,70 188,90 Q 194,95 200,93 Q 206,95 212,90 Q 218,70 200,55 Z" fill="#7FA850" stroke="#4A7C3A" stroke-width="1"/>
+  <path d="M 200,63 Q 190,73 194,87 Q 197,90 200,89 Q 203,90 206,87 Q 210,73 200,63 Z" fill="#A8C560" stroke="#7FA850" stroke-width="0.8"/>
+  <circle cx="196" cy="75" r="1.5" fill="#FCD34D"/>
+  <circle cx="200" cy="77" r="1.5" fill="#FCD34D"/>
+  <circle cx="204" cy="75" r="1.5" fill="#FCD34D"/>
+
+  <!-- 名称 -->
+  <g transform="translate(200, 252)">
+    <text text-anchor="middle" font-family="Noto Sans SC" font-size="22" font-weight="700" fill="#4A7C3A">滇重楼</text>
+    <text text-anchor="middle" y="22" font-family="serif" font-size="10" font-style="italic" fill="#4A7C3A" opacity="0.85">Paris polyphylla</text>
+  </g>
+  <text x="14" y="290" font-family="serif" font-size="8" fill="#4A7C3A" opacity="0.5">Real Plant 2026</text>
+  <text x="386" y="290" text-anchor="end" font-family="serif" font-size="8" fill="#4A7C3A" opacity="0.5">YaoYi YaoYao</text>
+</svg>

@@ -1,0 +1,86 @@
+# .dockerignore
+# Docker 构建时排除的文件，避免镜像膨胀、泄露敏感信息
+
+# 依赖（容器内独立安装）
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 构建产物（在容器内重新构建）
+dist
+dist-ssr
+*.local
+
+# 测试与开发产物
+coverage
+.nyc_output
+.vite
+.eslintcache
+
+# 编辑器与系统文件
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+Thumbs.db
+
+# 日志与诊断
+logs/*
+!logs/.gitkeep
+*.log
+
+# 临时文件
+tmp
+temp
+
+# 文档与备份（按需）
+README.md
+CHANGES.md
+LICENSE
+*.md.bak
+
+# 部署打包与历史构建
+deploy-package
+releases
+yao-medical-map-*
+yaoyi data
+
+# CI 与工具
+.github
+.husky
+*.sh
+*.bat
+*.command
+*.yml
+*.yaml
+!docker-compose.yml
+
+# Vercel 配置（部署平台特定）
+.vercel
+.vercelignore
+
+# 凭据与本地配置（绝不入镜像）
+.env
+.env.*
+!.env.example
+server.cjs
+
+# 测试脚本与产物
+test-hainan-*
+test-server-*
+test-output.txt
+0
+
+# 浏览器驱动与缓存
+.puppeteer*
+@*.cache
+
+# 临时可视化产物
+map-snap-*
+yao-ui-*
+yaoyi-ui-*
+scripts/*.png
+scripts/*.json
+scripts/mb-transpiled.txt
+scripts/last-run.txt

@@ -1,0 +1,20 @@
+{
+  "name": "china-relief",
+  "encoding": "terrarium",
+  "projection": "mercator",
+  "bounds": [
+    73.0,
+    17.5,
+    135.5,
+    54.0
+  ],
+  "width": 2048,
+  "height": 1528,
+  "aspect": 1.340282,
+  "minElevation": 0,
+  "maxElevation": 8019,
+  "meanElevation": 1135,
+  "seaPixelRatio": 0.1657,
+  "source": "AWS Terrain Tiles (Mapzen) / SRTM+ASTER (CC-BY 4.0)",
+  "generatedBy": "scripts/export_relief_heightmap.py"
+}

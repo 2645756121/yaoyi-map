@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#EDEEDA"/>
+      <stop offset="100%" stop-color="#EDEEDA" stop-opacity="0.6"/>
+    </linearGradient>
+    <pattern id="wv" patternUnits="userSpaceOnUse" width="20" height="20">
+      <path d="M 0,10 L 20,10 M 10,0 L 10,20" stroke="#3A3A3A" stroke-width="0.3" opacity="0.15"/>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#bg)"/>
+  <rect width="100%" height="100%" fill="url(#wv)"/>
+  <rect x="6" y="6" width="388" height="288" fill="none" stroke="#3A3A3A" stroke-width="2" opacity="0.4"/>
+  <rect x="10" y="10" width="380" height="280" fill="none" stroke="#3A3A3A" stroke-width="0.5" opacity="0.3"/>
+  <line x1="20" y1="22" x2="380" y2="22" stroke="#3A3A3A" stroke-width="1" opacity="0.5"/>
+  <text x="20" y="18" font-family="Noto Sans SC" font-size="9" fill="#3A3A3A" opacity="0.7">本草图鉴</text>
+  <text x="380" y="18" text-anchor="end" font-family="serif" font-size="9" fill="#3A3A3A" opacity="0.7">HERBARIUM</text>
+  
+  <path d="M 200,220 Q 175,180 200,140 Q 225,100 195,70" stroke="#2A2A2A" stroke-width="3" fill="none"/>
+  <path d="M 200,170 Q 230,160 245,170" stroke="#2A2A2A" stroke-width="1.5" fill="none"/>
+  <path d="M 200,120 Q 170,110 150,120" stroke="#2A2A2A" stroke-width="1.5" fill="none"/>
+  <path d="M 245,162 Q 257,155 257,148 Q 257,140 245,148 Q 235,140 233,148 Q 233,155 245,162 Z" fill="#5C7B3D" stroke="#2D5016" stroke-width="0.8"/>
+  <line x1="245" y1="147" x2="245" y2="177" stroke="#2D5016" stroke-width="0.5" opacity="0.7"/>
+  <line x1="233" y1="163" x2="257" y2="163" stroke="#2D5016" stroke-width="0.5" opacity="0.7"/>
+  <path d="M 150,112 Q 160,106 160,100 Q 160,94 150,100 Q 142,94 140,100 Q 140,106 150,112 Z" fill="#5C7B3D" stroke="#2D5016" stroke-width="0.8"/>
+  <path d="M 185,68 Q 185,78 189,82 L 201,82 Q 205,78 205,68 Q 201,62 195,62 Q 189,62 185,68 Z" fill="#A0A0A0" stroke="#5A5A5A" stroke-width="0.8"/>
+  <circle cx="197" cy="72" r="0.8" fill="#5A5A5A"/>
+  <circle cx="200" cy="73" r="0.8" fill="#5A5A5A"/>
+  <circle cx="203" cy="72" r="0.8" fill="#5A5A5A"/>
+
+  <g transform="translate(200, 252)">
+    <text text-anchor="middle" font-family="Noto Sans SC" font-size="22" font-weight="700" fill="#3A3A3A">黑风藤</text>
+    <text text-anchor="middle" y="22" font-family="serif" font-size="10" font-style="italic" fill="#3A3A3A" opacity="0.85">Periploca forrestii</text>
+  </g>
+  <text x="14" y="290" font-family="serif" font-size="8" fill="#3A3A3A" opacity="0.5">Real Plant 2026</text>
+  <text x="386" y="290" text-anchor="end" font-family="serif" font-size="8" fill="#3A3A3A" opacity="0.5">YaoYi YaoYao</text>
+</svg>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#EDEEDA"/>
+      <stop offset="100%" stop-color="#EDEEDA" stop-opacity="0.6"/>
+    </linearGradient>
+    <pattern id="wv" patternUnits="userSpaceOnUse" width="20" height="20">
+      <path d="M 0,10 L 20,10 M 10,0 L 10,20" stroke="#6B4E3C" stroke-width="0.3" opacity="0.15"/>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#bg)"/>
+  <rect width="100%" height="100%" fill="url(#wv)"/>
+  <rect x="6" y="6" width="388" height="288" fill="none" stroke="#6B4E3C" stroke-width="2" opacity="0.4"/>
+  <rect x="10" y="10" width="380" height="280" fill="none" stroke="#6B4E3C" stroke-width="0.5" opacity="0.3"/>
+  <line x1="20" y1="22" x2="380" y2="22" stroke="#6B4E3C" stroke-width="1" opacity="0.5"/>
+  <text x="20" y="18" font-family="Noto Sans SC" font-size="9" fill="#6B4E3C" opacity="0.7">本草图鉴</text>
+  <text x="380" y="18" text-anchor="end" font-family="serif" font-size="9" fill="#6B4E3C" opacity="0.7">HERBARIUM</text>
+  
+  <path d="M 200,220 Q 170,180 200,140 Q 230,100 195,70" stroke="#6B4E3C" stroke-width="3" fill="none"/>
+  <path d="M 200,160 Q 230,150 250,160" stroke="#6B4E3C" stroke-width="1.5" fill="none"/>
+  <path d="M 245,155 Q 232,148 232,160 Q 232,170 245,170 Q 258,170 258,160 Q 258,148 245,155 Z" fill="#5C7B3D" stroke="#2D5016" stroke-width="0.8"/>
+  <line x1="245" y1="155" x2="245" y2="170" stroke="#2D5016" stroke-width="0.5" opacity="0.7"/>
+  <path d="M 160,108 Q 150,102 150,112 Q 150,120 160,120 Q 170,120 170,112 Q 170,102 160,108 Z" fill="#5C7B3D" stroke="#2D5016" stroke-width="0.8"/>
+  <path d="M 185,68 Q 185,78 189,82 L 201,82 Q 205,78 205,68 Q 201,62 195,62 Q 189,62 185,68 Z" fill="#F5E0D5" stroke="#8B6F47" stroke-width="0.8"/>
+  <line x1="193" y1="76" x2="193" y2="72" stroke="#8B6F47" stroke-width="0.8"/>
+  <line x1="197" y1="76" x2="197" y2="72" stroke="#8B6F47" stroke-width="0.8"/>
+  <line x1="201" y1="76" x2="201" y2="72" stroke="#8B6F47" stroke-width="0.8"/>
+  <line x1="205" y1="76" x2="205" y2="72" stroke="#8B6F47" stroke-width="0.8"/>
+
+  <path d="M 145,225 Q 140,230 145,238 L 155,240 L 165,238 Q 168,232 165,228 L 155,225 Z" fill="#8B6F47" stroke="#5C3D1E" stroke-width="1"/>
+  <line x1="148" y1="230" x2="148" y2="236" stroke="#5C3D1E" stroke-width="0.4" opacity="0.7"/>
+  <line x1="153" y1="230" x2="153" y2="236" stroke="#5C3D1E" stroke-width="0.4" opacity="0.7"/>
+  <line x1="158" y1="230" x2="158" y2="236" stroke="#5C3D1E" stroke-width="0.4" opacity="0.7"/>
+
+  <text x="155" y="252" text-anchor="middle" font-family="serif" font-size="7" fill="#7A8B4A" opacity="0.7">块根</text>
+
+  <g transform="translate(200, 252)">
+    <text text-anchor="middle" font-family="Noto Sans SC" font-size="22" font-weight="700" fill="#6B4E3C">何首乌</text>
+    <text text-anchor="middle" y="22" font-family="serif" font-size="10" font-style="italic" fill="#6B4E3C" opacity="0.85">Polygonum multiflorum</text>
+  </g>
+  <text x="14" y="290" font-family="serif" font-size="8" fill="#6B4E3C" opacity="0.5">Real Plant 2026</text>
+  <text x="386" y="290" text-anchor="end" font-family="serif" font-size="8" fill="#6B4E3C" opacity="0.5">YaoYi YaoYao</text>
+</svg>
